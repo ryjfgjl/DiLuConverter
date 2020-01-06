@@ -114,10 +114,10 @@ class ImportExcel:
                             tablename = origin_tablename + '_' + re.sub(r"[^0-9a-z]+", "_", sheet_name,
                                                                         flags=re.IGNORECASE)
                             self.excel_name = excelcsv + '.' + sheet_name
-                        tablename = tablename.lower() + "_" + str(date.today()).replace("-", "")
+                        tablename = tablename.lower()
                         # cut off table name
                         if len(tablename) > 64:
-                            tablename = "{0}_" + tablename[:51] + tablename[-9:].format(long_num)
+                            tablename = "{0}_".format(long_num) + tablename[:60]
                             long_num += 1
                             longexcelcsvs[excelcsv] = tablename
                             with open(log_file, "a") as fw:
