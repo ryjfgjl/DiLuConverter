@@ -22,7 +22,14 @@ The problem solved by tool when we import excel into mysql database:
 11. skip empty excel.
 12. skip blank row.
 
+Other:
+
+you can use Cx-Freeze to build it to a exe.
+python E:\Python\Project\python-excelimporter\setup.py build
+
+
 The description is so simple. Please email me if you have any question.
+
 
 
 
