@@ -1,8 +1,7 @@
-
 print("Ready to import...")
 
 import easygui
-import os
+import os, sys
 import pymysql
 import re
 from collections import defaultdict
@@ -13,15 +12,14 @@ from datetime import date
 from sqlalchemy import create_engine
 from common.commonscripts import CommonScripts
 
-
 class ImportExcel:
 
     def __init__(self):
-
+        self.realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
         # get configuration from 'config.ini'
         self.CommonScripts = CommonScripts()
-        self.img = self.CommonScripts.handle_config("g", "referencefile", "img")
-        self.cleansql = self.CommonScripts.handle_config("g", "referencefile", "cleanexcel")
+        self.img = self.realpath + "\\" + self.CommonScripts.handle_config("g", "referencefile", "img")
+        self.cleansql = self.realpath + "\\" + self.CommonScripts.handle_config("g", "referencefile", "cleanexcel")
         self.default_dir = self.CommonScripts.handle_config("g", "global", "default_excels_dictionary")
         self.max_file_size = int(self.CommonScripts.handle_config("g", "global", "max_file_size"))
         self.use_server = self.CommonScripts.handle_config("g", "global", "use_server")
@@ -82,7 +80,8 @@ class ImportExcel:
                                 bytes = f.readline()
                     encode = chardet.detect(bytes)['encoding']
                     if encode == 'ascii':
-                        encode = 'ansi'  # ansi is a super charset of ascii and .txt only support ansi
+                        encode = 'ansi'  # ansi is a super charset of ascii
+                    """
                     try:
                         dataset = pd.read_csv(csv, encoding=encode, dtype=str, keep_default_na=False)
                     except UnicodeDecodeError:
@@ -92,7 +91,9 @@ class ImportExcel:
                             try:
                                 dataset = pd.read_csv(csv, encoding="UTF-8-SIG", dtype=str, keep_default_na=False)
                             except UnicodeDecodeError:
-                                dataset = pd.read_csv(csv, encoding="UTF-16", dtype=str, keep_default_na=False)
+                                dataset = pd.read_csv(csv, encoding="UTF-16", dtype=str, keep_default_na=False)"""
+                     
+                    dataset = pd.read_csv(csv, encoding=encode, dtype=str, keep_default_na=False)
                     datasets['sheet1'] = dataset
                 # get excel dataset(include sheets)
                 if re.fullmatch(r"^.*?\.xlsx?$", excelcsv, flags=re.IGNORECASE):
@@ -111,16 +112,19 @@ class ImportExcel:
                         self.excel_name = excelcsv
                         # rename table name if excel have more than one sheets
                         if isexcel == 1 and len(datasets) > 1:
-                            tablename = origin_tablename + '_' + re.sub(r"[^0-9a-z]+", "_", sheet_name,
+                            tablename = origin_tablename + '_' + re.sub(r"[^\w]+", "_", sheet_name,
                                                                         flags=re.IGNORECASE)
                             self.excel_name = excelcsv + '.' + sheet_name
                         tablename = tablename.lower()
                         # cut off table name
-                        if len(tablename) > 64:
-                            tablename = "{0}_".format(long_num) + tablename[:60]
+                        if len(tablename.encode("utf8")) > 64:
+                            if self.is_Chinese(tablename):
+                                tablename = "{0}_".format(long_num) + tablename[:20]
+                            else:
+                                tablename = "{0}_".format(long_num) + tablename[:60]
                             long_num += 1
                             longexcelcsvs[excelcsv] = tablename
-                            with open(log_file, "a") as fw:
+                            with open(log_file, "a", encoding="utf8") as fw:
                                 fw.write("extra long excel: {0}, tablename: {1}\n".format(self.excel_name, tablename))
 
                         col_maxlen, dataset = self.read_data(dataset)
@@ -133,7 +137,25 @@ class ImportExcel:
                             self.insert_data(dataset, tablename, size)
                         except pymysql.err.InternalError as reason:
                             reason_num_0 = str(reason).split(",")[0].strip("(")
-                            if reason_num_0 == "1118":
+                            if reason_num_0 == "1366":
+                                try:
+                                    sql_0 = "alter table `{1}`.{2} convert to character set utf8mb4 collate utf8mb4_bin".format(self.db, self.db, created_table)
+                                    self.CommonScripts.exec(self.use_server, sql_0,self.db, kill=True,COMMAND=True)
+                                    self.insert_data(dataset, tablename, size, charset="utf8mb4")
+                                except pymysql.err.InternalError as reason:
+                                    reason_num_1 = str(reason).split(",")[0].strip("(")
+                                    if reason_num_1 == "1118":
+                                        sql = re.sub(r"varchar\(\d+\)", "text", created_sql)
+                                        sql_1 = "drop table if exists `{0}`.`{1}`;".format(self.db, tablename)
+                                        self.CommonScripts.exec(self.use_server, sql_1,self.db, kill=True,COMMAND=True)
+                                        self.CommonScripts.exec(self.use_server, sql,self.db, kill=True,COMMAND=True)
+                                        
+                                        sql_0 = "alter table `{1}`.{2} convert to character set utf8mb4 collate utf8mb4_bin".format(self.db, self.db, created_table)
+                                        self.CommonScripts.exec(self.use_server, sql_0,self.db, kill=True,COMMAND=True)
+                                        self.insert_data(dataset, tablename, size, charset="utf8mb4")
+                                    else:
+                                        raise pymysql.err.InternalError(str(reason))
+                            elif reason_num_0 == "1118":
                                 sql = re.sub(r"varchar\(\d+\)", "text", created_sql)
                                 sql_0 = "drop table if exists `{0}`.`{1}`;".format(self.db, tablename) + sql
                                 self.CommonScripts.exec(self.use_server, sql_0, self.db, kill=True, COMMAND=True)
@@ -146,7 +168,7 @@ class ImportExcel:
                     except Exception as reason:
                         print("Failed: {}".format(self.excel_name))
 
-                        with open(log_file, "a") as fw:
+                        with open(log_file, "a", encoding="utf8") as fw:
                             fw.write("excel sheet name: {0}, error: {1}\n".format(self.excel_name, str(reason)))
 
                         if not created_table:
@@ -164,7 +186,7 @@ class ImportExcel:
 
             except Exception as reason:
                 print("Failed: {}".format(excelcsv))
-                with open(log_file, "a") as fw:
+                with open(log_file, "a", encoding="utf8") as fw:
                     fw.write("excel file name: {0}, error: {1}\n".format(self.excel_name, str(reason)))
                 num += 1
                 continue
@@ -181,7 +203,13 @@ class ImportExcel:
             conti = easygui.ccbox(msg="Clean database {} now?".format(self.db))
         if conti:
             self.clean_data()
-
+    
+    def is_Chinese(self,word):
+        for ch in word:
+            if '\u4e00' <= ch <= '\u9fff':
+                return True
+        return False
+    
     def get_excel(self):
         # a function to get excel/csv file under the dictionary
         excels = os.listdir(self.importexcelpath)
@@ -190,8 +218,8 @@ class ImportExcel:
         for excel in excels:
             if not os.path.isfile(excel) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
                 tablename = re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
-                # replace all character not 0-9/a-z to "_"
-                tablename = re.sub(r"[^0-9a-z]+", "_", tablename,flags=re.IGNORECASE)
+                # replace all character not \w to "_"
+                tablename = re.sub(r"[^\w]+", "_", tablename,flags=re.IGNORECASE)
                 excelcsvs[excel] = tablename
         return excelcsvs
 
@@ -202,7 +230,16 @@ class ImportExcel:
         self.columns = [str(col).strip() for col in self.columns]
 
         # cut off col
-        f = lambda x: x if len(x) <= 63 else x[:62].strip()
+        def f(x):
+            if len(x.encode("utf8")) <= 63:
+               x = x
+            elif self.is_Chinese(x): 
+               x = x[:20].strip()
+            else:
+               x = x[:62].strip() 
+            return x
+                
+        #f = lambda x: x if len(x) <= 63 else x[:62].strip()
         self.columns = [f(col) for col in self.columns]
 
         # fix duplicate column name
@@ -234,7 +271,7 @@ class ImportExcel:
         # deal with data
         f = lambda x: str(x).strip()
         dataset = dataset.applymap(f)
-        f = lambda x: len(x)
+        f = lambda x: len(x.encode("utf8"))
         df1 = dataset.applymap(f)
         f = lambda x: max(x)
         df2 = df1.apply(f, axis=0)
@@ -270,20 +307,25 @@ class ImportExcel:
             sql = re.sub(r"varchar\(\d+\)", "text", sql)
             self.CommonScripts.exec(self.use_server, sql)
         return tablename, sql
-
+    
     def insert_data(self, dataset, tablename, size, charset="utf8"):
         # insert
+        """
         if size < self.max_file_size:
             try:
+                print(1)
+                t1 = datetime.datetime.now()
                 host = self.CommonScripts.handle_config('g', self.use_server, 'host')
                 user = self.CommonScripts.handle_config('g', self.use_server, 'user')
                 passwd = self.CommonScripts.handle_config('g', self.use_server, 'password')
                 port = int(self.CommonScripts.handle_config('g', self.use_server, 'port'))
                 engine = create_engine(
-                    'mysql+pymysql://{0}:{1}@{2}:{4}/{4}?charset={5}'.format(user, passwd, host, port, self.db, charset))
+                    'mysql+pymysql://{0}:{1}@{2}:{3}/{4}?charset={5}'.format(user, passwd, host, port, self.db, charset))
                 dataset.to_sql(tablename, engine, if_exists="append", index=False)
-
+                t2 = datetime.datetime.now()
+                print(t2-t1)
             except:
+                print(2)
                 dataset = np.array(dataset)  # dataframe to ndarray
                 datalist = dataset.tolist()  # ndarray to list
                 cols = "`,`".join(self.columns)
@@ -305,27 +347,29 @@ class ImportExcel:
                 cur.close()
                 conn.close()
         else:
-            dataset = np.array(dataset)  # dataframe to ndarray
-            datalist = dataset.tolist()  # ndarray to list
-            # self.columns = [col.strip() for col in self.columns]
-            cols = "`,`".join(self.columns)
-            l = len(self.columns)
-            v = "%s," * l
-            v = v[:-1]
-            sql = "insert into `%s`.`%s`(%s) values(" % (self.db, tablename, "`" + cols + "`")
-            # sql = "insert into `" + self.db + "`.`" + tablename + "`(" + cols + "`)"
-            sql = sql + "%s)" % v
+            """
+        dataset = np.array(dataset)  # dataframe to ndarray
+        datalist = dataset.tolist()  # ndarray to list
+        # self.columns = [col.strip() for col in self.columns]
+        cols = "`,`".join(self.columns)
+        l = len(self.columns)
+        v = "%s," * l
+        v = v[:-1]
+        sql = "insert into `%s`.`%s`(%s) values(" % (self.db, tablename, "`" + cols + "`")
+        # sql = "insert into `" + self.db + "`.`" + tablename + "`(" + cols + "`)"
+        sql = sql + "%s)" % v
 
-            host = self.CommonScripts.handle_config('g', self.use_server, 'host')
-            user = self.CommonScripts.handle_config('g', self.use_server, 'user')
-            passwd = self.CommonScripts.handle_config('g', self.use_server, 'password')
-            port = int(self.CommonScripts.handle_config('g', self.use_server, 'port'))
-            conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, charset=charset)
-            cur = conn.cursor()
-            cur.executemany(sql, datalist)
-            conn.commit()
-            cur.close()
-            conn.close()
+        host = self.CommonScripts.handle_config('g', self.use_server, 'host')
+        user = self.CommonScripts.handle_config('g', self.use_server, 'user')
+        passwd = self.CommonScripts.handle_config('g', self.use_server, 'password')
+        port = int(self.CommonScripts.handle_config('g', self.use_server, 'port'))
+        conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, charset=charset)
+        cur = conn.cursor()
+        cur.executemany(sql, datalist)
+        conn.commit()
+        cur.close()
+        conn.close()
+
 
     def clean_data(self):
         print('Begin to clean data...\n')

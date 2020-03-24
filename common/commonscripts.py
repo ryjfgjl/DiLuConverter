@@ -5,6 +5,7 @@ common scripts used usually
 import easygui
 import pymysql
 import os
+import sys
 
 class CommonScripts:
 
@@ -15,7 +16,8 @@ class CommonScripts:
     def handle_config(self, option=None, section=None, key=None, value=None):
         import configparser
         conf = configparser.ConfigParser()
-        configini = "config.ini"
+        realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
+        configini = realpath + r"\config.ini"
 
         try:
             conf.read(configini)
@@ -86,7 +88,7 @@ class CommonScripts:
 
         msg = '{0} {1}.{2} {3}'.format(op, host, db, file)
         if op == "mysql":
-            cmd_statement = "{0} -u{1} -p{2} -h{3} -P{4} {5} < \"{6}\"".format(op, user, password, host, port, db, file)
+            cmd_statement = "{0} -u{1} -p{2} -h{3} -P{4} {5} --default-character-set=utf8 < \"{6}\"".format(op, user, password, host, port, db, file)
 
         print(cmd_statement)
         ret = os.system(cmd_statement)

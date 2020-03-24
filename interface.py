@@ -5,7 +5,7 @@ Date: 2020-01-05
 
 """
 
-Version = "V1.0"
+Version = "V1.1"
 
 print("Initializing program...")
 
