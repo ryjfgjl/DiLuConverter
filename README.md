@@ -21,13 +21,16 @@ The problem solved by tool when we import excel into mysql database:
 10. The length of Table Name more than 64 characters. ==> cut off
 11. skip empty excel.
 12. skip blank row.
+13. support import utf8mb4 character
+14. support chinese windows
 
 Other:
 
 you can use Cx-Freeze to build it to a exe.
 
-cmd: cd workdir
+cmd: cd E:\Python\Project\python-excelimporter
 python E:\Python\Project\python-excelimporter\setup.py build.
+
 If you have no python on your computer, you can also contact me to get .exe program which can run without python.
 
 
