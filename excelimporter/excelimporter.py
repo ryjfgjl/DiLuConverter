@@ -93,13 +93,13 @@ class ImportExcel:
                             except UnicodeDecodeError:
                                 dataset = pd.read_csv(csv, encoding="UTF-16", dtype=str, keep_default_na=False)"""
                      
-                    dataset = pd.read_csv(csv, encoding=encode, dtype=str, keep_default_na=False)
+                    dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_filter=False, header=0, engine="c")
                     datasets['sheet1'] = dataset
                 # get excel dataset(include sheets)
                 if re.fullmatch(r"^.*?\.xlsx?$", excelcsv, flags=re.IGNORECASE):
                     isexcel = 1
                     excel = self.importexcelpath + "\\" + excelcsv
-                    datasets = pd.read_excel(excel, dtype=str, keep_default_na=False, sheet_name=None)
+                    datasets = pd.read_excel(excel, dtype=str, na_filter=False, header=0, sheet_name=None)
 
                 # one sheet/csv is one table
                 for k, v in datasets.items():
@@ -276,10 +276,10 @@ class ImportExcel:
         f = lambda x: max(x)
         df2 = df1.apply(f, axis=0)
         col_maxlen = df2.to_dict()
-        df3 = df1.apply(f, axis=1)
-        df3 = pd.DataFrame(df3, columns=["c"])
-        indexs = df3.loc[df3["c"] == 0].index
-        dataset.drop(indexs, inplace=True)
+        #df3 = df1.apply(f, axis=1)
+        #df3 = pd.DataFrame(df3, columns=["c"])
+        #indexs = df3.loc[df3["c"] == 0].index
+        #dataset.drop(indexs, inplace=True)
         f = lambda x: None if x == "" else x
         dataset = dataset.applymap(f)
 
