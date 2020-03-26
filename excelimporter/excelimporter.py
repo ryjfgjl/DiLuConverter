@@ -216,7 +216,8 @@ class ImportExcel:
         excelcsvs = defaultdict()
 
         for excel in excels:
-            if not os.path.isfile(excel) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
+            excel_dir = self.importexcelpath + "\\" + excel
+            if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
                 tablename = re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
                 # replace all character not \w to "_"
                 tablename = re.sub(r"[^\w]+", "_", tablename,flags=re.IGNORECASE)
