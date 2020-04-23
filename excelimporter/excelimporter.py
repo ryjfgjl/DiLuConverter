@@ -8,8 +8,6 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 import chardet
-from datetime import date
-from sqlalchemy import create_engine
 from common.commonscripts import CommonScripts
 
 class ImportExcel:
@@ -226,8 +224,7 @@ class ImportExcel:
             else:
                x = x[:62].strip() 
             return x
-                
-        #f = lambda x: x if len(x) <= 63 else x[:62].strip()
+
         self.columns = [f(col) for col in self.columns]
 
         # fix duplicate column name
