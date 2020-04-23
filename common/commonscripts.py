@@ -75,18 +75,12 @@ class CommonScripts:
         return cur
 
     # exec cmd
-    def cmd(self, server, db, op, file=None, fromserver=None, fromdb=None):
+    def cmd(self, server, db, op, file):
         host = self.handle_config('g', server, 'host')
         user = self.handle_config('g', server, 'user')
         password = self.handle_config('g', server, 'password')
         port = int(self.handle_config('g', server, 'port'))
 
-        if fromserver:
-            fromhost = self.handle_config('g', fromserver, 'host')
-            fromuser = self.handle_config('g', fromserver, 'user')
-            frompassword = self.handle_config('g', fromserver, 'password')
-
-        msg = '{0} {1}.{2} {3}'.format(op, host, db, file)
         if op == "mysql":
             cmd_statement = "{0} -u{1} -p{2} -h{3} -P{4} {5} --default-character-set=utf8 < \"{6}\"".format(op, user, password, host, port, db, file)
 
