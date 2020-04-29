@@ -37,6 +37,6 @@ If you have no python on your computer, you can also contact me to get .exe prog
 The description is so simple. Please email me if you have any question.
 
 
-
+author: ryjfgjl
 email: 2577154121@qq.com
 
