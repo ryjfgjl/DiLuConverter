@@ -38,7 +38,5 @@ The description is so simple. Please email me if you have any question.
 
 
 
-
-copyright@ryjfgjl
 email: 2577154121@qq.com
 
