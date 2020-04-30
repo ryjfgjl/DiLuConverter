@@ -56,7 +56,7 @@ setup(
             # 产品名称  
            name='Excel Importer',
             # 版本号  
-            version='1.0',
+            version='1.3',
             # 产品说明  
             description='Excel Importer',
             options=options,  

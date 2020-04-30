@@ -5,13 +5,12 @@ Date: 2020-01-05
 
 """
 
-Version = "V1.1"
+Version = "V1.3"
 
 print("Initializing program...")
 
 # import GUI model
 import easygui
-import traceback
 
 # The interface for the program
 while True:
