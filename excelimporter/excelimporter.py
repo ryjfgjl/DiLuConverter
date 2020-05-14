@@ -270,6 +270,11 @@ class ImportExcel:
         f = lambda x: max(x)
         df2 = df1.apply(f, axis=0)
         col_maxlen = df2.to_dict()
+        
+        df3 = df1.apply(f, axis=1)
+        df3 = pd.DataFrame(df3, columns=["c"])
+        indexs = df3.loc[df3["c"]==0].index
+        dataset.drop(indexs, inplace=True)
 
         f = lambda x: None if x == "" else x
         dataset = dataset.applymap(f)
