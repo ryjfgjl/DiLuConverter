@@ -75,10 +75,7 @@ class ImportExcel:
                     datasets = defaultdict()
                     csv = self.importexcelpath + "\\" + excelcsv
                     with open(csv, 'rb') as f:
-                        bytes = f.read()
-                        if len(bytes) > 100000:
-                            with open(csv, 'rb') as f:
-                                bytes = f.readline()
+                        bytes = f.read(1000000)
                     encode = chardet.detect(bytes)['encoding']
                     if encode == 'ascii':
                         encode = 'ansi'  # ansi is a super charset of ascii
