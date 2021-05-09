@@ -120,8 +120,7 @@ class ImportExcel:
 
                         try:
                             self.insert_data(dataset, tablename)
-
-                        except pymysql.err.InternalError as reason:
+                        except Exception as reason:
                             reason_num_0 = str(reason).split(",")[0].strip("(")
                             if reason_num_0 == "1366":
                                 try:
@@ -134,6 +133,7 @@ class ImportExcel:
                                     if reason_num_1 == "1118":
                                         sql = re.sub(r"varchar\(\d+\)", "text", created_sql)
                                         sql_1 = "drop table if exists {0};".format(tablename)
+                                        print(sql_0)
                                         self.ConnDB.exec(self.conn_db,sql_1)
                                         self.ConnDB.exec(self.conn_db,sql)
                                         
@@ -219,7 +219,8 @@ class ImportExcel:
         # str col
         dataset.columns = [str(col) for col in dataset.columns]
         self.columns = dataset.columns
-        self.columns = [str(col).strip() for col in self.columns]
+        # replace % to _
+        self.columns = [str(col).strip().replace('%','_') for col in self.columns]
 
         # cut off col
         def f(x):
@@ -295,8 +296,7 @@ class ImportExcel:
 
         try:
             self.ConnDB.exec(self.conn_db,sql)
-
-        except pymysql.InternalError:
+        except:
             sql = re.sub(r"varchar\(\d+\)", "text", sql)
             self.ConnDB.exec(self.conn_db,sql)
 
