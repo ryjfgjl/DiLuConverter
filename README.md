@@ -1,6 +1,20 @@
 # python-excelimporter
 A python tool for batch importing excel/csv files into mysql database.
 
+Test Environment:
+Win64
+Python 3.7
+MySQL 5.6.34
+Excel: .xls/xlsx/csv
+
+Python package:
+easygui
+numpy
+pandas
+pymysql
+chardet
+
+
 Usage:
 
 1. You need to edit config.ini first. Please read the comment in config.ini. You must edit the server you will create database on and import excel to.
