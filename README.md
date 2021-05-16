@@ -61,7 +61,6 @@ python E:\Python\Project\python-excelimporter\setup.py build.
 
 If you have no python on your computer, you can also contact me to get .exe program which can run without python.
 
-
 The description is so simple. Please email me if you have any question.
 
 
