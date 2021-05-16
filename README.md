@@ -8,7 +8,7 @@ MySQL 5.6.34
 Excel: .xls/xlsx/csv
 
 Python package:
-easygui
+PySimpleGUI
 numpy
 pandas
 pymysql
@@ -17,9 +17,23 @@ chardet
 
 Usage:
 
-1. You need to edit config.ini first. Please read the comment in config.ini. You must edit the server you will create database on and import excel to.
+1. python E:\Python\Project\python-excelimporter\interface.py
 
-2. python E:\Python\Project\python-excelimporter\interface.py
+2. MySQL Connection:
+   Host: 
+   Port: 
+   User: 
+   Password: 
+   Database Name:
+   Re-Create Database: if selected, tool will drop and create database, otherwise, tool will default the database is existing.
+   
+   Files:
+   File Directionary: Choose your files directionary. The excel/csv files under this directionary will be imported.
+   Replace Values: the value seperated by comma will be replaced to null
+   CSV Encoding: We can get the encoding from the excel file, but we can not do this from csv file. So we can only detect the encoding from csv. 
+		If you know the encoding of all the csv files and they are the same one encoding, you can choose/populate this field. The tool will prefer to use this encoding.
+   
+
 
 The problem solved by tool when we import excel into mysql database:
 

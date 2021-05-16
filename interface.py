@@ -42,12 +42,14 @@ def generate_layout():
         [sg.Text('Host:',size=(5,1)),sg.Input('{}'.format(host), key='host', size=(15,1)),sg.Text(' '*11),sg.Text('Port:',size=(7,1)),sg.Input('{}'.format(port), key='port', size=(15,1)),],
         [sg.Text('User:',size=(5,1)),sg.Input('{}'.format(user), key='user', size=(15,1)),sg.Text(' '*11),sg.Text('Password:',size=(7,1)),sg.Input('{}'.format(passwd), key='passwd', size=(15,1)),],
         [sg.Text('Database Name:',size=(12,1)),sg.Input('{}'.format(dbname), key='dbname', size=(21,1)),
-        sg.Checkbox('Re-Create Database?', key='redb',default=True)]],title='Datbase Connection',title_color='red')],
+        sg.Checkbox('Re-Create Database?', key='redb',default=False)]],title='Datbase Connection',title_color='red')],
         [sg.Frame(layout=[
-        [sg.Text('Repalce Values:',size=(12,1)),sg.Input('{}'.format(na_values), key='na_values', size=(44,1)),],
+        
         [sg.Text('File Directionry:',size=(12,1)),sg.Input('{}'.format(file_dir), key='file_dir', size=(35,1)),
         sg.FolderBrowse(initial_folder='{}'.format(file_dir))],
-        [sg.Text('CSV Encoding:',size=(12,1)),sg.Input('{}'.format(csv_encoding), key='csv_encoding', size=(25,1)),]],title='Files',title_color='red')],
+        [sg.Text('Repalce Values:',size=(12,1)),sg.Input('{}'.format(na_values), key='na_values', size=(44,1)),],
+        [sg.Text('CSV Encoding:',size=(12,1)),sg.Combo(['UTF-8', 'ANSI', 'GBK'], key='csv_encoding', size=(10, 1))],
+        ],title='Files',title_color='red')],
         [sg.Button('Start',size=(54,1))]
     ]
     return layout
