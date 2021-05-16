@@ -64,6 +64,7 @@ The problem solved by tool when we import excel into mysql database:
 12. skip blank row.
 13. support import utf8mb4 character
 14. support chinese windows
+![捕获](https://user-images.githubusercontent.com/39375647/118388819-386dda00-b659-11eb-99a7-37faf01a0baf.PNG)
 
 Other:
 
