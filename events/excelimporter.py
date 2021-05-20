@@ -252,7 +252,8 @@ class ImportExcel:
             dataset.drop(dataset[:1].index, inplace=True)
             low_col = [col.lower() for col in self.columns]
 
-        self.columns = [str(col).strip() for col in self.columns]
+        # replace % to _
+        self.columns = [str(col).strip().replace('%','_') for col in self.columns]
         # fix blank col name
         f = lambda x: "unnamed" if x == "" else x
         self.columns = [f(col) for col in self.columns]
