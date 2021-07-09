@@ -2,8 +2,8 @@
 import os
 import sys
 
-os.environ['TCL_LIBRARY']="F:\\Python37\\tcl\\tcl8.6"
-os.environ['TK_LIBRARY']="F:\\Python37\\tcl\\tcl\\tk8.6"
+os.environ['TCL_LIBRARY']=r"C:\Program Files\Python39\tcl\tcl8.6"
+os.environ['TK_LIBRARY']=r"C:\Program Files\Python39\tcl\tk8.6"
 
 # Dependencies are automatically detected, but it might need
 # fine tuning.
@@ -12,7 +12,7 @@ base = None
 #if sys.platform == 'win32':  
 #    base = 'Win32GUI'  
   
-packages = ["os", "idna", "numpy", "pymysql", "pandas", "numpy", "pycrfsuite","chardet"]
+packages = ["os", "numpy", "pymysql", "pandas", "numpy", "chardet", "openpyxl"]
   
 for dbmodule in ['win32gui','win32api' ,'win32con' , 'cx_Freeze']:  
   
@@ -35,7 +35,7 @@ options = {
                              # 依赖的包  
                              ,"packages": packages  
                              # 额外添加的文件  
-                             , 'include_files':['config.ini', "common", "excelimporter"]
+                             , 'include_files':['config.ini', "common", "test", "README.md"]
                             }  
                   
                 }  
