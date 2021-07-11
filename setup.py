@@ -2,8 +2,8 @@
 import os
 import sys
 
-os.environ['TCL_LIBRARY']=r"C:\Program Files\Python39\tcl\tcl8.6"
-os.environ['TK_LIBRARY']=r"C:\Program Files\Python39\tcl\tk8.6"
+os.environ['TCL_LIBRARY']=r"C:\Program Files\Python37\tcl\tcl8.6"
+os.environ['TK_LIBRARY']=r"C:\Program Files\Python37\tcl\tk8.6"
 
 # Dependencies are automatically detected, but it might need
 # fine tuning.
