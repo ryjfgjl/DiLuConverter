@@ -46,7 +46,7 @@ executables = [
                                         'interface.py'
                                         , base=base  
                                         # 生成 的文件 名字  
-                                        , targetName = 'Excel Importer.exe'
+                                        , targetName = 'ExcelToMySQL.exe'
                                         # 生成的EXE的图标  
                                        , icon = 'excel.ico' #图标, 32*32px
                                         )  
@@ -54,11 +54,11 @@ executables = [
   
 setup(  
             # 产品名称  
-           name='Excel Importer',
+           name='ExcelToMySQL',
             # 版本号  
-            version='2.0',
+            version='3.0',
             # 产品说明  
-            description='Excel Importer',
+            description='Import excel to mysql automaticly',
             options=options,  
             executables=executables  
       )  

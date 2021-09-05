@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/python-excelimporter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python-excelimporter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/handleconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handleconfig.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/excelimporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/excelimporter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/csv - ansi.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/csv - utf8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/excel.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/test/excel.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +97,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\python-excelimporter\common" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.interface">
     <configuration name="commonscripts" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -165,6 +174,11 @@
       <workItem from="1588214992122" duration="11552000" />
       <workItem from="1625836113181" duration="13000" />
       <workItem from="1625836127482" duration="2894000" />
+      <workItem from="1630500672954" duration="1295000" />
+      <workItem from="1630501990265" duration="4835000" />
+      <workItem from="1630586334608" duration="9655000" />
+      <workItem from="1630758996795" duration="11726000" />
+      <workItem from="1630803204174" duration="915000" />
     </task>
     <servers />
   </component>
@@ -201,9 +215,20 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/events/excelimporter.py</url>
+          <line>242</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_excelimporter$commonscripts.coverage" NAME="commonscripts Coverage Results" MODIFIED="1588215162041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
-    <SUITE FILE_PATH="coverage/python_excelimporter$interface.coverage" NAME="interface Coverage Results" MODIFIED="1625837842892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_excelimporter$interface.coverage" NAME="interface Coverage Results" MODIFIED="1630803225134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/common/handleconfig.py">
