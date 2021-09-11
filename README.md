@@ -1,7 +1,8 @@
 # ExcelToMySQL
 ## 简介：一个实现自动化导入excel文件到mysql数据库的工具
 ## 工具截图：
-![image](https://user-images.githubusercontent.com/39375647/132945748-799f87f7-2fac-4b18-aa15-a852ddb2411b.png)
+![image](https://user-images.githubusercontent.com/39375647/132945877-aa80684a-5212-4e82-bab9-714f4d3b1bd1.png)
+
 ## 使用方法：
 常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
 ## 工具特色：
