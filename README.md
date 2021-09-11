@@ -1,7 +1,6 @@
 # ExcelToMySQL
 简介：一个实现自动化导入excel文件到mysql数据库的工具
 工具截图：
-![img.png](img.png)![img_1.png](img_1.png)
 
 使用方法：
 常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
@@ -10,78 +9,62 @@
 
 主要Python包:
 PySimpleGUI
-
 numpy
-
 pandas
-
 pymysql
-
 chardet
-
 
 详细介绍:
 如果电脑上有python环境，可以运行如下命令启动：
 python E:\Python\Project\python-excelimporter\interface.py
-如果
-
-Usage:
-
-1. python E:\Python\Project\python-excelimporter\interface.py
-
-2. MySQL Connection:
-
-   Host: 
-   
-   Port: 
-   
-   User: 
-   
-   Password: 
-   
-   Database Name:
-   Re-Create Database: if selected, tool will drop and create database, otherwise, tool will default the database is existing.
-   
-   Files:
-   
-   File Directionary: Choose your files directionary. The excel/csv files under this directionary will be imported.
-   
-   Replace Values: the value seperated by comma will be replaced to null
-   
-   CSV Encoding: We can get the encoding from the excel file, but we can not do this from csv file. So we can only detect the encoding from csv. 
-		If you know the encoding of all the csv files and they are the same one encoding, you can choose/populate this field. The tool will prefer to use this encoding.
-   
-
-
-The problem solved by tool when we import excel into mysql database:
-
-1. The length of Column Name more than 64 characters. ==> cut off
-2. The Column Name inculde space on the first/end. ==> remove space
-3. The repeatable column name. ==> add suffix
-4. The length of column is too large(>255) ==> change the column from varchar(255) to text.
-5. The row size is too large(>65535) ==> change all column from varchar(255) to text.
-6. remove the space before/end the data.
-7. change all "" character to null.
-8. detect encoding from csv and get encoding from excel.
-9. import all sheets from excel.(if more than one sheets in the excel, table name will be excel name+_+sheet name)
-10. The length of Table Name more than 64 characters. ==> cut off
-11. skip empty excel.
-12. skip blank row.
-13. support import utf8mb4 character
-14. support chinese windows
-
-Other:
-
-you can use Cx-Freeze to build it to a exe.
-
+也可以通过Cx-Freeze打包成exe文件：
 cmd: cd E:\Python\Project\python-excelimporter
 python E:\Python\Project\python-excelimporter\setup.py build.
+如果没有python环境，可以联系2577154121@qq.com，获取exe文件亦可运行。
 
-If you have no python on your computer, you can also contact me to get .exe program which can run without python.
+选项介绍:
 
-The description is so simple. Please email me if you have any question.
+常规：
+Excel文件：
+所在文件夹：选择要导入的excel文件所在目录，该目录下所有的excel文件（包括xls、xlsx和csv格式）都将被导入
 
+2. MySQL连接: 填入要导入的目标数据库连接信息
 
-author: ryjfgjl
-email: 2577154121@qq.com
+   主机: 
+   
+   端口: 
+   
+   用户: 
+   
+   密码: 
+   
+   数据库:
+模式:
+覆盖：覆盖模式下，在导入一张表前，工具将先删除同名的表，在创建并导入数据。
+追加模式下，工具将直接将数据导入到同名的表
+
+高级：
+CSV文件编码：
+
+                    # 因为csv格式没有记录文件编码，所以我们不能确定其编码格式
+		    如果选择自动，工具将自动猜测其编码格式，如果选择或者填写特定的编码格式，工具将先使用用户提供的编码解码，如果失败，再尝试用常见编码格式解码，如果失败再通过猜测其编码格式
+		    # 如何确定csv文件的编码，可以参考下面文章
+                    # http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html
+   
+  将这些值替换为null：对于常见的excel错误单元格或者某特定的值，填入以逗号分隔，将被替换为null
+  为创建的表名添加前缀：可以为工具创建的表名指定前缀，以示区分
+  删除空行：如选择，工具将删除所有空行
+  去除字符前后空格：若选择，工具将去除字符前后空格
+  跳过空表：若选择，如果表格没有数据，工具将不会创建数据库表
+  
+  
+  其他：
+  表名的确定：使用文件名并小写，将非文字字符替换为_。如果一个excel文件包含多个sheet，将采用文件名+_+sheet名。如果表名超过64个字节，自动截断并再前面加上计数如0_表名
+  列名的确定：使用第一行作为列名，如果列名全为空，将用下一个非空行作为列名，如果存在列名为空，将用unnamed+计数作为列名，如果列名超过64个字节，自动截断。列名将去除前后空格并将%替换为_
+  列类型的确定：工具将计算每列最大长度，如果小于255，将使用varchar(255)，如果大于255，将使用text。
+  常见错误1366：如果excel文件包含表情等utf8mb4编码的字符，在utf8编码的表中，如果sql_mode为STRICT_TRANS_TABLES，会报1366错误。工具将暂时设置sql_mode=''，导入会设回默认值
+  常见错误1118：对于一行数据的总长度，mysql限制为65535，如果超长，将报1118错误。工具将全部列类型替换为text（text类型一列只占1个字节长度）
+  
+作者: ryjfgjl
+如需帮助，请联系2577154121@qq.com
 
