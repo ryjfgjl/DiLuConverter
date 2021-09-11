@@ -1,17 +1,14 @@
-# python-excelimporter
-A python tool for batch importing excel/csv files into mysql database.
+# ExcelToMySQL
+简介：一个实现自动化导入excel文件到mysql数据库的工具
+工具截图：
+![img.png](img.png)![img_1.png](img_1.png)
 
-![捕获](https://user-images.githubusercontent.com/39375647/118388849-723ee080-b659-11eb-8cd3-3316b6cb2bce.PNG)
+使用方法：
+常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
+工具特色：
+自动化，一键式，无人值守，自动纠错，高级功能可选
 
-
-Test Environment:
-Win64
-Python 3.7
-MySQL 5.6.34
-Excel: .xls/xlsx/csv
-
-Python package:
-
+主要Python包:
 PySimpleGUI
 
 numpy
@@ -22,6 +19,11 @@ pymysql
 
 chardet
 
+
+详细介绍:
+如果电脑上有python环境，可以运行如下命令启动：
+python E:\Python\Project\python-excelimporter\interface.py
+如果
 
 Usage:
 
