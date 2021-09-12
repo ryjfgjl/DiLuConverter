@@ -1,5 +1,5 @@
 #######################################################################################################################
-# 工具名称：ExcelTOMysql
+# 工具名称：ExcelToMySQL
 # 版本号：V3.0
 # 工具简介：将excel文件导入到mysql数据库的自动化工具
 # 工具特色：一键式，无人值守，批量导入
@@ -63,10 +63,10 @@ def exception_format():
 def generate_layout():
     # 常规界面
     layout_general = [
-        [sg.Text('Excel文件:', size=(12, 1), text_color='red')],
+        [sg.Text('Excel文件', size=(12, 1), text_color='red')],
             [sg.Text('所在文件夹:', size=(12, 1)), sg.Input('{}'.format(file_dir), key='file_dir', size=(35, 1)),
              sg.FolderBrowse(initial_folder='{}'.format(file_dir), button_text=' 选择 ')],
-        [sg.Text('MySQL连接:', size=(12, 1), text_color='red')],
+        [sg.Text('MySQL连接', size=(12, 1), text_color='red')],
 
         [sg.Text('主机:', size=(5, 1)), sg.Input('{}'.format(host), key='host', size=(15, 1)), sg.Text(' ' * 11),
              sg.Text('端口:', size=(7, 1)), sg.Input('{}'.format(port), key='port', size=(15, 1)), ],
@@ -90,7 +90,7 @@ def generate_layout():
         [sg.Checkbox('删除空行', key='del_blank_lines', size=(20, 1), default=del_blank_lines), ],
         [sg.Checkbox('去除字符前后控格', key='trim', size=(20, 1), default=trim), ],
         [sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(20, 1), default=skip_blank_sheet), ],
-
+        [sg.Button('开始', size=(52, 1))]
     ]
 
     tab_layouts = [sg.Tab('常规', layout_general), sg.Tab('高级', layout_advanced)]
@@ -102,14 +102,14 @@ def generate_layout():
 
 
 # 生成程序界面
-window = sg.Window('ExcelToMysql {0}'.format(Version), generate_layout(), location=(700, 100))
+window = sg.Window('ExcelToMySQL {0}'.format(Version), generate_layout(), location=(700, 100))
 
 # 保持程序持续运行，直至点击 X 关闭程序
 while True:
     try:
         event, values = window.read()
         # 点击开始，进入excel导入程序
-        if event == "开始":
+        if event == "开始" or event == '开始0':
             from events.excelimporter import ImportExcel
             ImportExcel = ImportExcel()
             # 将用户选择传递进excel导入主程序
