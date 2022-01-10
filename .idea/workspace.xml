@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="ExcelToMySQL 3.0">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/excelimporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/excelimporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/interface.py" afterDir="false" />
+    <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="新增将数据追加到指定表">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +177,7 @@
       <workItem from="1636029848183" duration="78000" />
       <workItem from="1636030151819" duration="20000" />
       <workItem from="1641798203179" duration="1242000" />
+      <workItem from="1641799531082" duration="343000" />
     </task>
     <task id="LOCAL-00001" summary="ExcelToMySQL 3.0">
       <created>1630822586005</created>
@@ -209,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631455010901</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="新增将数据追加到指定表">
+      <created>1641799696446</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641799696446</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -259,7 +264,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ExcelToMySQL 3.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExcelToMySQL 3.0" />
+    <MESSAGE value="新增将数据追加到指定表" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增将数据追加到指定表" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
