@@ -36,6 +36,7 @@ class ImportExcel:
         else:
             self.HandleConfig.handle_config("s", "advanced", "mode", 'mode2')
         self.HandleConfig.handle_config("s", "advanced", "prefix", values['prefix'])
+        self.HandleConfig.handle_config("s", "advanced", "tname", values['tname'])
         self.HandleConfig.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.HandleConfig.handle_config("s", "advanced", "trim", str(values['trim']))
         self.HandleConfig.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
@@ -43,7 +44,7 @@ class ImportExcel:
         self.file_dir = values['file_dir']
         na_values = values['na_values'].split(',')
         # 获取目录下excel文件
-        excelcsvs = self.get_excel(values['prefix'])
+        excelcsvs = self.get_excel(values)
         if not excelcsvs:
             sg.Popup('文件夹下没有可导入的excel文件!')
             return
@@ -242,15 +243,19 @@ class ImportExcel:
                 return True
         return False
     # 获取目录下所有excel文件函数
-    def get_excel(self, prefix):
+    def get_excel(self, values):
         excels = os.listdir(self.file_dir)
         excelcsvs = defaultdict()
         for excel in excels:
             excel_dir = self.file_dir + "\\" + excel
             if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
-                tablename = prefix.lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
-                # 替换非文字字符为"_"
-                tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
+                if values['mode2'] and values['tname']:
+                    tablename = values['tname']
+                else:
+                    tablename = values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
+                    # 替换非文字字符为"_"
+                    tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
+
                 excelcsvs[excel] = tablename
         return excelcsvs
     # 解析数据函数
