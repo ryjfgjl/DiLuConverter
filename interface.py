@@ -43,6 +43,7 @@ na_values = HandleConfig.handle_config("g", "file", "na_values")
 mode = HandleConfig.handle_config("g", "advanced", 'mode')
 prefix = HandleConfig.handle_config("g", "advanced", 'prefix')
 tname = HandleConfig.handle_config("g", "advanced", 'tname')
+header = HandleConfig.handle_config("g", "advanced", 'header')
 
 del_blank_lines = eval(HandleConfig.handle_config("g", "advanced", 'del_blank_lines'))
 trim = eval(HandleConfig.handle_config("g", "advanced", 'trim'))
@@ -90,11 +91,11 @@ def generate_layout():
         [sg.Text('将这些值替换为null:', size=(15, 1)),sg.Input('{}'.format(na_values), key='na_values', size=(40, 1)), ],
         [sg.Text('为创建的表名添加前缀:', size=(18, 1)), sg.Input(prefix, key='prefix', size=(20, 1),), ],
         [sg.Text('将数据追加到已存在的表（追加模式有效）:', size=(34, 1)), sg.Input(tname, key='tname', size=(20, 1), ), ],
+        [sg.Text('指定列名所在行数:', size=(18, 1)), sg.Input(header, key='header', size=(10, 1)), ],
         [sg.Checkbox('删除空行', key='del_blank_lines', size=(10, 1), default=del_blank_lines),
          sg.Checkbox('去除字符前后空格', key='trim', size=(20, 1), default=trim),
          sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(10, 1), default=skip_blank_sheet), ],
-        [sg.Text(''),],
-        [sg.Text(''), ],
+
 
         [sg.Button('开始', size=(52, 1))]
     ]

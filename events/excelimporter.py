@@ -37,6 +37,8 @@ class ImportExcel:
             self.HandleConfig.handle_config("s", "advanced", "mode", 'mode2')
         self.HandleConfig.handle_config("s", "advanced", "prefix", values['prefix'])
         self.HandleConfig.handle_config("s", "advanced", "tname", values['tname'])
+        self.HandleConfig.handle_config("s", "advanced", "header", values['header'])
+
         self.HandleConfig.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.HandleConfig.handle_config("s", "advanced", "trim", str(values['trim']))
         self.HandleConfig.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
@@ -72,6 +74,10 @@ class ImportExcel:
             self.excel_name = excelcsv
             try:
                 isexcel = 0
+                if not values['header']:
+                    header = 0
+                else:
+                    header = int(values['header'])
                 # 解析csv格式文件
                 if re.fullmatch(r"^.*?\.csv$", excelcsv, flags=re.IGNORECASE):
                     datasets = defaultdict()
@@ -83,21 +89,22 @@ class ImportExcel:
                     csv_encoding = 'utf8'
                     if values['csv_encoding'] != '自动':
                         csv_encoding = values['csv_encoding']
+
                     try:
                         dataset = pd.read_csv(csv, encoding=csv_encoding, dtype=str, na_values=na_values,
-                                              keep_default_na=False, header=0, engine='c')
+                                              keep_default_na=False, header=header, engine='c')
                     except UnicodeDecodeError:
                         try:
                             dataset = pd.read_csv(csv, encoding='utf8', dtype=str, na_values=na_values,
-                                                  keep_default_na=False, header=0, engine='c')
+                                                  keep_default_na=False, header=header, engine='c')
                         except UnicodeDecodeError:
                             try:
                                 dataset = pd.read_csv(csv, encoding='ansi', dtype=str, na_values=na_values,
-                                                      keep_default_na=False, header=0, engine='c')
+                                                      keep_default_na=False, header=header, engine='c')
                             except UnicodeDecodeError:
                                 try:
                                     dataset = pd.read_csv(csv, encoding='utf-16', dtype=str, na_values=na_values,
-                                                          keep_default_na=False, header=0, engine='c')
+                                                          keep_default_na=False, header=header, engine='c')
                                 except UnicodeDecodeError:
                                     with open(csv, 'rb') as f:
                                         bytes = f.read()
@@ -108,14 +115,14 @@ class ImportExcel:
                                     if encode == 'ascii':
                                         encode = 'ansi'  # ansi is a super charset of ascii
                                     dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values,
-                                                          keep_default_na=False, header=0, engine='c')
+                                                          keep_default_na=False, header=header, engine='c')
                     datasets['sheet1'] = dataset
 
                 # 获取excel格式数据（包含每个sheet）
                 if re.fullmatch(r"^.*?\.xlsx?$", excelcsv, flags=re.IGNORECASE):
                     isexcel = 1
                     excel = self.file_dir + "\\" + excelcsv
-                    datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, header=0,
+                    datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, header=header,
                                              sheet_name=None)
 
                 # 每个sheet为一张表
@@ -289,7 +296,7 @@ class ImportExcel:
                 recol = 0
                 break
 
-        if recol and values['del_blank_lines']:
+        if recol and values['del_blank_lines'] and values['header'] != '0':
             self.columns = dataset[0:1]
             self.columns = np.array(self.columns)
             self.columns = self.columns.tolist()[0]
@@ -297,8 +304,8 @@ class ImportExcel:
             dataset.drop(dataset[:1].index, inplace=True)
             #low_col = [col.lower() for col in self.columns]
 
-        # 将列名的%替换为_
-        self.columns = [str(col).strip().replace('%', '_') for col in self.columns]
+        # 将列名的%,\n替换为_
+        self.columns = [str(col).strip().replace('%', '_').replace('\n', '_') for col in self.columns]
         # 处理列名为空
         f = lambda x: "unnamed" if x == "" else x
         self.columns = [f(col) for col in self.columns]
