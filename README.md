@@ -2,6 +2,7 @@
 ## 简介：一个实现自动化导入excel文件到mysql数据库的工具
 ## 工具截图：
 <img width="351" alt="捕获" src="https://user-images.githubusercontent.com/39375647/149439234-6aff20ec-96db-4101-be68-099b44dd1230.PNG">
+
 ## 使用方法：
 常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
 ## 工具特色：
