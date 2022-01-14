@@ -26,7 +26,7 @@ cmd: cd E:\Python\Project\python-excelimporter
 
 python E:\Python\Project\python-excelimporter\setup.py build.
 
-如果没有python环境，可以加群788719152或联系2577154121@qq.com，获取exe文件可以直接运行。
+如果没有python环境，可以加qq群 788719152 或联系2577154121@qq.com，获取exe文件可以直接运行。
 
 ## 选项介绍:
 
@@ -82,5 +82,5 @@ http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html
   对于一行数据的总长度，mysql限制为65535，如果超长，将报1118错误。工具将全部列类型替换为text（text类型一列只占1个字节长度）
   
 # 作者: ryjfgjl
-# 如需帮助，请联系2577154121@qq.com
+# 如需帮助，请加qq群 788719152 
 
