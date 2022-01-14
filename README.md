@@ -1,5 +1,5 @@
 # ExcelToMySQL
-## 简介：一个实现自动化导入excel文件到mysql数据库的工具
+## 简介：一个实现自动化导入Excel文件到MySQL数据库的工具
 ## 工具截图：
 <img width="351" alt="捕获" src="https://user-images.githubusercontent.com/39375647/149439234-6aff20ec-96db-4101-be68-099b44dd1230.PNG">
 
