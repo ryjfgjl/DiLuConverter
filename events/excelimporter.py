@@ -385,6 +385,15 @@ class ImportExcel:
     def insert_data(self, dataset, tablename):
         if dataset.empty:
             return
+        sql = "select column_name from information_schema.`COLUMNS` " \
+              "where table_schema = '{0}' and table_name = '{1}'".format(self.db, tablename)
+        columns = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        exists_columns = []
+        for column in columns:
+            if column[0] in self.columns:
+                exists_columns.append(column[0])
+        dataset = dataset[exists_columns]
+        self.columns = dataset.columns
         dataset = np.array(dataset)
         datalist = dataset.tolist()
         cols = '`,`'.join(self.columns)
