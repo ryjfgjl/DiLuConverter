@@ -1,5 +1,5 @@
 """
-handle with config.ini
+ get or set something with config.ini
 """
 
 import os

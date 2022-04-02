@@ -1,6 +1,6 @@
 ##############################################################
-# excel到mysql程序
-# 包括获取excel文件，读取excel数据，建表，插入
+# to_mysql
+# get excels, parse data, create table, insert data
 ##############################################################
 
 import PySimpleGUI as sg
@@ -14,16 +14,13 @@ import chardet
 from common.handleconfig import HandleConfig
 from common.conndb import ConnDB
 
-# excel导入类
 class ImportExcel:
-    # 初始化配置文件和数据库连接
     def __init__(self):
         self.HandleConfig = HandleConfig()
-        self.ConnDB = ConnDB()
 
-    # 主程序
     def main(self, values):
-        # 保存界面输入到配置文件作为下次打开时的默认值
+        self.ConnDB = ConnDB(values)
+        # save input
         self.HandleConfig.handle_config("s", "file", "file_dir", values['file_dir'])
         self.HandleConfig.handle_config("s", "file", "csv_encoding", values['csv_encoding'])
         self.HandleConfig.handle_config("s", "dbinfo", "host", values['host'])
@@ -38,24 +35,24 @@ class ImportExcel:
         self.HandleConfig.handle_config("s", "advanced", "prefix", values['prefix'])
         self.HandleConfig.handle_config("s", "advanced", "tname", values['tname'])
         self.HandleConfig.handle_config("s", "advanced", "header", values['header'])
-
         self.HandleConfig.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.HandleConfig.handle_config("s", "advanced", "trim", str(values['trim']))
         self.HandleConfig.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
 
         self.file_dir = values['file_dir']
         na_values = values['na_values'].split(',')
-        # 获取目录下excel文件
+        # get all excel files
         excelcsvs = self.get_excel(values)
         if not excelcsvs:
             sg.Popup('文件夹下没有可导入的excel文件!')
             return
 
-        # 记录错误日志
+        # record error log
         log_file = self.file_dir + "\\exceltoimport_log.txt"
         if os.path.isfile(log_file):
             os.remove(log_file)
-        # 连接数据库
+
+        # connect to mysql
         self.db = values['dbname']
         self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
                                           passwd=values['passwd'], db=self.db, charset='utf8')
@@ -87,7 +84,7 @@ class ImportExcel:
                     # 这里采用的策略是优先使用用户提供的编码，再尝试用常见编码格式解码，最后通过探测字节流猜测其编码格式
                     # http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html
                     csv_encoding = 'utf8'
-                    if values['csv_encoding'] != '自动':
+                    if values['csv_encoding'] != 'AUTO':
                         csv_encoding = values['csv_encoding']
 
                     try:

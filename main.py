@@ -1,52 +1,51 @@
 #######################################################################################################################
-# 工具名称：ExcelToMySQL
-# 版本号：V3.0
-# 工具简介：将excel文件导入到mysql数据库的自动化工具
-# 工具特色：一键式，无人值守，批量导入
-# 适用环境：Windows 7及以上，MySQL 5.6及以上，Excel 1997及以上（xls，xlsx和csv格式）
-# 作者：ryjfgjl
-# 更新日期：2021-09-01
-# 更新内容：
-# 1、追加模式下，只导入跟目标表列名相同得列
+# Tool Name: ExcelToDatabase
+# Version: V4.0
+# Bref: A tool which can batch import excel files into mysql/oracle database.
+# Feature: Automation, One-Click, High Speed, Automatic Correct Error
+# Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
+# Author: ryjfgjl
+# Help Email: 2577154121@qq.com
+# Source: QQ群788719152
 #######################################################################################################################
 
 ##############################################################
-# 主程序UI入口
+# Program GUI
 ##############################################################
 
-# 程序版本号
-Version = "3.2"
+# Version
+Version = "4.0"
 
-# 导入GUI及错误捕获包
 import PySimpleGUI as sg
 import traceback
 import sys
-# 导入自定义读写配置文件包
+# import configuration file
 from common.handleconfig import HandleConfig
 
-# 初始化UI界面风格
-sg.ChangeLookAndFeel('dark')
 
+sg.ChangeLookAndFeel('dark')
 HandleConfig = HandleConfig()
 
-# 获取配置文件保存的数据库连接信息
+# get default value: dbinfo
+dbtype = HandleConfig.handle_config("g", "dbinfo", "dbtype")
 host = HandleConfig.handle_config("g", "dbinfo", "host")
 port = HandleConfig.handle_config("g", "dbinfo", "port")
 user = HandleConfig.handle_config("g", "dbinfo", "user")
 passwd = HandleConfig.handle_config("g", "dbinfo", "passwd")
 dbname = HandleConfig.handle_config("g", "dbinfo", "dbname")
-# 获取配置文件保存的文件信息
+# get default value: file
 file_dir = HandleConfig.handle_config("g", "file", "file_dir")
 csv_encoding = HandleConfig.handle_config("g", "file", "csv_encoding")
 na_values = HandleConfig.handle_config("g", "file", "na_values")
+# get default value: advanced
 mode = HandleConfig.handle_config("g", "advanced", 'mode')
 prefix = HandleConfig.handle_config("g", "advanced", 'prefix')
 tname = HandleConfig.handle_config("g", "advanced", 'tname')
 header = HandleConfig.handle_config("g", "advanced", 'header')
-
 del_blank_lines = eval(HandleConfig.handle_config("g", "advanced", 'del_blank_lines'))
 trim = eval(HandleConfig.handle_config("g", "advanced", 'trim'))
 skip_blank_sheet = eval(HandleConfig.handle_config("g", "advanced", 'skip_blank_sheet'))
+
 
 def default_mode(_mode):
     if _mode == mode:
@@ -54,27 +53,36 @@ def default_mode(_mode):
     else:
         return False
 
-# 异常信息格式化函数
+# format exception output
 def exception_format():
     return "".join(traceback.format_exception(
         sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]
     ))
 
 
-# UI界面生成函数
-def generate_layout():
-    # 常规界面
+# generate GUI
+def generate_layout(dbtype):
+    # menu
+    menu_def = [
+        ['&显示语言', ['&中文', '&English']],
+        ['&数据库类型', ['&MySQL', '&Oracle']],
+    ]
+    # general
     layout_general = [
+        [sg.Menu(menu_def)],
         [sg.Text('Excel文件', size=(12, 1), text_color='red')],
             [sg.Text('所在文件夹:', size=(12, 1)), sg.Input('{}'.format(file_dir), key='file_dir', size=(35, 1)),
              sg.FolderBrowse(initial_folder='{}'.format(file_dir), button_text=' 选择 ')],
-        [sg.Text('MySQL连接', size=(12, 1), text_color='red')],
+        [sg.Text('{}连接'.format(dbtype), size=(12, 1), text_color='red'),
+         ],
 
         [sg.Text('主机:', size=(5, 1)), sg.Input('{}'.format(host), key='host', size=(15, 1)), sg.Text(' ' * 11),
              sg.Text('端口:', size=(7, 1)), sg.Input('{}'.format(port), key='port', size=(15, 1)), ],
             [sg.Text('用户:', size=(5, 1)), sg.Input('{}'.format(user), key='user', size=(15, 1)), sg.Text(' ' * 11),
              sg.Text('密码:', size=(7, 1)), sg.Input('{}'.format(passwd), key='passwd', size=(15, 1)), ],
-            [sg.Text('数据库:', size=(5, 1)), sg.Input('{}'.format(dbname), key='dbname', size=(21, 1)), sg.Text(' ' * 1),
+            [
+
+             sg.Text('数据库:', size=(5, 1)), sg.Input('{}'.format(dbname), key='dbname', size=(21, 1)), sg.Text(' ' * 1),
              sg.Text('模式:', text_color='red'),
              sg.Text(' ' * 1),
               sg.Radio('覆盖', group_id='mode', key='mode1', default=default_mode('mode1')),
@@ -83,10 +91,10 @@ def generate_layout():
 
         [sg.Button('开始', size=(52, 1))]
     ]
-    # 高级界面
+    # advanced
     layout_advanced = [
         [sg.Text('CSV文件编码:', size=(12, 1)),
-            sg.Combo(['自动', 'UTF-8', 'ANSI', 'GBK'], default_value=csv_encoding, key='csv_encoding', size=(10, 1))],
+            sg.Combo(['AUTO', 'UTF-8', 'ANSI', 'GBK'], default_value=csv_encoding, key='csv_encoding', size=(10, 1))],
         [sg.Text('将这些值替换为null:', size=(15, 1)),sg.Input('{}'.format(na_values), key='na_values', size=(40, 1)), ],
         [sg.Text('为创建的表名添加前缀:', size=(18, 1)), sg.Input(prefix, key='prefix', size=(20, 1),), ],
         [sg.Text('将数据追加到已存在的表（追加模式有效）:', size=(34, 1)), sg.Input(tname, key='tname', size=(20, 1), ), ],
@@ -107,21 +115,35 @@ def generate_layout():
     return layout
 
 
-# 生成程序界面
-window = sg.Window('ExcelToMySQL {0}'.format(Version), generate_layout(), location=(700, 100))
+# GO
+window = sg.Window('ExcelToDatabase {0}'.format(Version), generate_layout(dbtype), location=(700, 100))
 
-# 保持程序持续运行，直至点击 X 关闭程序
+# keep running
 while True:
     try:
         event, values = window.read()
-        # 点击开始，进入excel导入程序
+        # start
         if event == "开始" or event == '开始0':
-            from events.excelimporter import ImportExcel
-            ImportExcel = ImportExcel()
-            # 将用户选择传递进excel导入主程序
-            ImportExcel.main(values)
+            if dbtype == 'MySQL':
+                from events.excelimporter import ImportExcel
+                ImportExcel = ImportExcel()
+                ImportExcel.main(values)
+            elif dbtype == 'Oracle':
+                from events.to_oracle import ToOracle
+                ToOracle = ToOracle()
+                ToOracle.main(values)
+        # change database type
+        elif event == 'MySQL' or event == 'Oracle':
+            from events.setting import Setting
+            Setting = Setting()
+            Setting.db_type(event)
+            window.close()
+            window = sg.Window('ExcelToDatabase {0}'.format(Version), generate_layout(event), location=(700, 100))
+            window.Finalize()
+            dbtype = HandleConfig.handle_config("g", "dbinfo", "dbtype")
+
         elif event == sg.WIN_CLOSED:
             break
     except:
-        # 打印异常，而不退出
+        # throw error
         sg.PopupError(exception_format())

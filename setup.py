@@ -43,10 +43,10 @@ options = {
 executables = [  
                         Executable(  
                                         # 工程的 入口   
-                                        'interface.py'
+                                        'main.py'
                                         , base=base  
                                         # 生成 的文件 名字  
-                                        , targetName = 'ExcelToMySQL.exe'
+                                        , targetName = 'ExcelToDatabase.exe'
                                         # 生成的EXE的图标  
                                        , icon = 'excel.ico' #图标, 32*32px
                                         )  
