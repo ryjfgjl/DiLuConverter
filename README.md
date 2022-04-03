@@ -2,7 +2,7 @@
 ## Bref: A tool which can batch import excel files into mysql/oracle database.
 ## 简介：一个实现自动化导入Excel文件到MySQL数据库的工具
 ## 工具截图Picture：
-<img width="354" alt="捕获" src="https://user-images.githubusercontent.com/39375647/161414829-7aa10309-d53f-480c-8c2f-83959a6f9439.PNG">![image](https://user-images.githubusercontent.com/39375647/161415021-c082bfc8-b055-45b5-8099-f3f3aab77c68.png)
+<img width="354" alt="捕获" src="https://user-images.githubusercontent.com/39375647/161414829-7aa10309-d53f-480c-8c2f-83959a6f9439.PNG"><img width="359" alt="捕获1" src="https://user-images.githubusercontent.com/39375647/161415044-b2dffe22-4a61-48c9-9f14-7e3c7ca29321.PNG">
 
 ## 使用方法：
 常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
