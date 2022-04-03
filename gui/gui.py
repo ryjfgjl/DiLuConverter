@@ -101,7 +101,7 @@ class Gui():
                  sg.Input('{}'.format(default_values['passwd']), key='passwd', size=(15, 1)), ],
                 [
 
-                    sg.Text('Schema:', size=(5, 1)),
+                    sg.Text('Schema:', size=(6, 1)),
                     sg.Input('{}'.format(default_values['dbname']), key='dbname', size=(15, 1)), sg.Text(' ' * 1),
                     sg.Text('Mode:', text_color='red'),
                     #sg.Text(' ' * 1),
