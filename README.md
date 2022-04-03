@@ -6,10 +6,12 @@
 
 ## 使用方法/usage：
 选择要导入的数据库类型（mysql/oracle），常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
+
 Choose your database type(mysql or oracle);Select directory with excel files; Input target database information; Choose import mode.
 Click Start.
 ## 工具特色/Feature：
 批量自动化，一键式，高速，自动纠错，高级功能可选
+
 Batch Automation, One-Click, High Speed, Automatic Correct Error, Advanced Option
 
 ## 测试环境/Tested Environment: 
