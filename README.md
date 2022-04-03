@@ -1,5 +1,5 @@
 # ExcelToDatabase
-## 简介：一个实现自动化导入Excel文件到MySQL数据库的工具
+## 简介：一个实现批量导入Excel文件到MySQL数据库的工具
 ## Bref: A tool which can batch import excel files into mysql/oracle database.
 ## 工具截图/Picture：
 <img width="354" alt="捕获" src="https://user-images.githubusercontent.com/39375647/161414829-7aa10309-d53f-480c-8c2f-83959a6f9439.PNG"><img width="359" alt="捕获1" src="https://user-images.githubusercontent.com/39375647/161415044-b2dffe22-4a61-48c9-9f14-7e3c7ca29321.PNG">
