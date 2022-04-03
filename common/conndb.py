@@ -1,15 +1,12 @@
-# connect to mysql
+# connect to mysql/oracle
 
 import pymysql
 import cx_Oracle
-from common.handleconfig import HandleConfig
-
 
 class ConnDB():
 
     def __init__(self, values):
-        self.HandleConfig = HandleConfig()
-        self.dbtype = self.HandleConfig.handle_config("g", "dbinfo", "dbtype")
+        self.dbtype = values["dbtype"]
 
     def conndb(self, host, port, user, passwd, db=None, charset='utf8'):
         if self.dbtype == 'MySQL':

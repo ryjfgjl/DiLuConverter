@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="追加模式下，只导入跟目标表列名相同得列">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="Release ExcelToDatabase 4.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/conndb.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/conndb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/handleconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handleconfig.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/excelimporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/excelimporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/csv - 中文-utf8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test/csv - 中文-utf8.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/excelimporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/to_mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,10 +110,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\ExcelToMySQL\events" />
+      <recent name="D:\Projects\ExcelToMySQL\gui" />
       <recent name="D:\Projects\python-excelimporter\common" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.interface">
+  <component name="RunManager" selected="Python.main">
     <configuration name="commonscripts" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python-excelimporter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,6 +159,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python-excelimporter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python-excelimporter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,6 +205,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.interface" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.commonscripts" />
@@ -225,7 +246,8 @@
       <workItem from="1648814421906" duration="7083000" />
       <workItem from="1648824196909" duration="69000" />
       <workItem from="1648824431953" duration="2568000" />
-      <workItem from="1648903463877" duration="7432000" />
+      <workItem from="1648903463877" duration="8109000" />
+      <workItem from="1648947431161" duration="18953000" />
     </task>
     <task id="LOCAL-00001" summary="ExcelToMySQL 3.0">
       <created>1630822586005</created>
@@ -290,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642770932939</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Release ExcelToDatabase 4.0">
+      <created>1648911020780</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1648911020780</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -344,14 +373,15 @@
     <MESSAGE value="新增指定列名" />
     <MESSAGE value="新增指定列名导入" />
     <MESSAGE value="追加模式下，只导入跟目标表列名相同得列" />
-    <option name="LAST_COMMIT_MESSAGE" value="追加模式下，只导入跟目标表列名相同得列" />
+    <MESSAGE value="Release ExcelToDatabase 4.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release ExcelToDatabase 4.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/events/excelimporter.py</url>
-          <line>247</line>
+          <url>file://$PROJECT_DIR$/events/to_mysql.py</url>
+          <line>229</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -361,8 +391,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>20</line>
+          <line>16</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/gui/gui.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/events/to_mysql.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -370,7 +410,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_excelimporter$commonscripts.coverage" NAME="commonscripts Coverage Results" MODIFIED="1588215162041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/ExcelToMySQL$test.coverage" NAME="test Coverage Results" MODIFIED="1648817378452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/ExcelToMySQL$interface.coverage" NAME="interface Coverage Results" MODIFIED="1648910642648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ExcelToMySQL$interface.coverage" NAME="interface Coverage Results" MODIFIED="1648911075799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ExcelToMySQL$main.coverage" NAME="main Coverage Results" MODIFIED="1648966506942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_excelimporter$interface.coverage" NAME="interface Coverage Results" MODIFIED="1630822509384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
