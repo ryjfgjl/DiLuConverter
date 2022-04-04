@@ -28,6 +28,7 @@ class Gui():
             menu_def = [
                 ['&语言', ['&中文', '&English']],
                 ['&数据库', ['&MySQL', '&Oracle']],
+                ['&关于', ['&获取帮助']],
             ]
             # general
             layout_general = [

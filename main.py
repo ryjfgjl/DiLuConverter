@@ -15,6 +15,7 @@ Version = "4.0"
 import PySimpleGUI as sg
 import traceback
 import sys
+import pyperclip
 # import configuration file
 from common.handleconfig import HandleConfig
 from gui.gui import Gui
@@ -61,7 +62,12 @@ while True:
             HandleConfig.save_defaults(values)
             window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 100))
             window.Finalize()
-
+        elif event == "获取帮助":
+            from events.setting import Setting
+            Setting = Setting()
+            msg = Setting.help()
+            sg.Popup(msg,title='Help')
+            pyperclip.copy(msg)
         elif event == sg.WIN_CLOSED:
             break
     except:
