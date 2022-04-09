@@ -35,7 +35,8 @@ options = {
                              # 依赖的包  
                              ,"packages": packages  
                              # 额外添加的文件  
-                             , 'include_files':['config.ini', "common", "test", "README.md"]
+                             , 'include_files':['config.ini', "common", "test", "README.md", "events", "gui"
+                                                , "site-packages"]
                             }  
                   
                 }  
@@ -54,9 +55,9 @@ executables = [
   
 setup(  
             # 产品名称  
-           name='ExcelToMySQL',
+           name='ExcelToDatabase',
             # 版本号  
-            version='3.0',
+            version='4.1',
             # 产品说明  
             description='Import excel to mysql automaticly',
             options=options,  

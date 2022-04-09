@@ -19,19 +19,41 @@ class FromExcels:
 
     # get all excels upder directionary
     def get_excels(self):
-        excels = os.listdir(self.values['file_dir'])
         excels_dict = defaultdict()
-        for excel in excels:
-            excel_dir = self.values['file_dir'] + "\\" + excel
-            if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
-                if self.values['mode2'] and self.values['tname']:
-                    tablename = self.values['tname']
-                else:
-                    tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
-                    # 替换非文字字符为"_"
-                    tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
+        if self.values['loop_subdir']:
+            excels = []
+            for root, dirs, files in os.walk(self.values['file_dir']):
+                root = root.replace(self.values['file_dir'], '')[1:]
+                if len(root) > 1:
+                    root = root + '\\'
+                for file in files:
+                    file = root + file
+                    excels.append(file)
+            for excel in excels:
+                excel_dir = self.values['file_dir'] + "\\" + excel
+                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
+                    if self.values['mode2'] and self.values['tname']:
+                        tablename = self.values['tname']
+                    else:
+                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(),
+                                                                           flags=re.IGNORECASE)
+                        # 替换非文字字符为"_"
+                        tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
 
-                excels_dict[excel] = tablename
+                    excels_dict[excel] = tablename
+        else:
+            excels = os.listdir(self.values['file_dir'])
+            for excel in excels:
+                excel_dir = self.values['file_dir'] + "\\" + excel
+                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
+                    if self.values['mode2'] and self.values['tname']:
+                        tablename = self.values['tname']
+                    else:
+                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
+                        # 替换非文字字符为"_"
+                        tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
+
+                    excels_dict[excel] = tablename
         return excels_dict
 
     # get sheets in excel

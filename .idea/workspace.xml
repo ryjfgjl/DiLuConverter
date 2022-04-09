@@ -3,9 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="0692a411-b89e-48ae-8102-81a99a5d7cde" name="Default Changelist" comment="Release ExcelToDatabase 4.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/handleconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/handleconfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/from_excels.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/from_excels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/excel - 中文.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/excel.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/exceltoimport_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/importlog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/importlog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/追加 - 副本 (2).xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/追加 - 副本.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/追加.xlsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,8 +215,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.interface" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.interface" />
         <item itemvalue="Python.commonscripts" />
       </list>
     </recent_temporary>
@@ -247,7 +258,11 @@
       <workItem from="1648903463877" duration="8109000" />
       <workItem from="1648947431161" duration="18953000" />
       <workItem from="1648966683268" duration="1927000" />
-      <workItem from="1649050211911" duration="2657000" />
+      <workItem from="1649050211911" duration="2719000" />
+      <workItem from="1649245829954" duration="1958000" />
+      <workItem from="1649249927206" duration="702000" />
+      <workItem from="1649467999127" duration="3389000" />
+      <workItem from="1649473526961" duration="1332000" />
     </task>
     <task id="LOCAL-00001" summary="ExcelToMySQL 3.0">
       <created>1630822586005</created>
@@ -347,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648967609683</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Release ExcelToDatabase 4.0">
+      <created>1649052890011</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649052890011</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -438,9 +460,10 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_excelimporter$commonscripts.coverage" NAME="commonscripts Coverage Results" MODIFIED="1588215162041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/ExcelToMySQL$test.coverage" NAME="test Coverage Results" MODIFIED="1648817378452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/ExcelToDatabase$test.coverage" NAME="test Coverage Results" MODIFIED="1649474516985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/ExcelToMySQL$interface.coverage" NAME="interface Coverage Results" MODIFIED="1648911075799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ExcelToMySQL$main.coverage" NAME="main Coverage Results" MODIFIED="1648966506942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ExcelToDatabase$main.coverage" NAME="main Coverage Results" MODIFIED="1649052596948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ExcelToDatabase$main.coverage" NAME="main Coverage Results" MODIFIED="1649474867564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_excelimporter$interface.coverage" NAME="interface Coverage Results" MODIFIED="1630822509384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">

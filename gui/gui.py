@@ -62,9 +62,11 @@ class Gui():
                 [sg.Text('为创建的表名添加前缀:', size=(18, 1)), sg.Input(default_values['prefix'], key='prefix', size=(20, 1),), ],
                 [sg.Text('将数据追加到已存在的表（追加模式有效）:', size=(34, 1)), sg.Input(default_values['tname'], key='tname', size=(20, 1), ), ],
                 [sg.Text('指定列名所在行数:', size=(18, 1)), sg.Input(default_values['header'], key='header', size=(10, 1)), ],
-                [sg.Checkbox('删除空行', key='del_blank_lines', size=(10, 1), default=default_values['del_blank_lines']),
-                 sg.Checkbox('去除字符前后空格', key='trim', size=(20, 1), default=default_values['trim']),
-                 sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(10, 1), default=default_values['skip_blank_sheet']), ],
+                [sg.Checkbox('删除空行', key='del_blank_lines', size=(7, 1), default=default_values['del_blank_lines']),
+                 sg.Checkbox('去除字符前后空格', key='trim', size=(14, 1), default=default_values['trim']),
+                 sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(6, 1), default=default_values['skip_blank_sheet']),
+                 sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=False),
+                 ],
 
 
                 [sg.Button('开始', size=(52, 1))]
@@ -124,10 +126,12 @@ class Gui():
                 [sg.Text('append all data to one exists table:', size=(25, 1)),
                  sg.Input(default_values['tname'], key='tname', size=(25, 1), ), ],
                 [sg.Text('The Column on row:', size=(18, 1)), sg.Input(default_values['header'], key='header', size=(10, 1)), ],
-                [sg.Checkbox('Skip blank lines', key='del_blank_lines', size=(12, 1), default=default_values['del_blank_lines']),
-                 sg.Checkbox('Trim spaces around', key='trim', size=(15, 1), default=default_values['trim']),
-                 sg.Checkbox('Skip blank sheet', key='skip_blank_sheet', size=(15, 1),
-                             default=default_values['skip_blank_sheet']), ],
+                [sg.Checkbox('Skip blank line', key='del_blank_lines', size=(10, 1), default=default_values['del_blank_lines']),
+                 sg.Checkbox('Trim space', key='trim', size=(8, 1), default=default_values['trim']),
+                 sg.Checkbox('Skip blank sheet', key='skip_blank_sheet', size=(12, 1),
+                             default=default_values['skip_blank_sheet']),
+                 sg.Checkbox('Sub Dir', key='loop_subdir', size=(7, 1),default=False),
+                 ],
 
                 [sg.Button('Start', size=(52, 1))]
             ]

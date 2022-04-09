@@ -53,6 +53,8 @@ class HandleConfig:
         del_blank_lines = eval(self.handle_config("g", "advanced", 'del_blank_lines'))
         trim = eval(self.handle_config("g", "advanced", 'trim'))
         skip_blank_sheet = eval(self.handle_config("g", "advanced", 'skip_blank_sheet'))
+        loop_subdir = eval(self.handle_config("g", "advanced", 'loop_subdir'))
+
         default_values = {
             'language': language,
             'dbtype': dbtype,
@@ -71,6 +73,7 @@ class HandleConfig:
             'del_blank_lines': del_blank_lines,
             'trim': trim,
             'skip_blank_sheet': skip_blank_sheet,
+            'loop_subdir': loop_subdir,
         }
         return default_values
 
@@ -93,3 +96,5 @@ class HandleConfig:
         self.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.handle_config("s", "advanced", "trim", str(values['trim']))
         self.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
+        self.handle_config("s", "advanced", "loop_subdir", str(values['loop_subdir']))
+

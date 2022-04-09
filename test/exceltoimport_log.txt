@@ -1,7 +1,0 @@
-表名超长被截断: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: 0_csv_超长截csv_超长截断本csv_
-表名超长被截断: excel - cutofffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff.xlsx, tablename: 1_excel_cutoffffffffffffffffffffffffffffffffffffffffffffffffff
-失败的sheet: excel - 中文.xlsx.空表, error: 空表
-失败的sheet: excel.xlsx.blank, error: 空表
-失败的sheet: excel.xlsx.blank data, error: 空表
-失败的sheet: excel97.xls.blank, error: 空表
-失败的sheet: excel97.xls.blank data, error: 空表
