@@ -28,7 +28,7 @@ Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can 
 
 Choose your database type(mysql or oracle);Select directory with excel files; Input target database information; Choose import mode.
 
-3. Click Start.
+3.Click Start.
 
 ## 工具特色/Feature：
 批量自动化，一键式，高速，自动纠错，高级功能可选
