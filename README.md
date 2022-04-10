@@ -22,7 +22,7 @@ Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 
 2.如果没有python环境，可以加qq群 788719152 或联系2577154121@qq.com，获取exe文件可以直接运行。
 
-# You can send an eamil to 2577154121@qq.com to get a ".exe" program.
+### You can send an eamil to 2577154121@qq.com to get a ".exe" program.
 
 ## 选项介绍:
 
