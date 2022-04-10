@@ -17,18 +17,12 @@ Batch Automation, One-Click, High Speed, Automatic Correct Error, Advanced Optio
 ## 测试环境/Tested Environment: 
 Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 
-## 详细介绍/Detail:
-如果电脑上有python环境，可以运行如下命令启动：
+##如何启动/How to start:
+1.python D:\Projects\ExcelToDatabase\main.py
 
-python D:\Projects\ExcelToDatabase\main.py
+2.如果没有python环境，可以加qq群 788719152 或联系2577154121@qq.com，获取exe文件可以直接运行。
 
-也可以通过Cx-Freeze打包成exe文件：
-
-cmd: cd D:\Projects\ExcelToDatabase
-
-python D:\Projects\ExcelToDatabase\setup.py build.
-
-如果没有python环境，可以加qq群 788719152 或联系2577154121@qq.com，获取exe文件可以直接运行。
+#You can send an eamil to 2577154121@qq.com to get a ".exe" program.
 
 ## 选项介绍:
 
