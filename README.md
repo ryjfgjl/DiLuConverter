@@ -5,10 +5,30 @@
 <img width="354" alt="捕获" src="https://user-images.githubusercontent.com/39375647/161414829-7aa10309-d53f-480c-8c2f-83959a6f9439.PNG"><img width="359" alt="捕获1" src="https://user-images.githubusercontent.com/39375647/161415044-b2dffe22-4a61-48c9-9f14-7e3c7ca29321.PNG">
 
 ## 使用方法/usage：
+1.启动程序
+
+方式一：命令启动：python D:\Projects\ExcelToDatabase\main.py
+
+方式二：加qq群 788719152 或联系2577154121@qq.com，获取exe文件运行。
+
+2.填入信息
+
 选择要导入的数据库类型（mysql/oracle），常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
 
+3.点击开始
+
+1.Start Program
+
+Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
+
+Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can directly run on windows.
+
+2.Input Information
+
 Choose your database type(mysql or oracle);Select directory with excel files; Input target database information; Choose import mode.
-Click Start.
+
+3. Click Start.
+
 ## 工具特色/Feature：
 批量自动化，一键式，高速，自动纠错，高级功能可选
 
