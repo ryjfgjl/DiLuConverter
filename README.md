@@ -4,7 +4,7 @@
 ## 工具截图/Picture：
 <img width="354" alt="捕获" src="https://user-images.githubusercontent.com/39375647/161414829-7aa10309-d53f-480c-8c2f-83959a6f9439.PNG"><img width="359" alt="捕获1" src="https://user-images.githubusercontent.com/39375647/161415044-b2dffe22-4a61-48c9-9f14-7e3c7ca29321.PNG">
 
-## 使用方法/usage：
+## 使用方法：
 1.启动程序
 
 方式一：命令启动：python D:\Projects\ExcelToDatabase\main.py
@@ -17,6 +17,7 @@
 
 3.点击开始
 
+## Usage
 1.Start Program
 
 Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
@@ -37,14 +38,7 @@ Batch Automation, One-Click, High Speed, Automatic Correct Error, Advanced Optio
 ## 测试环境/Tested Environment: 
 Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 
-##如何启动/How to start:
-1.python D:\Projects\ExcelToDatabase\main.py
-
-2.如果没有python环境，可以加qq群 788719152 或联系2577154121@qq.com，获取exe文件可以直接运行。
-
-### You can send an eamil to 2577154121@qq.com to get a ".exe" program.
-
-## 选项介绍:
+## 选项介绍/Option Detail:
 
 ### 常规：
 #### Excel文件：
@@ -97,6 +91,7 @@ http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html
   #### 常见错误1118：
   对于一行数据的总长度，mysql限制为65535，如果超长，将报1118错误。工具将全部列类型替换为text（text类型一列只占1个字节长度）
   
-# 作者: ryjfgjl
-# 如需帮助，请加qq群 788719152 
+# 作者/Author: ryjfgjl
+# 如需帮助，请加qq群 788719152 或者发送邮件到2577154121@qq.com
+# Send email to 2577154121@qq.com for help.
 
