@@ -65,7 +65,7 @@ class Gui():
                 [sg.Checkbox('删除空行', key='del_blank_lines', size=(7, 1), default=default_values['del_blank_lines']),
                  sg.Checkbox('去除字符前后空格', key='trim', size=(14, 1), default=default_values['trim']),
                  sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(6, 1), default=default_values['skip_blank_sheet']),
-                 sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=False),
+                 sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=default_values['loop_subdir']),
                  ],
 
 
@@ -104,7 +104,7 @@ class Gui():
                  sg.Input('{}'.format(default_values['passwd']), key='passwd', size=(15, 1)), ],
                 [
 
-                    sg.Text('Schema:', size=(6, 1)),
+                    sg.Text('Database:', size=(7, 1)),
                     sg.Input('{}'.format(default_values['dbname']), key='dbname', size=(15, 1)), sg.Text(' ' * 1),
                     sg.Text('Mode:', text_color='red'),
                     #sg.Text(' ' * 1),
@@ -130,7 +130,7 @@ class Gui():
                  sg.Checkbox('Trim space', key='trim', size=(8, 1), default=default_values['trim']),
                  sg.Checkbox('Skip blank sheet', key='skip_blank_sheet', size=(12, 1),
                              default=default_values['skip_blank_sheet']),
-                 sg.Checkbox('Sub Dir', key='loop_subdir', size=(7, 1),default=False),
+                 sg.Checkbox('Sub Dir', key='loop_subdir', size=(7, 1),default=default_values['loop_subdir']),
                  ],
 
                 [sg.Button('Start', size=(52, 1))]
