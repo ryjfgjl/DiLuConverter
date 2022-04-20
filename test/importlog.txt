@@ -1,4 +1,5 @@
 table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_超长截csv_超长截断本csv_
-table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff.xlsx, tablename: excel_cutoffffffffffffffffffffffffffffffffffffffffffffffffff
+table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.wwwwwwwwww, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_wwww
+table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.dddddddddd, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_dddd
 Failed Sheet: excel97.xls.blank, error: Empty Table
 Failed Sheet: excel97.xls.blank data, error: Empty Table

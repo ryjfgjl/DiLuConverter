@@ -47,7 +47,7 @@ class Importer:
 
         print("\n\nBegin Import...\n")
         # loop all excel files
-        for excel, tablename in excels_dict.items():
+        for excel, tname in excels_dict.items():
             try:
                 datasets = self.FromExcels.get_data(excel)
                 excel_name = excel
@@ -57,6 +57,7 @@ class Importer:
                     try:
                         sheet_name = k
                         dataset = v
+                        tablename = tname
                         if self.values['mode2'] and self.values['tname']:
                             if len(datasets) > 1:
                                 excel = excel_name + '.' + sheet_name

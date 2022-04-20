@@ -1,6 +1,6 @@
 #######################################################################################################################
 # Tool Name: ExcelToDatabase
-# Version: V4.0
+# Version: V4.2
 # Bref: A tool which can batch import excel files into mysql/oracle database.
 # Feature: Automation, One-Click, High Speed, Automatic Correct Error
 # Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
@@ -10,7 +10,7 @@
 #######################################################################################################################
 
 # Version
-Version = "4.1"
+Version = "4.2"
 
 import PySimpleGUI as sg
 import traceback
@@ -27,7 +27,7 @@ Gui = Gui()
 # format exception output
 def exception_format():
     return "".join(traceback.format_exception(
-        sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]
+        sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2],limit=1
     ))
 
 # GO
@@ -62,7 +62,7 @@ while True:
             HandleConfig.save_defaults(values)
             window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 100))
             window.Finalize()
-        elif event == "获取帮助":
+        elif event == "联系方式":
             from events.setting import Setting
             Setting = Setting()
             msg = Setting.help()
