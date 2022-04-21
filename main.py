@@ -1,6 +1,6 @@
 #######################################################################################################################
 # Tool Name: ExcelToDatabase
-# Version: V4.2
+# Version: V4.3
 # Bref: A tool which can batch import excel files into mysql/oracle database.
 # Feature: Automation, One-Click, High Speed, Automatic Correct Error
 # Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
@@ -10,7 +10,7 @@
 #######################################################################################################################
 
 # Version
-Version = "4.2"
+Version = "4.3"
 
 import PySimpleGUI as sg
 import traceback

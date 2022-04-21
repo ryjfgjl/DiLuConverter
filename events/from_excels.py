@@ -155,10 +155,8 @@ class FromExcels:
 
         # cut off column name
         def f(x):
-            if len(x.encode("utf8")) <= 63:
+            if len(x) < 63:
                 x = x
-            elif self.is_Chinese(x):
-                x = x[:20].strip()
             else:
                 x = x[:62].strip()
             return x

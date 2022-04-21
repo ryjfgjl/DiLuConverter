@@ -44,6 +44,8 @@ class Importer:
         num = 0
         # count of succeed tables
         num_s = 0
+        num_suffix = 1
+        imported_tables = []
 
         print("\n\nBegin Import...\n")
         # loop all excel files
@@ -68,14 +70,21 @@ class Importer:
                                 excel = excel_name + '.' + sheet_name
                             tablename = tablename.lower()
                             # cut off table name
-                            if len(tablename.encode("utf8")) > 64:
-                                if self.is_Chinese(tablename):
-                                    tablename = tablename[:20]
-                                else:
-                                    tablename = tablename[:60]
+                            if len(tablename) > 62:
+                                tablename = tablename[:61]
+                                if tablename in imported_tables:
+                                    tablename = tablename + '_{}'.format(num_suffix)
+                                    num_suffix += 1
+                                    with open(log_file, "a") as fw:
+                                        fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                                 with open(log_file, "a") as fw:
                                     fw.write("table name cut off: {0}, tablename: {1}\n".format(excel, tablename))
-
+                            else:
+                                if tablename in imported_tables:
+                                    tablename = tablename + '_{}'.format(num_suffix)
+                                    num_suffix += 1
+                                    with open(log_file, "a") as fw:
+                                        fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                         if len(dataset.columns) == 0 or (dataset.empty and self.values['skip_blank_sheet']):
                             raise EmptyError("Empty Table")
                         col_maxlen, dataset = self.FromExcels.parse_data(dataset)
@@ -85,6 +94,8 @@ class Importer:
                         if self.values['mode1']:
                             created_table, created_sql = self.ToDB.create_table(col_maxlen, tablename)
                         self.ToDB.insert_data(dataset, tablename, created_sql)
+                        if self.values['mode1']:
+                            imported_tables.append(tablename)
 
                     except Exception as reason:
                         print('Failed: {}'.format(excel))
