@@ -14,6 +14,8 @@ Inteligent: When come across some durty data or some difference between Excel an
 
 Advanced Options: Rich options could be custom choose to make more fuction come true.
 
+Free: Most important thing.
+
 ## Usage
 1.Start Program
 
