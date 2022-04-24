@@ -6,7 +6,6 @@
 # Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 # Author: ryjfgjl
 # Help Email: 2577154121@qq.com
-# Source: QQ群788719152
 #######################################################################################################################
 
 # Version
@@ -40,7 +39,7 @@ while True:
         if values != None:
             values['dbtype'] = default_values['dbtype']
         # start
-        if event == "开始" or event == '开始0' or event == "Start" or event == 'Start0':
+        if event == "Start" or event == 'Start0' or event == "开始" or event == '开始0':
             from events.importer import Importer
             Importer = Importer(values)
             Importer.main()
@@ -54,7 +53,7 @@ while True:
             window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 100))
             window.Finalize()
         # change language
-        elif event == '中文' or event == 'English':
+        elif event == 'English' or event == '中文':
             from events.setting import Setting
             Setting = Setting()
             Setting.switch_langage(event)
@@ -66,7 +65,7 @@ while True:
             from events.setting import Setting
             Setting = Setting()
             msg = Setting.help()
-            sg.Popup(msg,title='Help')
+            sg.Popup(msg, title='Help')
             pyperclip.copy(msg)
         elif event == sg.WIN_CLOSED:
             break
