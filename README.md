@@ -5,9 +5,13 @@
 
 ## Features：
 Batch Automation: Import multiple excel files under directory one time
+
 One-Click: Do not need to do anything until all excel files are imported.
+
 High Speed: Most quickly tools like this around the world.
+
 Inteligent: When come across some durty data or some difference between Excel and Database, tool can deal with it and go on.
+
 Advanced Options: Rich options could be custom choose to make more fuction come true.
 
 ## Usage
