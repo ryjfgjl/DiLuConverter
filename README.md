@@ -1,7 +1,7 @@
 # ExcelToDatabase
 ## Bref: A tool which can batch import excel files into mysql/oracle database.
 ## Pictures：
-![image](https://user-images.githubusercontent.com/39375647/164977781-34f2b33e-2a59-472d-8da7-ad48a01c1dc7.png)![image](https://user-images.githubusercontent.com/39375647/164977804-68b63fdf-0c5e-4e64-8ce9-08de6e2aa800.png)
+![image](https://user-images.githubusercontent.com/39375647/164977781-34f2b33e-2a59-472d-8da7-ad48a01c1dc7.png)
 
 
 ## Features：
