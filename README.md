@@ -23,7 +23,7 @@ Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can 
 
 2.Input Information
 
-Choose your database type(mysql or oracle);Select directory with excel files; Input target database information; Choose import mode.
+Select directory with excel files; Input target database information; Choose import mode.
 
 3.Click Start.
 
@@ -38,7 +38,7 @@ Directory: The excel files under this directory would be imported
 
 #### MySQL/Oracle Connection: 
 options to connect to database
-#### mode:
+#### Mode:
 
 Overwrite: drop table first(if exists); create table; insert data.
 
@@ -47,16 +47,22 @@ Append: just insert data into table(table needs exist in the database)
 ### Advanced：
 #### CSV Encoding：
 Tools can auto-detect encoding of csv files(default), and you can choose or input other value.
-#### Replace to null：
-values populated will be replaced to null
-#### add table prefix：
-add table prefix
-#### append all data to one exists table：
+#### Replace To NULL：
+values populated will be replaced to null.
+#### Add Table Prefix：
+The value populated will be added to table name before.
+#### Append all data to one exists table：
+Under Append mode, import all data to the table populated.
 #### The Column on row：
-#### Skip blank line：
-#### Trim space：
-#### Skip blank sheet：
-#### Sub Dir
+Set which row as Column name.
+#### Skip Blank Rows：
+Skip Blank Rows
+#### Trim SpaceS：
+Trim spaces on data.
+#### Skip Blank Sheets：
+Ignore if no data.
+#### Include Sub Directories
+Find all excel files under the directory Include Sub Directories
 
 ### Others：
   #### How to define table name：
