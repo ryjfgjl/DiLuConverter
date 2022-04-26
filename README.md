@@ -4,17 +4,23 @@
 ![图片1](https://user-images.githubusercontent.com/39375647/164977981-f9bd5cb4-4096-4082-92bd-580204ada887.png)
 
 ## Features：
-Batch Automation: Import multiple excel files under directory one time
+### Batch Automation: 
+  Import multiple excel files under directory one time
 
-One-Click: Do not need to do anything until all excel files are imported.
+### One-Click: 
+  Do not need to do anything until all excel files are imported.
 
-High Speed: Most quickly tools like this around the world.
+### High Speed: 
+  Most quickly tools like this around the world.
 
-Inteligent: When come across some durty data or some difference between Excel and Database, tool can deal with it and go on.
+### Inteligent: 
+  When come across some durty data or some difference between Excel and Database, tool can deal with it and go on.
 
-Advanced Options: Rich options could be custom choose to make more fuction come true.
+### Advanced Options: 
+  Rich options could be custom choose to make more fuction come true.
 
-Free: Most important thing.
+### Free: 
+  Most important thing.
 
 ## Usage
 1.Start Program
@@ -59,7 +65,7 @@ Under Append mode, import all data to the table populated.
 Set which row as Column name.
 #### Skip Blank Rows：
 Skip Blank Rows
-#### Trim SpaceS：
+#### Trim Spaces：
 Trim spaces on data.
 #### Skip Blank Sheets：
 Ignore if no data.
