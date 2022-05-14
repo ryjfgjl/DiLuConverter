@@ -1,89 +1,77 @@
+
 # ExcelToDatabase
-## Bref: A tool which can batch import multiple excel files into mysql/oracle database automatically.
-## Pictures：
-![图片1](https://user-images.githubusercontent.com/39375647/164977981-f9bd5cb4-4096-4082-92bd-580204ada887.png)
+## 简介：一个实现批量导入Excel到MySQL/Oracle数据库的工具
+## 工具截图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/cfa211c9a29c469380d2640028f905da.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aaC5oSP5py65Y-N5YWJ6ZWc6KO4,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center)
+## 工具特色：
+**批量自动化**： 一次性导入目录下所有excel文件
+**一键式**:：点击开始到全部excel导入完成，中途无需做任何操作
+**高速**：同类工具中速度最快，相比navicate等，呈指数级提升效率
+**智能**：当遇到脏数据或者excel与数据库有差异时，工具可以自动处理错误并继续
+**高级选项**: 丰富的自定义选项，可以帮助你完成更多私人定制功能
+**免费**: 最重要的事情说三遍。免费！免费！免费！
 
-## Features：
-### Batch Automation: 
-  Import multiple excel files under directory one time
 
-### One-Click: 
-  Do not need to do anything until all excel files are imported.
+## 使用方法：
+1.启动程序
+方式一（需要安装python）：命令启动：python D:\Projects\ExcelToDatabase\main.py
+方式二（无须python，推荐）：加**QQ群788719152** 
+获取exe文件，可以直接运行
+2.填入信息
+常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
+3.点击开始
+## 开源代码：
+[https://github.com/ryjfgjl/ExcelToDatabase](https://github.com/ryjfgjl/ExcelToDatabase)
+## 选项介绍:
+### 常规：
+#### Excel文件：
+所在文件夹：选择要导入的excel文件所在目录，该目录下所有的excel文件（包括xls、xlsx和csv格式）都将被导入
 
-### High Speed: 
-  Most quickly tools like this around the world.
+#### MySQL/Oracle连接: 
+填入要导入的目标数据库连接信息
+   主机: 
+   端口:  
+   用户: 
+   密码: 
+   数据库:
+#### 模式:
+覆盖模式下，在导入一张excel表前，工具将先删除跟excel同名的表，再创建数据库表并导入数据。
+追加模式下，工具将直接将数据导入到同名的数据库表（数据库表需要已存在）
 
-### Inteligent: 
-  When come across some durty data or some difference between Excel and Database, tool can deal with it and go on.
+### 高级：
+#### CSV文件编码：
+因为csv格式没有记录文件编码，所以我们不能确定其编码格式
+默认为AUTO，表示工具自动探测，如果能确定所有CSV文件编码，你可以指定（可选择和输入）以提高效率
+   
+#### 将这些值替换为null：
+对于常见的excel错误单元格或者某特定的值，填入以逗号分隔，将被替换为null
+#### 为创建的表名添加前缀：
+可以为工具创建的表名指定前缀，以示区分
+#### 将数据追加到已存在的表（追加模式有效）：
+将导入的数据都追加到指定的已存在的表（仅追加模式有效）
 
-### Advanced Options: 
-  Rich options could be custom choose to make more fuction come true.
-
-### Free: 
-  Most important thing.
-
-## Usage
-1.Start Program
-
-Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
-
-Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can directly run on windows.
-
-2.Input Information
-
-Select directory with excel files; Input target database information; Choose import mode.
-
-3.Click Start.
-
-## Tested Environments: 
-Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
-
-## Options Detail:
-
-### General：
-#### Excel：
-Directory: The excel files under this directory would be imported
-
-#### MySQL/Oracle Connection: 
-options to connect to database
-#### Mode:
-
-Overwrite: drop table first(if exists); create table; insert data.
-
-Append: just insert data into table(table needs exist in the database)
-
-### Advanced：
-#### CSV Encoding：
-Tools can auto-detect encoding of csv files(default), and you can choose or input other value.
-#### Replace To NULL：
-values populated will be replaced to null.
-#### Add Table Prefix：
-The value populated will be added to table name before.
-#### Append all data to one exists table：
-Under Append mode, import all data to the table populated.
-#### The Column on row：
-Set which row as Column name.
-#### Skip Blank Rows：
-Skip Blank Rows
-#### Trim Spaces：
-Trim spaces on data.
-#### Skip Blank Sheets：
-Ignore if no data.
-#### Include Sub Directories
-Find all excel files under the directory Include Sub Directories
-
-### Others：
-  #### How to define table name：
-  file name + '_' + sheet name(if one excel has multipule sheets)
-  #### How to define column name：
-  Default is the first row
-  #### How to define column type：
-  Varchar(255) is default. If max length of column more than 255, text will be set.
-  #### How to deal with mysql error 1366：
-  Auto Correct
-  #### How to deal with mysql error 1118：
-  All column will be create as text
+#### 指定列名所在行数：
+指定将第几行作为列名，第一行从0开始，默认为0
+#### 删除空行：
+如选择，工具将删除所有空行
+#### 去除字符前后空格：
+若选择，工具将去除字符前后空格
+#### 跳过空表：
+若选择，如果表格没有数据，工具将不会创建数据库表
+ #### 遍历子目录
+  若选择，工具将遍历所选目录及其子目录下所有excel文件
+ 
+### 其他：
+  #### 表名的确定：
+  使用文件名并小写，将非文字字符替换为_。如果一个excel文件包含多个sheet，将采用文件名+_+sheet名。如果表名超过64个字符，自动截断
+  #### 列名的确定：
+  使用第一行作为列名，如果列名全为空，将用下一个非空行作为列名，如果存在列名为空，将用unnamed+计数作为列名，如果列名超过64个字节，自动截断。列名将去除前后空格并将%替换为_
+  #### 列类型的确定：
+  工具将计算每列最大长度，如果小于255，将使用varchar(255)，如果大于255，将使用text。
+  #### 自动纠正mysql常见错误1366：
+  如果excel文件包含表情等utf8mb4编码的字符，在utf8编码的表中，如果sql_mode为STRICT_TRANS_TABLES，会报1366错误。工具将暂时设置sql_mode=''，导入会设回默认值
+  #### 自动纠正mysql常见错误1118：
+  对于一行数据的总长度，mysql限制为65535，如果超长，将报1118错误。工具将全部列类型替换为text（text类型一列只占1个字节长度）
   
-# Author: ryjfgjl
-# Send email to 2577154121@qq.com for help.
-
+# 作者: ryjfgjl
+# 如需帮助，请加qq群 788719152
