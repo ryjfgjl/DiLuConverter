@@ -5,10 +5,15 @@
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/cfa211c9a29c469380d2640028f905da.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aaC5oSP5py65Y-N5YWJ6ZWc6KO4,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center)
 ## 工具特色：
 **批量自动化**： 一次性导入目录下所有excel文件
+
 **一键式**:：点击开始到全部excel导入完成，中途无需做任何操作
+
 **高速**：同类工具中速度最快，相比navicate等，呈指数级提升效率
+
 **智能**：当遇到脏数据或者excel与数据库有差异时，工具可以自动处理错误并继续
+
 **高级选项**: 丰富的自定义选项，可以帮助你完成更多私人定制功能
+
 **免费**: 最重要的事情说三遍。免费！免费！免费！
 
 
