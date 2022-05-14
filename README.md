@@ -19,15 +19,18 @@
 
 ## 使用方法：
 1.启动程序
+
 方式一（需要安装python）：命令启动：python D:\Projects\ExcelToDatabase\main.py
 
 方式二（无须python，推荐）：加**QQ群788719152** 
 获取exe文件，可以直接运行
+
 2.填入信息
+
 常规界面选择excel文件目录，填入目标数据库，选择导入模式，点击开始即可导入目录下所有excel文件。
+
 3.点击开始
-## 开源代码：
-[https://github.com/ryjfgjl/ExcelToDatabase](https://github.com/ryjfgjl/ExcelToDatabase)
+
 ## 选项介绍:
 ### 常规：
 #### Excel文件：
@@ -42,6 +45,7 @@
    数据库:
 #### 模式:
 覆盖模式下，在导入一张excel表前，工具将先删除跟excel同名的表，再创建数据库表并导入数据。
+
 追加模式下，工具将直接将数据导入到同名的数据库表（数据库表需要已存在）
 
 ### 高级：
