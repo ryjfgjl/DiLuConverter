@@ -15,6 +15,7 @@
 ## 使用方法：
 1.启动程序
 方式一（需要安装python）：命令启动：python D:\Projects\ExcelToDatabase\main.py
+
 方式二（无须python，推荐）：加**QQ群788719152** 
 获取exe文件，可以直接运行
 2.填入信息
