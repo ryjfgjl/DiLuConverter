@@ -46,8 +46,12 @@ class ToMySQL:
         try:
             self.ConnDB.exec(self.conn_db, sql)
         except:
-            sql = re.sub(r"varchar\(\d+\)", "text", sql)
-            self.ConnDB.exec(self.conn_db, sql)
+            try:
+                sql = re.sub(r"varchar\(\d+\)", "text", sql)
+                self.ConnDB.exec(self.conn_db, sql)
+            except:
+                sql = sql + ' engine=myisam'
+                self.ConnDB.exec(self.conn_db, sql)
         return tablename, sql
     
     # insert into
