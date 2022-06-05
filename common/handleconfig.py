@@ -8,12 +8,18 @@ import configparser
 
 class HandleConfig:
 
+    def __init__(self, configini=None):
+        self.configini = configini
+
     # handle config.ini
     def handle_config(self, option=None, section=None, key=None, value=None):
 
         conf = configparser.ConfigParser()
-        realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
-        configini = realpath + r"\config.ini"
+        if self.configini != None:
+            configini = self.configini
+        else:
+            realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
+            configini = realpath + r"\config.ini"
 
         conf.read(configini)
         if option == 'g':
@@ -47,6 +53,12 @@ class HandleConfig:
         na_values = self.handle_config("g", "file", "na_values")
         # get default value: advanced
         mode = self.handle_config("g", "advanced", 'mode')
+        if mode == 'mode1':
+            mode1 = True
+            mode2 = False
+        else:
+            mode1 = False
+            mode2 = True
         prefix = self.handle_config("g", "advanced", 'prefix')
         tname = self.handle_config("g", "advanced", 'tname')
         header = self.handle_config("g", "advanced", 'header')
@@ -66,7 +78,8 @@ class HandleConfig:
             'file_dir': file_dir,
             'csv_encoding': csv_encoding,
             'na_values': na_values,
-            'mode': mode,
+            'mode1': mode1,
+            'mode2': mode2,
             'prefix': prefix,
             'tname': tname,
             'header': header,

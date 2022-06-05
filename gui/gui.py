@@ -14,12 +14,6 @@ class Gui():
     def __init__(self):
         self.HandleConfig = HandleConfig()
 
-    def default_mode(self, default_values, _mode):
-        if _mode == default_values['mode']:
-            return True
-        else:
-            return False
-
     # generate chinese GUI
     def generate_layout(self):
         default_values = self.HandleConfig.get_defaults()
@@ -55,9 +49,9 @@ class Gui():
                     sg.Text('Mode:', text_color='red'),
                     # sg.Text(' ' * 1),
                     sg.Radio('Overwrite', group_id='mode', key='mode1',
-                             default=self.default_mode(default_values, 'mode1')),
+                             default=default_values['mode1']),
                     sg.Radio('Append', group_id='mode', key='mode2',
-                             default=self.default_mode(default_values, 'mode2')),
+                             default=default_values['mode2']),
                 ],
 
                 [sg.Button('Start', size=(52, 1))]
@@ -124,8 +118,8 @@ class Gui():
                     sg.Input('{}'.format(default_values['dbname']), key='dbname', size=(21, 1)), sg.Text(' ' * 1),
                     sg.Text('模式:', text_color='red'),
                     sg.Text(' ' * 1),
-                    sg.Radio('覆盖', group_id='mode', key='mode1', default=self.default_mode(default_values, 'mode1')),
-                    sg.Radio('追加', group_id='mode', key='mode2', default=self.default_mode(default_values, 'mode2')),
+                    sg.Radio('覆盖', group_id='mode', key='mode1', default=default_values['mode1']),
+                    sg.Radio('追加', group_id='mode', key='mode2', default=default_values['mode2']),
                 ],
 
                 [sg.Button('开始', size=(52, 1))]

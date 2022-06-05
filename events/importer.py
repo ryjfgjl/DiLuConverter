@@ -28,11 +28,10 @@ class Importer:
             self.conn_db = self.ToDB.conn_db
 
     def main(self):
-
         # get all excel files
         excels_dict = self.FromExcels.get_excels()
         if not excels_dict:
-            sg.Popup('No Excels!')
+            sg.Popup('No Excels!', auto_close=self.values['schedule'])
             return
 
         # record error log
@@ -136,7 +135,7 @@ class Importer:
                 [sg.Text('Import Complete！\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
                 [sg.OK('Finish')]
             ]
-        window = sg.Window(layout=layout, title='Report')
+        window = sg.Window(layout=layout, title='Report', auto_close=self.values['schedule'])
         event, self.values = window.read()
         window.close()
         if event == 'E':

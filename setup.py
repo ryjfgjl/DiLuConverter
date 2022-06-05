@@ -57,7 +57,7 @@ setup(
             # 产品名称  
            name='ExcelToDatabase',
             # 版本号  
-            version='4.1',
+            version='4.4',
             # 产品说明  
             description='Import excel to mysql automaticly',
             options=options,  
