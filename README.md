@@ -19,10 +19,14 @@
 ### Advanced Options: 
   Rich options could be custom choose to make more fuction come true.
 
+### Schedule: 
+  Can work with plan and task program on windows.
+  
 ### Free: 
   Most important thing.
 
 ## Usage
+## Manual Start
 1.Start Program
 
 Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
@@ -34,6 +38,14 @@ Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can 
 Select directory with excel files; Input target database information; Choose import mode.
 
 3.Click Start.
+
+## Schedule
+C:\Users\ryjfgjl>D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe D:\Projects\ExcelToDatabase4.4\config.ini
+You can run this command in DOS to start program.
+So you can add a scheduled task in windows, D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe is our program and D:\Projects\ExcelToDatabase4.4\config.ini is your configuration file.
+Note: configuration file can be saved when you manual run ExcelToDatabase, and you can copy it to anywhere and rename it.
+eg: D:\config_everyday.ini
+
 
 ## Tested Environments: 
 Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
