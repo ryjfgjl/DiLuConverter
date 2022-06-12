@@ -10,6 +10,7 @@ from common.handleconfig import HandleConfig
 from events.from_excels import FromExcels
 from events.to_mysql import ToMySQL
 from events.to_oracle import ToOracle
+from events.to_sqlserver import ToSqlserver
 
 class Importer:
 
@@ -22,7 +23,11 @@ class Importer:
             self.ConnDB = self.ToDB.ConnDB
             self.conn_db = self.ToDB.conn_db
             self.sql_mode = self.ToDB.sql_mode
-        else:
+        elif values['dbtype'] == 'Oracle':
+            self.ToDB = ToOracle(values)
+            self.ConnDB = self.ToDB.ConnDB
+            self.conn_db = self.ToDB.conn_db
+        elif values['dbtype'] == 'SQL Server':
             self.ToDB = ToOracle(values)
             self.ConnDB = self.ToDB.ConnDB
             self.conn_db = self.ToDB.conn_db
@@ -47,6 +52,12 @@ class Importer:
         imported_tables = []
 
         print("\n\nBegin Import...\n")
+        # run sql_b4
+        if self.values['sql_b4']:
+            with open(self.values['sql_b4'], 'r') as fr:
+                sql = fr.read()
+            print("Running SQL in {}...\n".format(self.values['sql_b4']))
+            self.ConnDB.exec(self.conn_db, sql)
         # loop all excel files
         for excel, tname in excels_dict.items():
             try:
@@ -124,6 +135,12 @@ class Importer:
                 continue
 
         print('\nTotal: {}, Succeed: {}\n'.format(num, num_s))
+        # run sql_after
+        if self.values['sql_after']:
+            with open(self.values['sql_after'], 'r') as fr:
+                sql = fr.read()
+            print("Running SQL in {}...\n".format(self.values['sql_after']))
+            self.ConnDB.exec(self.conn_db, sql)
         self.conn_db.close()
         if os.path.isfile(log_file):
             layout = [

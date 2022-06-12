@@ -1,15 +1,15 @@
 #######################################################################################################################
 # Tool Name: ExcelToDatabase
-# Version: V4.4
+# Version: V4.5
 # Bref: A tool which can batch import excel files into mysql/oracle database.
 # Feature: Automation, One-Click, High Speed, Automatic Correct Error
-# Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
+# Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+/SQL Server, Excel 1997+(xls,xlsx,csv,xlsm)
 # Author: ryjfgjl
 # Help Email: 2577154121@qq.com
 #######################################################################################################################
 
 # Version
-Version = "4.4"
+Version = "4.5"
 
 import PySimpleGUI as sg
 import traceback
@@ -52,12 +52,12 @@ else:
                 values['dbtype'] = default_values['dbtype']
                 values['schedule'] = False
             # start
-            if event == "Start" or event == 'Start0' or event == "开始" or event == '开始0':
+            if event == "Start" or event == "开     始":
                 from events.importer import Importer
                 Importer = Importer(values)
                 Importer.main()
             # change database type
-            elif event == 'MySQL' or event == 'Oracle':
+            elif event == 'MySQL' or event == 'Oracle' or event == 'SQL Server':
                 from events.setting import Setting
                 Setting = Setting()
                 Setting.db_type(event)

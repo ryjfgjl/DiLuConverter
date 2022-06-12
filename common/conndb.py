@@ -2,6 +2,7 @@
 
 import pymysql
 import cx_Oracle
+import pymssql
 
 class ConnDB():
 
@@ -11,8 +12,10 @@ class ConnDB():
     def conndb(self, host, port, user, passwd, db=None, charset='utf8'):
         if self.dbtype == 'MySQL':
             conn = pymysql.connect(host=host, user=user, passwd=passwd, port=port, charset=charset, database=db)
-        else:
+        elif self.dbtype == 'Oracle':
             conn = cx_Oracle.connect(user, passwd, host+':'+str(port)+'/'+db)
+        elif self.dbtype == 'SQL Server':
+            conn = pymssql.connect(host=host, user=user, password=passwd, port=port, charset=charset, database=db)
         return conn
 
     # execute sql

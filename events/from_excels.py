@@ -31,11 +31,11 @@ class FromExcels:
                     excels.append(file)
             for excel in excels:
                 excel_dir = self.values['file_dir'] + "\\" + excel
-                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
+                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
                     if self.values['mode2'] and self.values['tname']:
                         tablename = self.values['tname']
                     else:
-                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(),
+                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|xlsm|csv)$", '', excel.lower(),
                                                                            flags=re.IGNORECASE)
                         # 替换非文字字符为"_"
                         tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
@@ -45,11 +45,11 @@ class FromExcels:
             excels = os.listdir(self.values['file_dir'])
             for excel in excels:
                 excel_dir = self.values['file_dir'] + "\\" + excel
-                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|csv)$", excel, flags=re.IGNORECASE):
+                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
                     if self.values['mode2'] and self.values['tname']:
                         tablename = self.values['tname']
                     else:
-                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|csv)$", '', excel.lower(), flags=re.IGNORECASE)
+                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|xlsm|csv)$", '', excel.lower(), flags=re.IGNORECASE)
                         # 替换非文字字符为"_"
                         tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
 
@@ -102,7 +102,7 @@ class FromExcels:
             datasets['sheet1'] = dataset
 
         # excel
-        if re.fullmatch(r"^.*?\.xlsx?$", excel, flags=re.IGNORECASE):
+        if re.fullmatch(r"^.*?\.xls[x|m]?$", excel, flags=re.IGNORECASE):
             excel = self.values['file_dir'] + "\\" + excel
             datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, header=header,
                                      sheet_name=None)

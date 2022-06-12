@@ -62,10 +62,13 @@ class HandleConfig:
         prefix = self.handle_config("g", "advanced", 'prefix')
         tname = self.handle_config("g", "advanced", 'tname')
         header = self.handle_config("g", "advanced", 'header')
+        add_tname = eval(self.handle_config("g", "advanced", 'add_tname'))
         del_blank_lines = eval(self.handle_config("g", "advanced", 'del_blank_lines'))
         trim = eval(self.handle_config("g", "advanced", 'trim'))
         skip_blank_sheet = eval(self.handle_config("g", "advanced", 'skip_blank_sheet'))
         loop_subdir = eval(self.handle_config("g", "advanced", 'loop_subdir'))
+        sql_b4 = self.handle_config("g", "advanced", 'sql_b4')
+        sql_after = self.handle_config("g", "advanced", 'sql_after')
 
         default_values = {
             'language': language,
@@ -83,10 +86,14 @@ class HandleConfig:
             'prefix': prefix,
             'tname': tname,
             'header': header,
+            'add_tname': add_tname,
             'del_blank_lines': del_blank_lines,
             'trim': trim,
             'skip_blank_sheet': skip_blank_sheet,
             'loop_subdir': loop_subdir,
+            'sql_b4': sql_b4,
+            'sql_after': sql_after,
+
         }
         return default_values
 
@@ -106,8 +113,11 @@ class HandleConfig:
         self.handle_config("s", "advanced", "prefix", values['prefix'])
         self.handle_config("s", "advanced", "tname", values['tname'])
         self.handle_config("s", "advanced", "header", values['header'])
+        self.handle_config("s", "advanced", "add_tname", str(values['add_tname']))
         self.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.handle_config("s", "advanced", "trim", str(values['trim']))
         self.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
         self.handle_config("s", "advanced", "loop_subdir", str(values['loop_subdir']))
+        self.handle_config("s", "advanced", "sql_b4", values['sql_b4'])
+        self.handle_config("s", "advanced", "sql_after", values['sql_after'])
 
