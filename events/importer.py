@@ -28,7 +28,7 @@ class Importer:
             self.ConnDB = self.ToDB.ConnDB
             self.conn_db = self.ToDB.conn_db
         elif values['dbtype'] == 'SQL Server':
-            self.ToDB = ToOracle(values)
+            self.ToDB = ToSqlserver(values)
             self.ConnDB = self.ToDB.ConnDB
             self.conn_db = self.ToDB.conn_db
 
