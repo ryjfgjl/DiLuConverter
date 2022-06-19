@@ -9,8 +9,8 @@ os.environ['TK_LIBRARY']=r"C:\Program Files\Python37\tcl\tk8.6"
 # fine tuning.
 base = None
 # 判断Windows系统  
-#if sys.platform == 'win32':  
-#    base = 'Win32GUI'  
+if sys.platform == 'win32':
+    base = 'Win32GUI'
   
 packages = ["os", "numpy", "pymysql", "pandas", "numpy", "chardet", "openpyxl"]
   
@@ -57,7 +57,7 @@ setup(
             # 产品名称  
            name='ExcelToDatabase',
             # 版本号  
-            version='4.4',
+            version='4.6',
             # 产品说明  
             description='Import excel to mysql automaticly',
             options=options,  
