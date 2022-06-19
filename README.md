@@ -1,7 +1,8 @@
 # ExcelToDatabase
 ## Bref: A tool which can batch import multiple excel files into mysql/oracle database automatically.
 ## Pictures：
-![图片1](https://user-images.githubusercontent.com/39375647/164977981-f9bd5cb4-4096-4082-92bd-580204ada887.png)
+![image](https://user-images.githubusercontent.com/39375647/174487203-5bdc2c4e-b76e-4c74-9a3d-bf5f5635763d.png)
+
 
 ## Features：
 ### Batch Automation: 
@@ -20,7 +21,7 @@
   Rich options could be custom choose to make more fuction come true.
 
 ### Schedule: 
-  Can work with plan and task program on windows.
+  Can be scheduled.
   
 ### Free: 
   Most important thing.
@@ -48,7 +49,7 @@ eg: D:\config_everyday.ini
 
 
 ## Tested Environments: 
-Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
+Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,xlsm,csv)
 
 ## Options Detail:
 
@@ -56,7 +57,7 @@ Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 #### Excel：
 Directory: The excel files under this directory would be imported
 
-#### MySQL/Oracle Connection: 
+#### MySQL/Oracle/SQL Server Connection: 
 options to connect to database
 #### Mode:
 
