@@ -1,38 +1,25 @@
 import PySimpleGUI as sg
-import time
 
-# My function that takes a long time to do...
-def my_long_operation():
-    time.sleep(15)
-    return 'My return value'
+layout = [  [sg.Text('Demonstration of Multiline Element Printing')],
+            [sg.MLine(key='-ML1-'+sg.WRITE_ONLY_KEY, size=(40,8))],
+            [sg.MLine(key='-ML2-'+sg.WRITE_ONLY_KEY,  size=(40,8))],
+            [sg.Button('Go'), sg.Button('Exit')]]
+
+window = sg.Window('Window Title', layout, finalize=True)
 
 
-def main():
-    layout = [  [sg.Text('My Window')],
-                [sg.Input(key='-IN-')],
-                [sg.Text(key='-OUT-')],
-                [sg.Button('Go'), sg.Button('Threaded'), sg.Button('Dummy')]  ]
+# Note, need to finalize the window above if want to do these prior to calling window.read()
+window['-ML1-'+sg.WRITE_ONLY_KEY].print(1,2,3,4,end='', text_color='red', background_color='yellow')
+window['-ML1-'+sg.WRITE_ONLY_KEY].print('\n', end='')
+window['-ML1-'+sg.WRITE_ONLY_KEY].print(1,2,3,4,text_color='white', background_color='green')
+counter = 0
 
-    window = sg.Window('Window Title', layout, keep_on_top=True)
-
-    while True:             # Event Loop
-        event, values = window.read()
-        if event == sg.WIN_CLOSED:
-            break
-
-        window['-OUT-'].update(f'{event, values}')  # show the event and values in the window
-        window.refresh()                            # make sure it's shown immediately
-
-        if event == 'Go':
-            return_value = my_long_operation()
-            window['-OUT-'].update(f'direct return value = {return_value}')
-        elif event  == 'Threaded':
-            # Let PySimpleGUI do the threading for you...
-            window.perform_long_operation(my_long_operation, '-OPERATION DONE-')
-        elif event  == '-OPERATION DONE-':
-            window['-OUT-'].update(f'indirect return value = {values[event]}')
-
-    window.close()
-
-if __name__ == '__main__':
-    main()
+while True:             # Event Loop
+    event, values = window.read(timeout=100)
+    if event in (sg.WIN_CLOSED, 'Exit'):
+        break
+    if event == 'Go':
+        window['-ML1-'+sg.WRITE_ONLY_KEY].print(event, values, text_color='red')
+    window['-ML2-'+sg.WRITE_ONLY_KEY].print(counter)
+    counter += 1
+window.close()

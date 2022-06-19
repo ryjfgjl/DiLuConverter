@@ -1,20 +1,24 @@
 ##############################################################
 # Program GUI
+# including English and Chinese
 ##############################################################
 
 import PySimpleGUI as sg
-
-# import configuration file
 from common.handleconfig import HandleConfig
 
 sg.ChangeLookAndFeel('dark')
 
-class Gui():
 
+class Gui:
     def __init__(self):
         self.HandleConfig = HandleConfig()
 
-    # generate chinese GUI
+    def ret_bool(self, source):
+        if source == 'D':
+            return True
+        else:
+            return False
+
     def generate_layout(self):
         default_values = self.HandleConfig.get_defaults()
         if default_values['language'] == 'English':
@@ -23,15 +27,25 @@ class Gui():
             menu_def = [
                 ['&Language', ['&中文', '&English']],
                 ['&Database', ['&MySQL', '&Oracle', '&SQL Server']],
+                ['&Data Source', ['&Directory', '&Files']],
+                ['&Help', ['&About']],
             ]
             # general
             layout_general = [
                 [sg.Menu(menu_def)],
                 [sg.Text('Excel', size=(12, 1), text_color='red')],
-                [sg.Text('Directory:', size=(8, 1)),
-                 sg.Input('{}'.format(default_values['file_dir']), key='file_dir', size=(35, 1)),
-                 sg.FolderBrowse(initial_folder='{}'.format(default_values['file_dir']), button_text=' Choose ')],
-                [sg.Text('{} Connection'.format(default_values['dbtype']), size=(17, 1), text_color='red'),
+                [
+                    sg.Input('{}'.format(default_values['file_dir']), key='file_dir', size=(42, 1),
+                             visible=self.ret_bool(default_values['source'])),
+                    sg.FolderBrowse(initial_folder='{}'.format(default_values['file_dir']), button_text='Choose Directory',
+                                    visible=self.ret_bool(default_values['source'])),
+                    sg.Input('{}'.format(default_values['files']), key='files', size=(45, 1),
+                             visible=not self.ret_bool(default_values['source'])),
+                    sg.FilesBrowse(button_text='Choose Files',
+                                   visible=not self.ret_bool(default_values['source'])),
+                ],
+                [sg.Text('{}'.format(default_values['dbtype']),  text_color='red', key='dbtype'),
+                 sg.Text('Connection', text_color='red'),
                  ],
 
                 [sg.Text('Host:', size=(5, 1)), sg.Input('{}'.format(default_values['host']), key='host', size=(15, 1)),
@@ -56,7 +70,8 @@ class Gui():
                     sg.Radio('Append', group_id='mode', key='mode2',
                              default=default_values['mode2']),],
 
-                [sg.Button('Start', size=(52, 1))]
+                [sg.Button('Start', size=(52, 1), key='start')],
+                [sg.MLine(key='output', size=(58, 10), auto_refresh=True)],
             ]
             # advanced
             layout_advanced = [
@@ -100,16 +115,21 @@ class Gui():
             menu_def = [
                 ['&语言', ['&中文', '&English']],
                 ['&数据库', ['&MySQL', '&Oracle', '&SQL Server']],
-                ['&获取帮助', ['&联系方式']],
+                ['&数据源', ['&选择目录', '&选择文件']],
+                ['&帮助', ['&关于']],
             ]
             # general
             layout_general = [
                 [sg.Menu(menu_def)],
-                [sg.Text('Excel文件', size=(12, 1), text_color='red')],
-                [sg.Text('所在文件夹:', size=(12, 1)),
-                 sg.Input('{}'.format(default_values['file_dir']), key='file_dir', size=(35, 1)),
-                 sg.FolderBrowse(initial_folder='{}'.format(default_values['file_dir']), button_text=' 选择 ')],
-                [sg.Text('{}连接'.format(default_values['dbtype']), size=(12, 1), text_color='red'),
+                [sg.Text('Excel 文件', size=(12, 1), text_color='red')],
+                [
+                 sg.Input('{}'.format(default_values['file_dir']), key='file_dir', size=(50, 1), visible=self.ret_bool(default_values['source'])),
+                 sg.FolderBrowse(initial_folder='{}'.format(default_values['file_dir']), button_text='选择目录', visible=self.ret_bool(default_values['source'])),
+                 sg.Input('{}'.format(default_values['files']), key='files', size=(50, 1), visible=not self.ret_bool(default_values['source'])),
+                 sg.FilesBrowse(button_text='选择文件', visible=not self.ret_bool(default_values['source'])),
+                 ],
+                [sg.Text('{}'.format(default_values['dbtype']), text_color='red', key='dbtype'),
+                 sg.Text('连接', text_color='red'),
                  ],
 
                 [sg.Text('主机:', size=(5, 1)), sg.Input('{}'.format(default_values['host']), key='host', size=(15, 1)),
@@ -133,7 +153,8 @@ class Gui():
                     sg.Text(' ' * 15),
                     sg.Radio('追   加', group_id='mode', key='mode2', default=default_values['mode2']),
                 ],
-                [sg.Button('开     始', size=(52, 1))]
+                [sg.Button('开     始', size=(52, 1), key='start')],
+                [sg.MLine(key='output', size=(58, 10), auto_refresh=True)],
             ]
             # advanced
             layout_advanced = [

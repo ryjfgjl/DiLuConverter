@@ -20,7 +20,7 @@ class FromExcels:
     # get all excels upder directionary
     def get_excels(self):
         excels_dict = defaultdict()
-        if self.values['loop_subdir']:
+        if self.values['loop_subdir'] and self.values['source'] == 'D':
             excels = []
             for root, dirs, files in os.walk(self.values['file_dir']):
                 root = root.replace(self.values['file_dir'], '')[1:]
@@ -41,10 +41,25 @@ class FromExcels:
                         tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
 
                     excels_dict[excel] = tablename
-        else:
+        elif self.values['source'] == 'D':
             excels = os.listdir(self.values['file_dir'])
             for excel in excels:
                 excel_dir = self.values['file_dir'] + "\\" + excel
+                if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
+                    if self.values['mode2'] and self.values['tname']:
+                        tablename = self.values['tname']
+                    else:
+                        tablename = self.values['prefix'].lower() + re.sub(r"\.(xls|xlsx|xlsm|csv)$", '', excel.lower(), flags=re.IGNORECASE)
+                        # 替换非文字字符为"_"
+                        tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
+
+                    excels_dict[excel] = tablename
+        elif self.values['source'] == 'F':
+            excels = self.values['files'].split(';')
+            for excel in excels:
+                self.values['file_dir'] = os.path.dirname(excel)
+                excel_dir = excel
+                excel = os.path.basename(excel)
                 if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
                     if self.values['mode2'] and self.values['tname']:
                         tablename = self.values['tname']

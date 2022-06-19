@@ -1,26 +1,22 @@
-"""
- get or set something with config.ini
-"""
-
+##############################################################
+# tool uses config.ini to save inputs and get saved configuration when program start
+##############################################################
 import os
 import sys
 import configparser
 
-class HandleConfig:
 
+class HandleConfig:
     def __init__(self, configini=None):
         self.configini = configini
 
-    # handle config.ini
     def handle_config(self, option=None, section=None, key=None, value=None):
-
         conf = configparser.ConfigParser()
         if self.configini != None:
             configini = self.configini
         else:
             realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
             configini = realpath + r"\config.ini"
-
         conf.read(configini)
         if option == 'g':
             value = conf.get(section, key)
@@ -38,17 +34,19 @@ class HandleConfig:
             conf.write(fw)
 
     def get_defaults(self):
-        # get default value: general
+        # general
         language = self.handle_config("g", "general", "language")
-        # get default value: dbinfo
+        source = self.handle_config("g", "general", "source")
+        # dbinfo
         dbtype = self.handle_config("g", "dbinfo", "dbtype")
         host = self.handle_config("g", "dbinfo", "host")
         port = self.handle_config("g", "dbinfo", "port")
         user = self.handle_config("g", "dbinfo", "user")
         passwd = self.handle_config("g", "dbinfo", "passwd")
         dbname = self.handle_config("g", "dbinfo", "dbname")
-        # get default value: file
+        # file
         file_dir = self.handle_config("g", "file", "file_dir")
+        files = self.handle_config("g", "file", "files")
         csv_encoding = self.handle_config("g", "file", "csv_encoding")
         na_values = self.handle_config("g", "file", "na_values")
         # get default value: advanced
@@ -72,6 +70,7 @@ class HandleConfig:
 
         default_values = {
             'language': language,
+            'source': source,
             'dbtype': dbtype,
             'host': host,
             'port': port,
@@ -79,6 +78,7 @@ class HandleConfig:
             'passwd': passwd,
             'dbname': dbname,
             'file_dir': file_dir,
+            'files': files,
             'csv_encoding': csv_encoding,
             'na_values': na_values,
             'mode1': mode1,
@@ -100,6 +100,7 @@ class HandleConfig:
     def save_defaults(self, values):
         # save input
         self.handle_config("s", "file", "file_dir", values['file_dir'])
+        self.handle_config("s", "file", "files", values['files'])
         self.handle_config("s", "file", "csv_encoding", values['csv_encoding'])
         self.handle_config("s", "dbinfo", "host", values['host'])
         self.handle_config("s", "dbinfo", "port", values['port'])
