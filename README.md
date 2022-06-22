@@ -1,11 +1,7 @@
 # ExcelToDatabase
 ## Bref: A tool which can batch import multiple excel files into mysql/oracle database automatically.
 ## Pictures：
-![image](https://user-images.githubusercontent.com/39375647/174487675-d8d4a23b-df6d-43b0-ac5f-24742b4f4c0b.png)![image](https://user-images.githubusercontent.com/39375647/174487679-7e73a9ff-60e2-4cf9-a910-662d06f5be07.png)
-
-
-
-
+![图片1](https://user-images.githubusercontent.com/39375647/164977981-f9bd5cb4-4096-4082-92bd-580204ada887.png)
 
 ## Features：
 ### Batch Automation: 
@@ -23,14 +19,10 @@
 ### Advanced Options: 
   Rich options could be custom choose to make more fuction come true.
 
-### Schedule: 
-  Can be scheduled.
-  
 ### Free: 
   Most important thing.
 
 ## Usage
-## Manual Start
 1.Start Program
 
 Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
@@ -43,16 +35,8 @@ Select directory with excel files; Input target database information; Choose imp
 
 3.Click Start.
 
-## Schedule
-C:\Users\ryjfgjl>D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe D:\Projects\ExcelToDatabase4.4\config.ini
-You can run this command in DOS to start program.
-So you can add a scheduled task in windows, D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe is our program and D:\Projects\ExcelToDatabase4.4\config.ini is your configuration file.
-Note: configuration file can be saved when you manual run ExcelToDatabase, and you can copy it to anywhere and rename it.
-eg: D:\config_everyday.ini
-
-
 ## Tested Environments: 
-Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,xlsm,csv)
+Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv)
 
 ## Options Detail:
 
@@ -60,7 +44,7 @@ Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,xlsm,csv)
 #### Excel：
 Directory: The excel files under this directory would be imported
 
-#### MySQL/Oracle/SQL Server Connection: 
+#### MySQL/Oracle Connection: 
 options to connect to database
 #### Mode:
 
