@@ -53,7 +53,7 @@ class ToSqlserver:
     def insert_data(self, dataset, tablename, created_sql=None):
         if dataset.empty:
             return
-        sql = "SELECT NAME FROM SYSCOLUMNS WHERE ID=OBJECT_ID('{0}}')".format(tablename)
+        sql = "SELECT NAME FROM SYSCOLUMNS WHERE ID=OBJECT_ID('{0}')".format(tablename)
         columns = self.ConnDB.exec(self.conn_db, sql).fetchall()
         exists_columns = []
         for column in columns:
