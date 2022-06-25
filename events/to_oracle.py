@@ -17,19 +17,11 @@ class ToOracle:
         self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
                                           passwd=values['passwd'], db=values['dbname'], charset='utf8')
 
-
-    def is_Chinese(self, word):
-        for ch in word:
-            if '\u4e00' <= ch <= '\u9fff':
-                return True
-        return False
-
-
     # create table
     def create_table(self, col_maxlen, tablename):
         sql = "select 1 from all_tables where owner = '{}' and table_name = '{}'".format(self.values['user'].upper(),
                                                                                          tablename)
-        cnt = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        cnt = self.ConnDB.exec(self.conn_db, sql)
         if len(cnt) > 0:
             sql = 'drop table "{}"'.format(tablename)
             self.ConnDB.exec(self.conn_db, sql)
@@ -56,7 +48,7 @@ class ToOracle:
             return
         sql = "select column_name from ALL_TAB_COLUMNS " \
               "where OWNER = '{0}' and table_name = '{1}'".format(self.values['user'].upper(), tablename)
-        columns = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        columns = self.ConnDB.exec(self.conn_db, sql)
         exists_columns = []
         for column in columns:
             if column[0] in dataset.columns:

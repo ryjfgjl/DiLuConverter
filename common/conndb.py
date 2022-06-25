@@ -53,10 +53,13 @@ class ConnDB:
         if datalist:
             # insert data
             cur.executemany(sql, datalist)
+            results = None
         else:
             # other sql
             for s in sql.split(";"):
                 if s != "":
                     cur.execute(s)
+            results = cur.fetchall()
+        cur.close()
         conn.commit()
-        return cur
+        return results

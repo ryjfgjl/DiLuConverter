@@ -17,18 +17,10 @@ class ToSqlserver:
         self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
                                           passwd=values['passwd'], db=values['dbname'], charset='utf8')
 
-
-    def is_Chinese(self, word):
-        for ch in word:
-            if '\u4e00' <= ch <= '\u9fff':
-                return True
-        return False
-
-
     # create table
     def create_table(self, col_maxlen, tablename):
         sql = "select 1 from SYSOBJECTS where XTYPE = 'U' and NAME = '{}'".format(tablename)
-        cnt = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        cnt = self.ConnDB.exec(self.conn_db, sql)
         if len(cnt) > 0:
             sql = 'drop table "{}"'.format(tablename)
             self.ConnDB.exec(self.conn_db, sql)
@@ -37,7 +29,7 @@ class ToSqlserver:
             colType = "varchar(255)"
             if type(maxLen) == int:
                 if maxLen * 6 > 4000:
-                    colType = "CLOB"
+                    colType = "text"
                 elif maxLen > 0:
                     colType = "varchar({})".format(maxLen * 6)
 
@@ -54,7 +46,7 @@ class ToSqlserver:
         if dataset.empty:
             return
         sql = "SELECT NAME FROM SYSCOLUMNS WHERE ID=OBJECT_ID('{0}')".format(tablename)
-        columns = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        columns = self.ConnDB.exec(self.conn_db, sql)
         exists_columns = []
         for column in columns:
             if column[0] in dataset.columns:
@@ -68,7 +60,7 @@ class ToSqlserver:
         l = len(columns)
         v = ''
         for i in range(l):
-            v = v + ':{},'.format(i + 1)
+            v = v + '%s,'
         v = v[:-1]
 
         sql = 'insert into "%s"(%s) values(' % (tablename, '"' + cols + '"')

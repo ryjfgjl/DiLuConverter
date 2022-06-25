@@ -17,7 +17,7 @@ class ToMySQL:
         self.HandleConfig = HandleConfig()
         self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
                                           passwd=values['passwd'], db=values['dbname'], charset='utf8')
-        self.sql_mode = self.ConnDB.exec(self.conn_db, 'SELECT @@SESSION.sql_mode').fetchall()[0][0]
+        self.sql_mode = self.ConnDB.exec(self.conn_db, 'SELECT @@SESSION.sql_mode')[0][0]
 
 
     def is_Chinese(self, word):
@@ -63,7 +63,7 @@ class ToMySQL:
             return
         sql = "select column_name from information_schema.`COLUMNS` " \
               "where table_schema = '{0}' and table_name = '{1}'".format(self.values['dbname'], tablename)
-        columns = self.ConnDB.exec(self.conn_db, sql).fetchall()
+        columns = self.ConnDB.exec(self.conn_db, sql)
         exists_columns = []
         for column in columns:
             if column[0] in dataset.columns:
