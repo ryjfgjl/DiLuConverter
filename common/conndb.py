@@ -52,14 +52,17 @@ class ConnDB:
         """
         if datalist:
             # insert data
-            cur.executemany(sql, datalist)
-            results = None
+            data = [tuple(i) for i in datalist]
+            cur.executemany(sql, data)
         else:
             # other sql
             for s in sql.split(";"):
                 if s != "":
                     cur.execute(s)
+        try:
             results = cur.fetchall()
+        except:
+            results = None
         cur.close()
         conn.commit()
         return results
