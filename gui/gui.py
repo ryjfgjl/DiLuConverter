@@ -26,7 +26,7 @@ class Gui:
             # menu
             menu_def = [
                 ['&Language', ['&中文', '&English']],
-                ['&Database', ['&MySQL', '&Oracle', '&SQL Server']],
+                ['&Database', ['&MySQL', '&Oracle', '&SQL Server', '&Hive']],
                 ['&Data Source', ['&Directory', '&Files']],
                 ['&Help', ['&About']],
             ]
@@ -84,12 +84,12 @@ class Gui:
                  sg.Input(default_values['tname'], key='tname', size=(25, 1), ), ],
                 [sg.Text('Add Table Prefix:', size=(13, 1)),
                  sg.Input(default_values['prefix'], key='prefix', size=(10, 1), ),
-                 sg.Checkbox('Add a column is table name', key='add_tname', size=(22, 1), default=default_values['add_tname']),],
+                 ],
 
                 [sg.Text('The column on row:', size=(15, 1)),
                  sg.Input(default_values['header'], key='header', size=(10, 1)),
                  sg.Text('', size=(3, 1)),
-                 sg.Checkbox('Include Sub Directories', key='loop_subdir', size=(18, 1), default=default_values['loop_subdir']),],
+                ],
                 [sg.Checkbox('Skip Blank Rows', key='del_blank_lines', size=(15, 1),
                              default=default_values['del_blank_lines']),
                  sg.Checkbox('Trim Spaces', key='trim', size=(12, 1), default=default_values['trim']),
@@ -97,6 +97,11 @@ class Gui:
                              default=default_values['skip_blank_sheet']),
 
                  ],
+                [sg.Checkbox('Add a column is table name', key='add_tname', size=(22, 1), default=default_values['add_tname']),
+                sg.Checkbox('Include Sub Directories', key='loop_subdir', size=(18, 1), default=default_values['loop_subdir']),
+
+                 ],
+                [sg.Checkbox('Transform Chinese to First Letter', key='trf_cn', size=(33, 1), default=default_values['trf_cn']),],
                 [sg.Text('Run sql before starting:', size=(17, 1)),
                  sg.Input('{}'.format(default_values['sql_b4']), key='sql_b4', size=(32, 1)),
                  sg.FileBrowse(initial_folder='{}'.format(default_values['sql_b4']), button_text=' 选择 ')],
@@ -114,7 +119,7 @@ class Gui:
             # menu
             menu_def = [
                 ['&语言', ['&中文', '&English']],
-                ['&数据库', ['&MySQL', '&Oracle', '&SQL Server']],
+                ['&数据库', ['&MySQL', '&Oracle', '&SQL Server', '&Hive']],
                 ['&数据源', ['&选择目录', '&选择文件']],
                 ['&帮助', ['&关于']],
             ]
@@ -168,13 +173,19 @@ class Gui:
                 [sg.Text('将数据追加到已存在的表（追加模式有效）:', size=(34, 1)),
                  sg.Input(default_values['tname'], key='tname', size=(20, 1), ), ],
                 [sg.Text('指定列名所在行数:', size=(18, 1)), sg.Input(default_values['header'], key='header', size=(10, 1)),
-                 sg.Checkbox('添加一列值为表名', key='add_tname', size=(15, 1), default=default_values['add_tname']),
                  ],
-                [sg.Checkbox('删除空行', key='del_blank_lines', size=(7, 1), default=default_values['del_blank_lines']),
-                 sg.Checkbox('去除字符前后空格', key='trim', size=(14, 1), default=default_values['trim']),
+
+                [sg.Checkbox('删除空行', key='del_blank_lines', size=(10, 1), default=default_values['del_blank_lines']),
+                 sg.Checkbox('去除字符前后空格', key='trim', size=(15, 1), default=default_values['trim']),
                  sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(6, 1), default=default_values['skip_blank_sheet']),
-                 sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=default_values['loop_subdir']),
+
                  ],
+                [sg.Checkbox('添加一列值为表名', key='add_tname', size=(15, 1), default=default_values['add_tname']),
+                 sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=default_values['loop_subdir']),
+
+                 ],
+                [sg.Checkbox('转换表名和列名中文为拼音首字母', key='trf_cn', size=(33, 1), default=default_values['trf_cn']),],
+
                 [sg.Text('导入开始前运行sql:', size=(15, 1)),
                  sg.Input('{}'.format(default_values['sql_b4']), key='sql_b4', size=(32, 1)),
                  sg.FileBrowse(initial_folder='{}'.format(default_values['sql_b4']), button_text=' 选择 ')],

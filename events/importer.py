@@ -11,6 +11,9 @@ from events.from_excels import FromExcels
 from events.to_mysql import ToMySQL
 from events.to_oracle import ToOracle
 from events.to_sqlserver import ToSqlserver
+from events.to_hive import ToHive
+import pypinyin as pn
+
 
 class Importer:
 
@@ -29,6 +32,10 @@ class Importer:
             self.conn_db = self.ToDB.conn_db
         elif values['dbtype'] == 'SQL Server':
             self.ToDB = ToSqlserver(values)
+            self.ConnDB = self.ToDB.ConnDB
+            self.conn_db = self.ToDB.conn_db
+        elif values['dbtype'] == 'Hive':
+            self.ToDB = ToHive(values)
             self.ConnDB = self.ToDB.ConnDB
             self.conn_db = self.ToDB.conn_db
 
@@ -85,29 +92,28 @@ class Importer:
                                 tablename = tablename + '_' + re.sub(r"[^\w]+", "_", sheet_name, flags=re.IGNORECASE)
                                 excel = excel_name + '.' + sheet_name
                             tablename = tablename.lower()
+                            if self.values['trf_cn']:
+                                tablename = ''.join([i[0] for i in pn.pinyin(tablename, style=pn.Style.FIRST_LETTER)])
                             # cut off table name
                             if len(tablename) > 62:
                                 tablename = tablename[:61]
                                 if tablename in imported_tables:
                                     tablename = tablename + '_{}'.format(num_suffix)
                                     num_suffix += 1
-                                    msg = "table name added suffix: {0}, tablename: {1}\n".format(excel, tablename)
                                     print('Warnning: ', text_color='yellow', end='')
-                                    print('{0}({1})'.format(excel, msg))
+                                    print('{0})'.format(excel))
                                     with open(log_file, "a") as fw:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                                 with open(log_file, "a") as fw:
                                     fw.write("table name cut off: {0}, tablename: {1}\n".format(excel, tablename))
-                                msg = "table name cut off: {0}, tablename: {1}\n".format(excel, tablename)
                                 print('Warnning: ', text_color='yellow', end='')
-                                print('{0}({1})'.format(excel, msg))
+                                print('{0}'.format(excel))
                             else:
                                 if tablename in imported_tables:
                                     tablename = tablename + '_{}'.format(num_suffix)
                                     num_suffix += 1
-                                    msg = "table name added suffix: {0}, tablename: {1}\n".format(excel, tablename)
                                     print('Warnning: ', text_color='yellow', end='')
-                                    print('{0}({1})'.format(excel, msg))
+                                    print('{0}'.format(excel))
                                     with open(log_file, "a") as fw:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                         if len(dataset.columns) == 0 or (dataset.empty and self.values['skip_blank_sheet']):
@@ -118,19 +124,20 @@ class Importer:
                         created_sql = None
                         if self.values['mode1']:
                             created_table, created_sql = self.ToDB.create_table(col_maxlen, tablename)
+
                         self.ToDB.insert_data(dataset, tablename, created_sql)
                         if self.values['mode1']:
                             imported_tables.append(tablename)
 
                     except Exception as reason:
                         print('Failed: ', text_color='red', end='')
-                        print('{0}({1})'.format(excel, reason))
+                        print('{0}'.format(excel))
                         if created_table:
-                            if self.values['dbtype'] == 'MySQL':
+                            if self.values['dbtype'] == 'MySQL' or self.values['dbtype'] == 'Hive':
                                 sql = 'drop table if exists `{0}`'.format(created_table)
                             else:
                                 sql = 'drop table "{0}"'.format(created_table)
-                            self.ConnDB.exec(self.conn_db, sql)
+                            #self.ConnDB.exec(self.conn_db, sql)
                         with open(log_file, 'a') as (fw):
                             fw.write('Failed Sheet: {0}, error: {1}\n'.format(excel, str(reason)))
                         continue
@@ -145,13 +152,14 @@ class Importer:
 
             except Exception as reason:
                 print('Failed: ', text_color='red', end='')
-                print('{0}({1})'.format(excel, reason))
+                print('{0})'.format(excel))
                 with open(log_file, "a") as fw:
                     fw.write("Failed Excel: {0}, error: {1}\n".format(excel, str(reason)))
                 num += 1
                 continue
 
         print('\nTotal: {}, Succeed: {}\n'.format(num, num_s))
+
         # run sql_after
         if self.values['sql_after']:
             with open(self.values['sql_after'], 'r') as fr:
@@ -160,7 +168,7 @@ class Importer:
             self.ConnDB.exec(self.conn_db, sql)
         self.conn_db.close()
 
-        if os.path.isfile(log_file) and self.values['schedule'] == True:
+        if os.path.isfile(log_file):
             layout = [
                 [sg.Text('Import Complete with log！\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
                 [sg.OK('Finish'), sg.Text(' '*10), sg.Button('View Log', key='E')]

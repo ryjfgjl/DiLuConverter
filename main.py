@@ -1,7 +1,7 @@
 """
 Tool Name: ExcelToDatabase
-Version: V4.7
-Bref: A tool which can batch import multiple excel files into mysql/oracle database automatically.
+Version: V5.0
+Bref: A tool which can batch import multiple excel files into mysql/oracle/sql server database automatically.
 Feature: Batch Automation, One-Click, High Speed, Intelligent, Advanced Options, Schedule
 Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv,xlsm)
 Author: ryjfgjl
@@ -15,7 +15,7 @@ import sys
 from common.handleconfig import HandleConfig
 from gui.gui import Gui
 
-Version = '4.7'
+Version = '5.0'
 
 if len(sys.argv) <= 1:
     # normal start, run with a gui
@@ -32,7 +32,7 @@ if len(sys.argv) <= 1:
         ))
 
     default_values = HandleConfig.get_defaults()
-    window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50))
+    window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
 
     while True:
         try:
@@ -51,7 +51,7 @@ if len(sys.argv) <= 1:
                 Importer = Importer(values)
                 Importer.main(window)
                 window['start'].update(disabled=False)
-            elif event == 'MySQL' or event == 'Oracle' or event == 'SQL Server':
+            elif event == 'MySQL' or event == 'Oracle' or event == 'SQL Server' or event == 'Hive':
                 # change database type
                 from events.setting import Setting
                 Setting = Setting()
@@ -65,7 +65,7 @@ if len(sys.argv) <= 1:
                 Setting.switch_langage(event)
                 window.close()
                 HandleConfig.save_defaults(values)
-                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50))
+                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
                 window.Finalize()
             elif event == 'Directory' or event == 'Files' or event == '选择目录' or event == '选择文件':
                 # change data source
@@ -74,12 +74,12 @@ if len(sys.argv) <= 1:
                 Setting.data_source(event)
                 window.close()
                 HandleConfig.save_defaults(values)
-                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50))
+                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
                 window.Finalize()
             elif event == "关于" or event == 'About':
-                msg = """ExcelToDatabase V4.6\n\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
+                msg = """ExcelToDatabase V{0}\n\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
                 \n\nCopyright @ ryjfgjl             
-                        """
+                        """.format(Version)
                 sg.Popup(msg, title='Help')
             elif event == sg.WIN_CLOSED:
                 break

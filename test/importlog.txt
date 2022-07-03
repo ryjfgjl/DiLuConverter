@@ -1,10 +1,1 @@
-table name added suffix: csv - 中文-utf8.xlsx, tablename: csv_中文_utf8_1
-table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本 (2).csv, tablename: csv_超长截csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本
-table name added suffix: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本.csv, tablename: csv_超长截csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本_2
-table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本.csv, tablename: csv_超长截csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本_2
-table name added suffix: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_超长截csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本_3
-table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_超长截csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本csv_超长截断本_3
-table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.wwwwwwwwww, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_wwwww
-table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.dddddddddd, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_ddddd
-Failed Sheet: excel97.xls.blank, error: Empty Table
-Failed Sheet: excel97.xls.blank data, error: Empty Table
+Failed Sheet: csv - 中文-utf8.csv, error: 'CompileError' object has no attribute 'orig'

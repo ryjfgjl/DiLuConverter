@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import chardet
 from common.handleconfig import HandleConfig
+import pypinyin as pn
+
 
 class FromExcels:
 
@@ -162,8 +164,9 @@ class FromExcels:
             dataset.drop(dataset[:1].index, inplace=True)
             # low_col = [col.lower() for col in columns]
 
-        # replace %,\n to _ in column
-        columns = [str(col).strip().replace('%', '_').replace('\n', '_') for col in columns]
+        # replace ^\w to _ in column
+        columns = [re.sub(r"[^\w]+", "_", column, flags=re.IGNORECASE) for column in columns]
+        #columns = [str(col).strip().replace('%', '_').replace('\n', '_') for col in columns]
         # deal with blank column name
         f = lambda x: "unnamed" if x == "" else x
         columns = [f(col) for col in columns]
@@ -201,7 +204,8 @@ class FromExcels:
 
             if c == 0:
                 break
-
+        if self.values['trf_cn']:
+            columns = [''.join([i[0] for i in pn.pinyin(column, style=pn.Style.FIRST_LETTER)]) for column in columns]
         dataset.columns = columns
         columns = np.array(columns)
         columns = columns.tolist()
@@ -216,9 +220,4 @@ class FromExcels:
 
         return col_maxlen, dataset
 
-    def is_Chinese(self, word):
-        for ch in word:
-            if '\u4e00' <= ch <= '\u9fff':
-                return True
-        return False
 

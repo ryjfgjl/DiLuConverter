@@ -6,6 +6,7 @@ execute sql
 import pymysql
 import cx_Oracle
 import pymssql
+from pyhive import hive
 
 
 class ConnDB:
@@ -21,6 +22,8 @@ class ConnDB:
             conn = cx_Oracle.connect(user, passwd, host+':'+str(port)+'/'+db)
         elif self.dbtype == 'SQL Server':
             conn = pymssql.connect(host=host, user=user, password=passwd, port=port, charset=charset, database=db)
+        elif self.dbtype == 'Hive':
+            conn = hive.connect(host=host, username=user, password=passwd, port=port, database=db, auth="CUSTOM")
         return conn
 
     def exec(self, conn, sql, datalist=None):
@@ -53,9 +56,13 @@ class ConnDB:
         if datalist:
             # insert data
             data = [tuple(i) for i in datalist]
+            print(sql)
             cur.executemany(sql, data)
+
+
         else:
             # other sql
+            print(sql)
             for s in sql.split(";"):
                 if s != "":
                     cur.execute(s)

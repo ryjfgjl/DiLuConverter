@@ -1,25 +1,12 @@
-import PySimpleGUI as sg
-
-layout = [  [sg.Text('Demonstration of Multiline Element Printing')],
-            [sg.MLine(key='-ML1-'+sg.WRITE_ONLY_KEY, size=(40,8))],
-            [sg.MLine(key='-ML2-'+sg.WRITE_ONLY_KEY,  size=(40,8))],
-            [sg.Button('Go'), sg.Button('Exit')]]
-
-window = sg.Window('Window Title', layout, finalize=True)
-
-
-# Note, need to finalize the window above if want to do these prior to calling window.read()
-window['-ML1-'+sg.WRITE_ONLY_KEY].print(1,2,3,4,end='', text_color='red', background_color='yellow')
-window['-ML1-'+sg.WRITE_ONLY_KEY].print('\n', end='')
-window['-ML1-'+sg.WRITE_ONLY_KEY].print(1,2,3,4,text_color='white', background_color='green')
-counter = 0
-
-while True:             # Event Loop
-    event, values = window.read(timeout=100)
-    if event in (sg.WIN_CLOSED, 'Exit'):
-        break
-    if event == 'Go':
-        window['-ML1-'+sg.WRITE_ONLY_KEY].print(event, values, text_color='red')
-    window['-ML2-'+sg.WRITE_ONLY_KEY].print(counter)
-    counter += 1
-window.close()
+from pyhive import hive
+import pandas as pd
+connect = hive.connect(host='192.168.0.101', port=10001, username='grid', password='grid', database='test',auth="CUSTOM")
+cur = connect.cursor()
+from sqlalchemy import create_engine
+data = [(None, '1', 'c', None), (None, 'vvvvvvvvvvv', '2021/9/12', None), (None, 'f', None, None), (None, None, '#NAME?', None), (None, None, '#VALUE!', None), (None, None, 'NA', None)]
+sql = 'insert into `csv_zw_utf8`(`2`,`a`,`dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd`,`zzzzzzzz10zzzzzzzz20zzzzzzzz30zzzzzzzz40zzzzzzzz50zzzzzzzz60zz`) values(%s,%s,%s,%s)'
+cur.executemany(sql, data)
+df = pd.DataFrame(data)
+engine = create_engine("hive://{0}:{1}@{2}:{3}/{4}".format('grid','grid','192.168.0.101',10001,
+                                                                   'test'),connect_args={'auth': 'CUSTOM'},)
+df.to_sql('csv_zw_utf8', engine, if_exists='append', index=False, method='multi')

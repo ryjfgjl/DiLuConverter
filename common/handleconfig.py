@@ -65,6 +65,7 @@ class HandleConfig:
         trim = eval(self.handle_config("g", "advanced", 'trim'))
         skip_blank_sheet = eval(self.handle_config("g", "advanced", 'skip_blank_sheet'))
         loop_subdir = eval(self.handle_config("g", "advanced", 'loop_subdir'))
+        trf_cn = eval(self.handle_config("g", "advanced", 'trf_cn'))
         sql_b4 = self.handle_config("g", "advanced", 'sql_b4')
         sql_after = self.handle_config("g", "advanced", 'sql_after')
 
@@ -91,6 +92,7 @@ class HandleConfig:
             'trim': trim,
             'skip_blank_sheet': skip_blank_sheet,
             'loop_subdir': loop_subdir,
+            'trf_cn':trf_cn,
             'sql_b4': sql_b4,
             'sql_after': sql_after,
 
@@ -119,6 +121,7 @@ class HandleConfig:
         self.handle_config("s", "advanced", "trim", str(values['trim']))
         self.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
         self.handle_config("s", "advanced", "loop_subdir", str(values['loop_subdir']))
+        self.handle_config("s", "advanced", "trf_cn", str(values['trf_cn']))
         self.handle_config("s", "advanced", "sql_b4", values['sql_b4'])
         self.handle_config("s", "advanced", "sql_after", values['sql_after'])
 
