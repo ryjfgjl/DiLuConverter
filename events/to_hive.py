@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 from common.handleconfig import HandleConfig
 from common.conndb import ConnDB
-from sqlalchemy import create_engine
 
 class ToHive:
 
@@ -42,13 +41,14 @@ class ToHive:
         for column in columns:
             if column[0] in dataset.columns:
                 exists_columns.append(column[0])
-        dataset = dataset[exists_columns]
+        #dataset = dataset[exists_columns]
 
         df = pd.DataFrame(dataset)
-        engine = create_engine("hive://host_name_xxx:10000/db_name_xxx")
-        df.to_sql(tablename, "hive://{0}:{1}@{2}:{3}}/{4}".format(self.values['user'],self.values['passwd'],
-                                                                   self.values['host'],self.values['port'],
-                                                                   self.values['host']))
+        tmptxt = dir+'/'+tablename+'.txt'
+        df.to_csv(tmptxt)
+        sql = "load data inpath 'file:///{0}' into table {1}".format(tmptxt,tablename)
+        self.ConnDB.exec(self.conn_db, sql)
+
 
 
 

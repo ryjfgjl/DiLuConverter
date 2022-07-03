@@ -46,7 +46,7 @@ class FromExcels:
         elif self.values['source'] == 'D':
             excels = os.listdir(self.values['file_dir'])
             for excel in excels:
-                excel_dir = self.values['file_dir'] + "\\" + excel
+                excel_dir = self.values['file_dir'] + "/" + excel
                 if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
                     if self.values['mode2'] and self.values['tname']:
                         tablename = self.values['tname']
@@ -83,7 +83,7 @@ class FromExcels:
         # csv
         if re.fullmatch(r"^.*?\.csv$", excel, flags=re.IGNORECASE):
             datasets = defaultdict()
-            csv = self.values['file_dir'] + "\\" + excel
+            csv = self.values['file_dir'] + "/" + excel
             # how to deal with csv encoding
             # http://pandaproject.net/docs/determining-the-encoding-of-a-csv-file.html
             csv_encoding = 'utf8'
@@ -99,28 +99,24 @@ class FromExcels:
                                           keep_default_na=False, header=header, engine='c')
                 except UnicodeDecodeError:
                     try:
-                        dataset = pd.read_csv(csv, encoding='ansi', dtype=str, na_values=na_values,
+                        dataset = pd.read_csv(csv, encoding='ascii', dtype=str, na_values=na_values,
                                               keep_default_na=False, header=header, engine='c')
                     except UnicodeDecodeError:
-                        try:
-                            dataset = pd.read_csv(csv, encoding='utf-16', dtype=str, na_values=na_values,
-                                                  keep_default_na=False, header=header, engine='c')
-                        except UnicodeDecodeError:
-                            with open(csv, 'rb') as f:
-                                bytes = f.read()
-                                if len(bytes) > 100000:
-                                    with open(csv, 'rb') as f:
-                                        bytes = f.readline()
-                            encode = chardet.detect(bytes)['encoding']
-                            if encode == 'ascii':
-                                encode = 'ansi'  # ansi is a super charset of ascii
-                            dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values,
-                                                  keep_default_na=False, header=header, engine='c')
+                        with open(csv, 'rb') as f:
+                            bytes = f.read()
+                            if len(bytes) > 100000:
+                                with open(csv, 'rb') as f:
+                                    bytes = f.readline()
+                        encode = chardet.detect(bytes)['encoding']
+                        #if encode == 'ascii':
+                        #    encode = 'ansi'  # ansi is a super charset of ascii
+                        dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values,
+                                              keep_default_na=False, header=header, engine='c')
             datasets['sheet1'] = dataset
 
         # excel
         if re.fullmatch(r"^.*?\.xls[x|m]?$", excel, flags=re.IGNORECASE):
-            excel = self.values['file_dir'] + "\\" + excel
+            excel = self.values['file_dir'] + "/" + excel
             datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, header=header,
                                      sheet_name=None)
         return datasets

@@ -16,7 +16,8 @@ class HandleConfig:
             configini = self.configini
         else:
             realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
-            configini = realpath + r"\config.ini"
+            configini = realpath + r"/config.ini"
+
         conf.read(configini)
         if option == 'g':
             value = conf.get(section, key)

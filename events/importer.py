@@ -48,9 +48,10 @@ class Importer:
 
         # record error log
         if self.values['source'] == 'D':
-            log_file = self.values['file_dir'] + "\\importlog.txt"
+            log_file = self.values['file_dir'] + "/importlog.txt"
         elif self.values['source'] == 'F':
-            log_file = os.path.dirname(self.values['files'].split(';')[0]) + "\\importlog.txt"
+            log_file = os.path.dirname(self.values['files'].split(';')[0]) + "/importlog.txt"
+
         if os.path.isfile(log_file):
             os.remove(log_file)
 
@@ -125,7 +126,7 @@ class Importer:
                         if self.values['mode1']:
                             created_table, created_sql = self.ToDB.create_table(col_maxlen, tablename)
 
-                        self.ToDB.insert_data(dataset, tablename, created_sql)
+                        self.ToDB.insert_data(dataset, tablename, created_sql, os.path.dirname(log_file))
                         if self.values['mode1']:
                             imported_tables.append(tablename)
 
