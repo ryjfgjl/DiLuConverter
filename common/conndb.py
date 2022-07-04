@@ -56,13 +56,9 @@ class ConnDB:
         if datalist:
             # insert data
             data = [tuple(i) for i in datalist]
-            print(sql)
             cur.executemany(sql, data)
-
-
         else:
             # other sql
-            print(sql)
             for s in sql.split(";"):
                 if s != "":
                     cur.execute(s)

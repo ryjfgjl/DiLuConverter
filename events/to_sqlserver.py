@@ -42,7 +42,7 @@ class ToSqlserver:
         return tablename, sql
 
     # insert into
-    def insert_data(self, dataset, tablename, created_sql=None):
+    def insert_data(self, dataset, tablename, created_sql=None, dir=None):
         if dataset.empty:
             return
         sql = "SELECT NAME FROM SYSCOLUMNS WHERE ID=OBJECT_ID('{0}')".format(tablename)

@@ -57,7 +57,7 @@ class ToMySQL:
         return tablename, sql
     
     # insert into
-    def insert_data(self, dataset, tablename, created_sql):
+    def insert_data(self, dataset, tablename, created_sql, dir=None):
 
         if dataset.empty:
             return

@@ -1,6 +1,6 @@
 ##############################################################
 # Importer
-# From Excel, To MySQL/Oracle/SQL Server
+# From Excel, To MySQL/Oracle/SQL Server/Hive
 ##############################################################
 
 import PySimpleGUI as sg
@@ -21,6 +21,7 @@ class Importer:
         self.values = values
         self.HandleConfig = HandleConfig()
         self.FromExcels = FromExcels(values)
+
         if values['dbtype'] == 'MySQL':
             self.ToDB = ToMySQL(values)
             self.ConnDB = self.ToDB.ConnDB
@@ -40,10 +41,15 @@ class Importer:
             self.conn_db = self.ToDB.conn_db
 
     def main(self, window=None):
+        self.window = window
+
         # get all excel files
         excels_dict = self.FromExcels.get_excels()
         if not excels_dict:
-            sg.Popup('No Excels!', auto_close=self.values['schedule'])
+            if window:
+                sg.Popup('No Excels!', auto_close=self.values['schedule'])
+            else:
+                self.print('No Excels')
             return
 
         # record error log
@@ -61,16 +67,13 @@ class Importer:
         num_s = 0
         num_suffix = 1
         imported_tables = []
-        if window:
-            print = window['output'].print
-        else:
-            print = sg.Print
-        print("\n\nBegin Import...\n")
+
+        self.print("\n\nBegin Import...\n")
         # run sql_b4
         if self.values['sql_b4']:
             with open(self.values['sql_b4'], 'r') as fr:
                 sql = fr.read()
-            print("Running SQL in {}...\n".format(self.values['sql_b4']))
+            self.print("Running SQL in {}...\n".format(self.values['sql_b4']))
             self.ConnDB.exec(self.conn_db, sql)
         # loop all excel files
         for excel, tname in excels_dict.items():
@@ -101,20 +104,20 @@ class Importer:
                                 if tablename in imported_tables:
                                     tablename = tablename + '_{}'.format(num_suffix)
                                     num_suffix += 1
-                                    print('Warnning: ', text_color='yellow', end='')
-                                    print('{0})'.format(excel))
+                                    self.print('Warnning: ', text_color='yellow', end='')
+                                    self.print('{0})'.format(excel))
                                     with open(log_file, "a") as fw:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                                 with open(log_file, "a") as fw:
                                     fw.write("table name cut off: {0}, tablename: {1}\n".format(excel, tablename))
-                                print('Warnning: ', text_color='yellow', end='')
-                                print('{0}'.format(excel))
+                                self.print('Warnning: ', text_color='yellow', end='')
+                                self.print('{0}'.format(excel))
                             else:
                                 if tablename in imported_tables:
                                     tablename = tablename + '_{}'.format(num_suffix)
                                     num_suffix += 1
-                                    print('Warnning: ', text_color='yellow', end='')
-                                    print('{0}'.format(excel))
+                                    self.print('Warnning: ', text_color='yellow', end='')
+                                    self.print('{0}'.format(excel))
                                     with open(log_file, "a") as fw:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                         if len(dataset.columns) == 0 or (dataset.empty and self.values['skip_blank_sheet']):
@@ -131,8 +134,8 @@ class Importer:
                             imported_tables.append(tablename)
 
                     except Exception as reason:
-                        print('Failed: ', text_color='red', end='')
-                        print('{0}'.format(excel))
+                        self.print('Failed: ', text_color='red', end='')
+                        self.print('{0}'.format(excel))
                         if created_table:
                             if self.values['dbtype'] == 'MySQL' or self.values['dbtype'] == 'Hive':
                                 sql = 'drop table if exists `{0}`'.format(created_table)
@@ -144,7 +147,7 @@ class Importer:
                         continue
 
                     else:
-                        print('Succeed: {}'.format(excel))
+                        self.print('Succeed: {}'.format(excel))
                         num_s += 1
                     finally:
                         num += 1
@@ -152,34 +155,42 @@ class Importer:
                             self.ConnDB.exec(self.conn_db, 'set SESSION sql_mode = "{}"'.format(self.sql_mode))
 
             except Exception as reason:
-                print('Failed: ', text_color='red', end='')
-                print('{0})'.format(excel))
+                self.print('Failed: ', text_color='red', end='')
+                self.print('{0})'.format(excel))
                 with open(log_file, "a") as fw:
                     fw.write("Failed Excel: {0}, error: {1}\n".format(excel, str(reason)))
                 num += 1
                 continue
 
-        print('\nTotal: {}, Succeed: {}\n'.format(num, num_s))
+        self.print('\nTotal: {}, Succeed: {}\n'.format(num, num_s))
 
         # run sql_after
         if self.values['sql_after']:
             with open(self.values['sql_after'], 'r') as fr:
                 sql = fr.read()
-            print("Running SQL in {}...\n".format(self.values['sql_after']))
+            self.print("Running SQL in {}...\n".format(self.values['sql_after']))
             self.ConnDB.exec(self.conn_db, sql)
         self.conn_db.close()
 
         if os.path.isfile(log_file):
-            layout = [
-                [sg.Text('Import Complete with log！\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
-                [sg.OK('Finish'), sg.Text(' '*10), sg.Button('View Log', key='E')]
-            ]
-            window = sg.Window(layout=layout, title='Report', auto_close=self.values['schedule'])
-            event, self.values = window.read()
-            window.close()
-            if event == 'E':
-                os.popen(log_file)
-            return
+            if window:
+                layout = [
+                    [sg.Text('Import Complete with log！\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
+                    [sg.OK('Finish'), sg.Text(' '*10), sg.Button('View Log', key='E')]
+                ]
+                window = sg.Window(layout=layout, title='Report', auto_close=self.values['schedule'])
+                event, self.values = window.read()
+                window.close()
+                if event == 'E':
+                    os.popen(log_file)
+            else:
+                self.print("Import Complete with log: {}".format(log_file))
+
+    def print(self, value, text_color=None, end='\n'):
+        if self.window:
+            return self.window['output'].print(value, text_color=text_color, end=end)
+        else:
+            return print(value, end=end)
 
 
 class EmptyError(Exception):

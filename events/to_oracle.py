@@ -43,7 +43,7 @@ class ToOracle:
         return tablename, sql
 
     # insert into
-    def insert_data(self, dataset, tablename, created_sql=None):
+    def insert_data(self, dataset, tablename, created_sql=None, dir=None):
         if dataset.empty:
             return
         sql = "select column_name from ALL_TAB_COLUMNS " \

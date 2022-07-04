@@ -3,7 +3,7 @@ Tool Name: ExcelToDatabase
 Version: V5.0
 Bref: A tool which can batch import multiple excel files into mysql/oracle/sql server database automatically.
 Feature: Batch Automation, One-Click, High Speed, Intelligent, Advanced Options, Schedule
-Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,csv,xlsm)
+Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+/SQL Server/Hive, Excel 1997+(xls,xlsx,csv,xlsm)
 Author: ryjfgjl
 Help Email: 2577154121@qq.com
 QQ Group: 788719152
