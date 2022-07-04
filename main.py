@@ -1,9 +1,9 @@
 """
 Tool Name: ExcelToDatabase
 Version: V5.0
-Bref: A tool which can batch import multiple excel files into mysql/oracle/sql server database automatically.
+Bref: A tool which can batch import multiple excel files into mysql/oracle/sql server/hive database automatically.
 Feature: Batch Automation, One-Click, High Speed, Intelligent, Advanced Options, Schedule
-Tested Environment: Windows 7+, MySQL 5.6+/Oracle 11g+/SQL Server/Hive, Excel 1997+(xls,xlsx,csv,xlsm)
+Tested Environment: Windows/Linux, MySQL/Oracle/SQL Server/Hive, Excel(xls,xlsx,csv,xlsm)
 Author: ryjfgjl
 Help Email: 2577154121@qq.com
 QQ Group: 788719152
@@ -15,15 +15,17 @@ import sys
 from common.handleconfig import HandleConfig
 from gui.gui import Gui
 
+Gui = Gui()
+
 Version = '5.0'
 
 if len(sys.argv) <= 1:
     # normal start, run with a gui
-    # cmd:python D:\Projects\ExcelToDatabase\main.py
-    # exe:ExcelToDatabase.exe
-    sg.ChangeLookAndFeel('dark')
+    # cmd:python main.py
+    # windows:ExcelToDatabase.exe
+    # linux:./ExcelToDatabase
+
     HandleConfig = HandleConfig()
-    Gui = Gui()
 
     def exception_format():
         # format exception output
@@ -32,51 +34,57 @@ if len(sys.argv) <= 1:
         ))
 
     default_values = HandleConfig.get_defaults()
-    window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
+
+    def show_window(values):
+        window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(values),
+                       location=(700, 50), icon='excel.ico')
+        window.Finalize()
+        return window
+    window = show_window(default_values)
 
     while True:
+        # keep running with a gui event if any error occurs
+        # until click x to close
         try:
             event, values = window.read()
 
             if values is not None:
+                values['language'] = default_values['language']
                 values['dbtype'] = default_values['dbtype']
                 values['schedule'] = False
                 values['source'] = default_values['source']
+                if values['mode1']:
+                    values['mode'] = 'O'
+                else:
+                    values['mode'] = 'A'
 
             if event == "start":
                 # when click start button
-                # program wil begin to import excels
+                # program begins to import excels
                 window['start'].update(disabled=True)
                 from events.importer import Importer
                 Importer = Importer(values)
                 Importer.main(window)
                 window['start'].update(disabled=False)
-            elif event == 'MySQL' or event == 'Oracle' or event == 'SQL Server' or event == 'Hive':
+            elif event in ['MySQL', 'Oracle', 'SQL Server', 'Hive']:
                 # change database type
-                from events.setting import Setting
-                Setting = Setting()
-                Setting.db_type(event)
+                values['dbtype'] = event
                 window['dbtype'].update(event)
-                HandleConfig.save_defaults(values)
-            elif event == 'English' or event == '中文':
+            elif event in ['English', '中文']:
                 # change language
-                from events.setting import Setting
-                Setting = Setting()
-                Setting.switch_langage(event)
+                values['language'] = event
                 window.close()
-                HandleConfig.save_defaults(values)
-                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
-                window.Finalize()
-            elif event == 'Directory' or event == 'Files' or event == '选择目录' or event == '选择文件':
+                window = show_window(values)
+            elif event in ['Directory', 'Files', '选择目录', '选择文件']:
                 # change data source
-                from events.setting import Setting
-                Setting = Setting()
-                Setting.data_source(event)
+                if event in ['Directory', '选择目录']:
+                    source = 'D'
+                else:
+                    source = 'F'
+                values['source'] = source
                 window.close()
-                HandleConfig.save_defaults(values)
-                window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(), location=(700, 50), icon='excel.ico')
-                window.Finalize()
-            elif event == "关于" or event == 'About':
+                window = show_window(values)
+            elif event in ['About', '关于']:
                 msg = """ExcelToDatabase V{0}\n\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
                 \n\nCopyright @ ryjfgjl             
                         """.format(Version)
@@ -92,11 +100,12 @@ if len(sys.argv) <= 1:
                 HandleConfig.save_defaults(values)
             default_values = HandleConfig.get_defaults()
 else:
-    # schedule
-    # need add a config file as a parameter, tool reads all configuration from the config.ini
+    # command line without gui
+    # need add a config file as a parameter, tool reads all configuration from a config.ini
     # and run on background without gui
-    # cmd:python D:\Projects\ExcelToDatabase\main.py D:\Projects\ExcelToDatabase\config.ini
-    # or D:\Projects\ExcelToDatabase4.5\ExcelToDatabase.exe D:\Projects\ExcelToDatabase\config.ini
+    # cmd:python main.py config.ini
+    # windows: ExcelToDatabase.exe config.ini
+    # linux: ./ExcelToDatabase config.ini
     configini = sys.argv[1]
     HandleConfig = HandleConfig(configini)
     values = HandleConfig.get_defaults()

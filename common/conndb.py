@@ -15,7 +15,7 @@ class ConnDB:
         self.dbtype = values["dbtype"]
 
     def conndb(self, host, port, user, passwd, db=None, charset='utf8'):
-        # distrubte a connection to database
+        # distribute a connection to database
         if self.dbtype == 'MySQL':
             conn = pymysql.connect(host=host, user=user, passwd=passwd, port=port, charset=charset, database=db)
         elif self.dbtype == 'Oracle':
