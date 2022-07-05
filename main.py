@@ -110,6 +110,12 @@ else:
     HandleConfig = HandleConfig(configini)
     values = HandleConfig.get_defaults()
     values['schedule'] = True
+    values['mode1'] = False
+    values['mode2'] = False
+    if values['mode'] == 'O':
+        values['mode1'] = True
+    else:
+        values['mode2'] = True
     from events.importer import Importer
     Importer = Importer(values)
     Importer.main()
