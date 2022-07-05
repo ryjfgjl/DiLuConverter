@@ -14,6 +14,7 @@ import sys
 
 from common.handleconfig import HandleConfig
 from gui.gui import Gui
+import _tkinter
 
 Gui = Gui()
 
@@ -122,5 +123,7 @@ try:
         from events.importer import Importer
         Importer = Importer(values)
         Importer.main()
-except Exception as reason:
+except _tkinter.TclError as reason:
+    pass
+except Exception  as reason:
     print(reason)
