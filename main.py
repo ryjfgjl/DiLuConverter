@@ -122,5 +122,5 @@ try:
         from events.importer import Importer
         Importer = Importer(values)
         Importer.main()
-except:
-    pass
+except Exception as reason:
+    print(reason)
