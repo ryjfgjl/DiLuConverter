@@ -19,7 +19,7 @@ class HandleConfig:
 
     def handle_config(self, option=None, section=None, key=None, value=None):
         conf = configparser.ConfigParser()
-        conf.read(self.configini, encoding='ansi')
+        conf.read(self.configini, encoding='utf8')
         if option == 'g':
             value = conf.get(section, key)
             return value
@@ -32,7 +32,7 @@ class HandleConfig:
         elif option == "ro":
             conf.remove_option(section, key)
 
-        with open(self.configini, 'w') as fw:
+        with open(self.configini, 'w', encoding='utf8') as fw:
             conf.write(fw)
 
     def get_defaults(self):
