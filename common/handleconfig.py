@@ -19,7 +19,7 @@ class HandleConfig:
 
     def handle_config(self, option=None, section=None, key=None, value=None):
         conf = configparser.ConfigParser()
-        conf.read(self.configini)
+        conf.read(self.configini, encoding='ansi')
         if option == 'g':
             value = conf.get(section, key)
             return value
