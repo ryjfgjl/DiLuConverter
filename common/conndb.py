@@ -12,10 +12,16 @@ from pyhive import hive
 class ConnDB:
 
     def __init__(self, values):
-        self.dbtype = values["dbtype"]
+        self.values = values
+        self.dbtype = self.values["dbtype"]
 
-    def conndb(self, host, port, user, passwd, db=None, charset='utf8'):
+    def conndb(self, charset='utf8'):
         # distribute a connection to database
+        host = self.values['host']
+        port = int(self.values['port'])
+        user = self.values['user']
+        passwd = self.values['passwd']
+        db = self.values['dbname']
         if self.dbtype == 'MySQL':
             conn = pymysql.connect(host=host, user=user, passwd=passwd, port=port, charset=charset, database=db)
         elif self.dbtype == 'Oracle':
@@ -29,30 +35,7 @@ class ConnDB:
     def exec(self, conn, sql, datalist=None):
         # execute sql
         cur = conn.cursor()
-        """
-        if self.dbtype == 'MySQL':
-            # kill db process first
-            pid = conn.thread_id()
-            database = conn.db
 
-            if database:
-                database = database.decode('utf8')
-                killsql = "SELECT CONCAT('kill ',id) FROM information_schema.`PROCESSLIST` WHERE DB = '{0}' " \
-                          "and id <> {1}".format(database, pid)
-                cur.execute(killsql)
-                killids = cur.fetchall()
-                killids = list(killids)
-
-                idx = 0
-                for killid in killids:
-                    killids[idx] = (list(killid))[0]
-                    killidsql = killids[idx]
-                    try:
-                        cur.execute(killidsql)
-                    except:
-                        continue
-                    idx = idx + 1
-        """
         if datalist:
             # insert data
             data = [tuple(i) for i in datalist]

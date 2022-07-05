@@ -14,8 +14,7 @@ class ToHive:
         self.values = values
         self.ConnDB = ConnDB(values)
         self.HandleConfig = HandleConfig()
-        self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
-                                          passwd=values['passwd'], db=values['dbname'])
+        self.conn_db = self.ConnDB.conndb()
 
     # create table
     def create_table(self, col_maxlen, tablename):
@@ -35,18 +34,11 @@ class ToHive:
 
         if dataset.empty:
             return
-        sql = "show columns in {}".format(tablename)
-        columns = self.ConnDB.exec(self.conn_db, sql)
-        exists_columns = []
-        for column in columns:
-            if column[0] in dataset.columns:
-                exists_columns.append(column[0])
-        #dataset = dataset[exists_columns]
 
         df = pd.DataFrame(dataset)
         tmptxt = dir+'/'+tablename+'.txt'
         df.to_csv(tmptxt)
-        sql = "load data inpath 'file:///{0}' into table {1}".format(tmptxt,tablename)
+        sql = "load data inpath 'file:///{0}' into table {1}".format(tmptxt, tablename)
         self.ConnDB.exec(self.conn_db, sql)
 
 

@@ -4,41 +4,32 @@
 ##############################################################
 
 import PySimpleGUI as sg
+import pypinyin as pn
 import os
 import re
-from common.handleconfig import HandleConfig
 from events.from_excels import FromExcels
 from events.to_mysql import ToMySQL
 from events.to_oracle import ToOracle
 from events.to_sqlserver import ToSqlserver
 from events.to_hive import ToHive
-import pypinyin as pn
 
 
 class Importer:
 
     def __init__(self, values):
         self.values = values
-        self.HandleConfig = HandleConfig()
         self.FromExcels = FromExcels(values)
 
         if values['dbtype'] == 'MySQL':
             self.ToDB = ToMySQL(values)
-            self.ConnDB = self.ToDB.ConnDB
-            self.conn_db = self.ToDB.conn_db
-            self.sql_mode = self.ToDB.sql_mode
         elif values['dbtype'] == 'Oracle':
             self.ToDB = ToOracle(values)
-            self.ConnDB = self.ToDB.ConnDB
-            self.conn_db = self.ToDB.conn_db
         elif values['dbtype'] == 'SQL Server':
             self.ToDB = ToSqlserver(values)
-            self.ConnDB = self.ToDB.ConnDB
-            self.conn_db = self.ToDB.conn_db
         elif values['dbtype'] == 'Hive':
             self.ToDB = ToHive(values)
-            self.ConnDB = self.ToDB.ConnDB
-            self.conn_db = self.ToDB.conn_db
+        self.ConnDB = self.ToDB.ConnDB
+        self.conn_db = self.ToDB.conn_db
 
     def main(self, window=None):
         self.window = window
@@ -47,7 +38,7 @@ class Importer:
         excels_dict = self.FromExcels.get_excels()
         if not excels_dict:
             if window:
-                sg.Popup('No Excels!', auto_close=self.values['schedule'])
+                sg.Popup('No Excels!')
             else:
                 self.print('No Excels')
             return
@@ -68,18 +59,20 @@ class Importer:
         num_suffix = 1
         imported_tables = []
 
-        self.print("\n\nBegin Import...\n")
+        self.print("\nBegin Import...\n")
         # run sql_b4
         if self.values['sql_b4']:
             with open(self.values['sql_b4'], 'r') as fr:
                 sql = fr.read()
             self.print("Running SQL in {}...\n".format(self.values['sql_b4']))
             self.ConnDB.exec(self.conn_db, sql)
+
         # loop all excel files
         for excel, tname in excels_dict.items():
             try:
                 datasets = self.FromExcels.get_data(excel)
                 excel_name = excel
+
                 # loop all sheets in one excel
                 for k, v in datasets.items():
                     created_table = None
@@ -122,6 +115,7 @@ class Importer:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                         if len(dataset.columns) == 0 or (dataset.empty and self.values['skip_blank_sheet']):
                             raise EmptyError("Empty Table")
+
                         col_maxlen, dataset = self.FromExcels.parse_data(dataset)
 
                         # create table
@@ -141,7 +135,7 @@ class Importer:
                                 sql = 'drop table if exists `{0}`'.format(created_table)
                             else:
                                 sql = 'drop table "{0}"'.format(created_table)
-                            #self.ConnDB.exec(self.conn_db, sql)
+                            self.ConnDB.exec(self.conn_db, sql)
                         with open(log_file, 'a') as (fw):
                             fw.write('Failed Sheet: {0}, error: {1}\n'.format(excel, str(reason)))
                         continue
@@ -152,6 +146,7 @@ class Importer:
                     finally:
                         num += 1
                         if self.values['dbtype'] == 'MySQL':
+                            self.sql_mode = self.ToDB.sql_mode
                             self.ConnDB.exec(self.conn_db, 'set SESSION sql_mode = "{}"'.format(self.sql_mode))
 
             except Exception as reason:
@@ -175,16 +170,27 @@ class Importer:
         if os.path.isfile(log_file):
             if window:
                 layout = [
-                    [sg.Text('Import Complete with log！\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
+                    [sg.Text('Import Complete with log!\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
                     [sg.OK('Finish'), sg.Text(' '*10), sg.Button('View Log', key='E')]
                 ]
-                window = sg.Window(layout=layout, title='Report', auto_close=self.values['schedule'])
+                window = sg.Window(layout=layout, title='Report')
                 event, self.values = window.read()
                 window.close()
                 if event == 'E':
                     os.popen(log_file)
             else:
                 self.print("Import Complete with log: {}".format(log_file))
+        else:
+            if window:
+                layout = [
+                    [sg.Text('Import Complete!\n\nTotal: {}, Succeed: {}\n'.format(num, num_s))],
+                    [sg.OK('Finish'), sg.Text(' '*10)]
+                ]
+                window = sg.Window(layout=layout, title='Report')
+                event, self.values = window.read()
+                window.close()
+            else:
+                self.print("Import Complete!".format(log_file))
 
     def print(self, value, text_color=None, end='\n'):
         if self.window:

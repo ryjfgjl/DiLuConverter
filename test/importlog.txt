@@ -1,10 +1,14 @@
-table name added suffix: csv - 中文-utf8.xlsx, tablename: csv_zw_utf8_1
 table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本 (2).csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb
-table name added suffix: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb_2
-table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb_2
-table name added suffix: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb_3
-table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb_3
+table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本 - 副本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb
+table name cut off: csv-超长截csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本csv-超长截断本断本.csv, tablename: csv_czjcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdbcsv_czjdb
 table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.wwwwwwwwww, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_wwwww
 table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.dddddddddd, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_ddddd
 Failed Sheet: excel97.xls.blank, error: Empty Table
 Failed Sheet: excel97.xls.blank data, error: Empty Table
+Failed Sheet: 新建文件夹 (2)/excel - 中文.xlsx.空表, error: Empty Table
+Failed Sheet: 新建文件夹 (2)/excel.xlsx.blank, error: Empty Table
+Failed Sheet: 新建文件夹 (2)/excel.xlsx.blank data, error: Empty Table
+table name cut off: 新建文件夹 (3)/excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.wwwwwwwwww, tablename: xjwjj_3_excel_cutofffffffffffffffffffffffffffffffffffffffff66
+table name cut off: 新建文件夹 (3)/excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.dddddddddd, tablename: xjwjj_3_excel_cutofffffffffffffffffffffffffffffffffffffffff66
+Failed Sheet: 新建文件夹 (3)/excel97.xls.blank, error: Empty Table
+Failed Sheet: 新建文件夹 (3)/excel97.xls.blank data, error: Empty Table

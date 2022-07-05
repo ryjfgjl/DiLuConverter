@@ -14,8 +14,7 @@ class ToOracle:
         self.values = values
         self.ConnDB = ConnDB(values)
         self.HandleConfig = HandleConfig()
-        self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
-                                          passwd=values['passwd'], db=values['dbname'], charset='utf8')
+        self.conn_db = self.ConnDB.conndb()
 
     # create table
     def create_table(self, col_maxlen, tablename):

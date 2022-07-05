@@ -6,27 +6,17 @@
 import pymysql
 import re
 import numpy as np
-from common.handleconfig import HandleConfig
 from common.conndb import ConnDB
+
 
 class ToMySQL:
 
     def __init__(self, values):
         self.values = values
         self.ConnDB = ConnDB(values)
-        self.HandleConfig = HandleConfig()
-        self.conn_db = self.ConnDB.conndb(host=values['host'], port=int(values['port']), user=values['user'],
-                                          passwd=values['passwd'], db=values['dbname'], charset='utf8')
+        self.conn_db = self.ConnDB.conndb()
         self.sql_mode = self.ConnDB.exec(self.conn_db, 'SELECT @@SESSION.sql_mode')[0][0]
 
-
-    def is_Chinese(self, word):
-        for ch in word:
-            if '\u4e00' <= ch <= '\u9fff':
-                return True
-        return False
-
-    # create table
     def create_table(self, col_maxlen, tablename):
         sql = "drop table if exists {0};create table {0}(".format(tablename)
         for col, maxLen in col_maxlen.items():
@@ -56,9 +46,7 @@ class ToMySQL:
                 self.ConnDB.exec(self.conn_db, sql)
         return tablename, sql
     
-    # insert into
     def insert_data(self, dataset, tablename, created_sql, dir=None):
-
         if dataset.empty:
             return
         sql = "select column_name from information_schema.`COLUMNS` " \

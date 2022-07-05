@@ -9,7 +9,6 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 import chardet
-from common.handleconfig import HandleConfig
 import pypinyin as pn
 
 
@@ -17,9 +16,7 @@ class FromExcels:
 
     def __init__(self, values):
         self.values = values
-        self.HandleConfig = HandleConfig()
 
-    # get all excels upder directionary
     def get_excels(self):
         excels_dict = defaultdict()
         if self.values['loop_subdir'] and self.values['source'] == 'D':
@@ -27,12 +24,12 @@ class FromExcels:
             for root, dirs, files in os.walk(self.values['file_dir']):
                 root = root.replace(self.values['file_dir'], '')[1:]
                 if len(root) > 1:
-                    root = root + '\\'
+                    root = root + '/'
                 for file in files:
                     file = root + file
                     excels.append(file)
             for excel in excels:
-                excel_dir = self.values['file_dir'] + "\\" + excel
+                excel_dir = self.values['file_dir'] + "/" + excel
                 if os.path.isfile(excel_dir) and re.fullmatch(r"^.*?\.(xls|xlsx|xlsm|csv)$", excel, flags=re.IGNORECASE):
                     if self.values['mode2'] and self.values['tname']:
                         tablename = self.values['tname']
@@ -73,7 +70,6 @@ class FromExcels:
                     excels_dict[excel] = tablename
         return excels_dict
 
-    # get sheets in excel
     def get_data(self, excel):
         na_values = self.values['na_values'].split(',')
         if not self.values['header']:
@@ -151,7 +147,6 @@ class FromExcels:
             if 'unnamed: ' not in col:
                 recol = 0
                 break
-
         if recol and self.values['del_blank_lines'] and self.values['header'] != '0':
             columns = dataset[0:1]
             columns = np.array(columns)
@@ -166,6 +161,9 @@ class FromExcels:
         # deal with blank column name
         f = lambda x: "unnamed" if x == "" else x
         columns = [f(col) for col in columns]
+
+        if self.values['trf_cn']:
+            columns = [''.join([i[0] for i in pn.pinyin(column, style=pn.Style.FIRST_LETTER)]) for column in columns]
 
         # cut off column name
         def f(x):
@@ -200,8 +198,7 @@ class FromExcels:
 
             if c == 0:
                 break
-        if self.values['trf_cn']:
-            columns = [''.join([i[0] for i in pn.pinyin(column, style=pn.Style.FIRST_LETTER)]) for column in columns]
+
         dataset.columns = columns
         columns = np.array(columns)
         columns = columns.tolist()
