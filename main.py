@@ -39,7 +39,7 @@ try:
 
         def show_window(values):
             window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(values),
-                           location=(700, 50), icon='excel.ico')
+                           location=(700, 50), icon='ExcelToDatabase.ico')
             window.Finalize()
             return window
         window = show_window(default_values)

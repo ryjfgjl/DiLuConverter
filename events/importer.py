@@ -192,6 +192,7 @@ class Importer:
             else:
                 self.print("Import Complete!".format(log_file))
 
+
     def print(self, value, text_color=None, end='\n'):
         if self.window:
             return self.window['output'].print(value, text_color=text_color, end=end)
