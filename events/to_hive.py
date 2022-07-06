@@ -23,7 +23,7 @@ class ToHive:
         for col, maxLen in col_maxlen.items():
             colType = "string"
             sql = sql + "`{0}` {1},".format(col, colType)
-        sql = sql[:-1] + ")"
+        sql = sql[:-1] + ") row format delimited fields terminated by ','"
 
         self.ConnDB.exec(self.conn_db, sql)
 
