@@ -37,7 +37,7 @@ class ToHive:
 
         df = pd.DataFrame(dataset)
         tmptxt = dir+'/'+tablename+'.txt'
-        df.to_csv(tmptxt)
+        df.to_csv(tmptxt, index=False, header=None)
         sql = "load data inpath 'file:///{0}' into table {1}".format(tmptxt, tablename)
         self.ConnDB.exec(self.conn_db, sql)
 
