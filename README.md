@@ -4,38 +4,41 @@
 # ExcelToDatabase: batch import multiple excel files into database
 
 # What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database or your excel is mess.
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with all kinds of problem when manually import excel any more
 
-## Features
-### Easy
+# Features
+## Easily
   Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
-### High Speed: 
-  Most quickly tools like this around the world.
+## Quickly: 
+  Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
 
-### Inteligent: 
-  When come across some durty data or some difference between Excel and Database, tool can deal with it and go on.
+## Intelligent: 
+  When you manually import excel into database using tool like navicate, whether if you feel sad when error occurs? Baddly, other error occurs when you just fix one. DO NOT WORRY! The tool can deal with them!
 
-### Advanced Options: 
+## Advanced: 
   Rich options could be custom choose to make more fuction come true.
 
-### Schedule: 
-  Can be scheduled.
-  
-### Free: 
-  Most important thing.
+## Schedule: 
+  You can make a schedule using it on windows/linux.
 
-## Usage
-## Manual Start
-1.Start Program
+# Where to get it
+The source code is here.
+The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
 
-Way 1: Command: python D:\Projects\ExcelToDatabase\main.py
+# Usage
+**Start Program**
+If you hive python environment, you can use command to start:
+`python D:\Projects\ExcelToDatabase\main.py`
 
-Way 2: Send an email to 2577154121@qq.com, you can get an exe program which can directly run on windows.
+If you get a packaged executable program:
 
-2.Input Information
+On Windows: ExcelToDatabase.exe
+On Linux: ./ExcelToDatabase
 
-Select directory with excel files; Input target database information; Choose import mode.
+**Choose Excels**
+
+Choose the directory with excel files; Input target database information; Choose import mode.
 
 3.Click Start.
 
