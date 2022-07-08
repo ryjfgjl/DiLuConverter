@@ -8,7 +8,7 @@
 
 ## Features
 ### Easily
-  Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
+	Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
 ### Quickly: 
   Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
