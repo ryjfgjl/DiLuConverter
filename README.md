@@ -3,30 +3,30 @@
 
 # ExcelToDatabase: batch import multiple excel files into database
 
-# What is it?
+## What is it?
 **ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with all kinds of problem when manually import excel any more
 
-# Features
-## Easily
+## Features
+### Easily
   Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
-## Quickly: 
+### Quickly: 
   Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
 
-## Intelligent: 
+### Intelligent: 
   When you manually import excel into database using tool like navicate, whether if you feel sad when error occurs? Baddly, other error occurs when you just fix one. DO NOT WORRY! The tool can deal with them!
 
-## Advanced: 
+### Advanced: 
   Rich options could be custom choose to make more fuction come true.
 
-## Schedule: 
+### Schedule: 
   You can make a schedule using it on windows/linux.
 
-# Where to get it
+## Where to get it
 The source code is here.
 The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
 
-# Usage
+## Usage
 **Start Program**
 If you hive python environment, you can use command to start:
 `python D:\Projects\ExcelToDatabase\main.py`
@@ -36,24 +36,19 @@ If you get a packaged executable program:
 On Windows: ExcelToDatabase.exe
 On Linux: ./ExcelToDatabase
 
-**Choose Excels**
+**Choose and Input**
 
-Choose the directory with excel files; Input target database information; Choose import mode.
+Choose the directory with excel files; Input target database information; Choose import mode
 
-3.Click Start.
+**Click Start**
 
-## Schedule
-C:\Users\ryjfgjl>D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe D:\Projects\ExcelToDatabase4.4\config.ini
-You can run this command in DOS to start program.
-So you can add a scheduled task in windows, D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe is our program and D:\Projects\ExcelToDatabase4.4\config.ini is your configuration file.
-Note: configuration file can be saved when you manual run ExcelToDatabase, and you can copy it to anywhere and rename it.
-eg: D:\config_everyday.ini
+## Supported Environments: 
+Windows/Linux, MySQL/Oracle/SQLServer/Hive, Excel(xls,xlsx,xlsm,csv)
 
+## Menu
 
-## Tested Environments: 
-Windows 7+, MySQL 5.6+/Oracle 11g+, Excel 1997+(xls,xlsx,xlsm,csv)
-
-## Options Detail:
+## Options:
+In general, you only need to provide information in the section of "General". But if you want to do more, you may need "Advanced" section
 
 ### General：
 #### Excel：
@@ -101,4 +96,11 @@ Find all excel files under the directory Include Sub Directories
   
 # Author: ryjfgjl
 # Send email to 2577154121@qq.com for help.
+
+## Schedule
+C:\Users\ryjfgjl>D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe D:\Projects\ExcelToDatabase4.4\config.ini
+You can run this command in DOS to start program.
+So you can add a scheduled task in windows, D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe is our program and D:\Projects\ExcelToDatabase4.4\config.ini is your configuration file.
+Note: configuration file can be saved when you manual run ExcelToDatabase, and you can copy it to anywhere and rename it.
+eg: D:\config_everyday.ini
 
