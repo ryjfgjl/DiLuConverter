@@ -38,7 +38,9 @@
 
 **Choose and Input**
  
-    Choose the directory with excel files; Input target database information; Choose import mode`
+    Choose the directory with excel files; 
+    Input target database information; 
+    Choose import mode`
 
 **Click Start**
 
@@ -75,7 +77,8 @@
 
 ### Advanced：
   #### CSV Encoding：
-    Tools can auto-detect encoding of csv files(default), and you can choose or input other value
+    Tools can auto-detect encoding of csv files(default), 
+    and you can choose or input other value
   #### Replace To NULL：
     values populated will be replaced to null
   #### Add Table Prefix：
@@ -117,10 +120,12 @@
     Varchar(255) is default. If max length of column more than 255, text/clob will be set.
     
 ## Correct Error
-  ### mysql error 1366：
-    The length of all column is too long or the row size is too large, mysql error 1366 occured >> text will be set as column type
   ### mysql error 1118：
-    utf8mb4 is contained in the data, but the utf8 is the character set of database, mysql error 1118 occured >> import but utf8mb4 character is ignored
+    utf8mb4 is contained in the data, but the utf8 is the character set of database, 
+    mysql error 1118 occured >> import but utf8mb4 character is ignored
+  ### mysql error 1366：
+    The length of all column is too long or the row size is too large, 
+    mysql error 1366 occured >> text will be set as column type
  
 ## How To Schedule
   The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
