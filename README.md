@@ -1,5 +1,5 @@
 # ExcelToDatabase: batch import multiple excel files into database
-![image](https://user-images.githubusercontent.com/39375647/177956451-9793aa5a-da8d-49df-9b95-11ca03768da0.png)
+![image](https://user-images.githubusercontent.com/39375647/177956874-48ba0efb-37ad-47e0-80bf-2caed808e69d.png)
 ## What is it?
 **ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with all kinds of problem when manually import excel any more
 
