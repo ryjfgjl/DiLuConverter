@@ -78,9 +78,9 @@ try:
                     values['language'] = event
                     window.close()
                     window = show_window(values)
-                elif event in ['Directory', 'Files', '选择目录', '选择文件']:
+                elif event in ['Directory', 'Files', '目录', '文件']:
                     # change data source
-                    if event in ['Directory', '选择目录']:
+                    if event in ['Directory', '目录']:
                         source = 'D'
                     else:
                         source = 'F'
