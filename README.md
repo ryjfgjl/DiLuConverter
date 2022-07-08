@@ -105,8 +105,13 @@
   When complete import, run sql in the sql file choosed after
 
 ## How the tool works?
-  This show some logic when the tool worksaaa 
-  ### How to define column name：
+  This show some logic when the tool work
+## How to define table name：
+If only one sheet in excel >> excel name
+If multipule sheets in excel >> excel name + '_' + sheet name
+Symbol like ',' will be replaced to '_'
+If table name is more than the limit of database >> cut off  
+### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
     Symbol like ',' will be replaced to '_'
     If column name is blank, 'unnamed' will be set as column name
