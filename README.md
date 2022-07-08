@@ -8,7 +8,7 @@
 
 ## Features
 ### Easily
-	Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
+  Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
 ### Quickly: 
   Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
@@ -31,7 +31,7 @@
 **Start Program**
 * If you hive python environment, you can use command to start:
 
-`python D:\Projects\ExcelToDatabase\main.py`
+     `python main.py`
 
 * If you get a packaged executable program:
 
@@ -78,21 +78,21 @@
 
 ### Advanced：
 #### CSV Encoding：
-  Tools can auto-detect encoding of csv files(default), and you can choose or input other value.
+  Tools can auto-detect encoding of csv files(default), and you can choose or input other value
 #### Replace To NULL：
-  values populated will be replaced to null.
+  values populated will be replaced to null
 #### Add Table Prefix：
-  The value populated will be added to table name before.
+  The value populated will be added to table name before
 #### Append all data to one exists table：
-  Under Append mode, import all data to the table populated.
+  Under Append mode, import all data to the table populated
 #### The Column on row：
-  Set which row as Column name.
+  Set which row as Column name
 #### Skip Blank Rows：
   Skip Blank Rows
 #### Trim Spaces：
-  Trim spaces around the data.
+  Trim spaces around the data
 #### Skip Blank Sheets：
-  Ignore sheet if there is no data in it.
+  Ignore sheet if there is no data in it
 #### Add a column is table name：
   For imported table, add a column which value is its table name
 #### Include Sub Directories
@@ -108,7 +108,7 @@
 ## How the tool works?
   This show some logic when the tool works
   ### How to define table name：
-    If only one sheet in excel >> excel name
+    If only one sheet in excel >>> excel name
     If multipule sheets in excel >> excel name + '_' + sheet name
     Symbol like ',' will be replaced to '_'
     If table name is more than the limit of database >> cut off  
