@@ -104,7 +104,7 @@
 #### Run sql after completing
   When complete import, run sql in the sql file choosed after
 
-## How the tool works?
+## How the tool works
   This show some logic when the tool works
   ### How to define table name
     If only one sheet in excel >> excel name
