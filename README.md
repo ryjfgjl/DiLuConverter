@@ -107,7 +107,7 @@
 ## How the tool works?
   This show some logic when the tool works
   ### How to define table name
-    If only one sheet in excel >> excel name, If multipule sheets in excel >> excel name + '_' + sheet name, Symbol like ',' will be replaced to '_',If table name is more than the limit of database >> cut off  
+    If only one sheet in excel  excel name, If multipule sheets in excel  excel name + '_' + sheet name, Symbol like ',' will be replaced to '_',If table name is more than the limit of database cut off  
   ### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
     Symbol like ',' will be replaced to '_'
