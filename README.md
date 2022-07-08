@@ -105,9 +105,7 @@
   When complete import, run sql in the sql file choosed after
 
 ## How the tool works?
-  This show some logic when the tool works
-  ### ddd
-    aaa 
+  This show some logic when the tool worksaaa 
   ### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
     Symbol like ',' will be replaced to '_'
