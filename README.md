@@ -88,11 +88,20 @@ Set which row as Column name.
 #### Skip Blank Rows：
 Skip Blank Rows
 #### Trim Spaces：
-Trim spaces on data.
+Trim spaces around the data.
 #### Skip Blank Sheets：
-Ignore if no data.
+Ignore sheet if there is no data in it.
+#### Add a column is table name：
+For imported table, add a column which value is its table name
 #### Include Sub Directories
-Find all excel files under the directory Include Sub Directories
+Recursive directories to find all excel files
+#### Transform Chinese to First Letter
+Transform chinese in table name and column name to the first letter of its pinyin
+#### Run sql before starting
+When starting import, run sql in the sql file choosed before
+#### Run sql after completing
+When complete import, run sql in the sql file choosed after
+
 
 ### Others：
   #### How to define table name：
