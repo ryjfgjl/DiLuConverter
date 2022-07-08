@@ -79,30 +79,30 @@
 ### Advanced：
   #### CSV Encoding：
     Tools can auto-detect encoding of csv files(default), and you can choose or input other value
- #### Replace To NULL：
-   values populated will be replaced to null
- #### Add Table Prefix：
-   The value populated will be added to table name before
- #### Append all data to one exists table：
-  Under Append mode, import all data to the table populated
-#### The Column on row：
-  Set which row as Column name
-#### Skip Blank Rows：
-  Skip Blank Rows
-#### Trim Spaces：
-  Trim spaces around the data
-#### Skip Blank Sheets：
-  Ignore sheet if there is no data in it
-#### Add a column is table name：
-  For imported table, add a column which value is its table name
-#### Include Sub Directories
-  Recursive directories to find all excel files
-#### Transform Chinese to First Letter
-  Transform chinese in table name and column name to the first letter of its pinyin
-#### Run sql before starting
-  When starting import, run sql in the sql file choosed before
-#### Run sql after completing
-  When complete import, run sql in the sql file choosed after
+  #### Replace To NULL：
+    values populated will be replaced to null
+  #### Add Table Prefix：
+    The value populated will be added to table name before
+  #### Append all data to one exists table：
+    Under Append mode, import all data to the table populated
+  #### The Column on row：
+    Set which row as Column name
+  #### Skip Blank Rows：
+    Skip Blank Rows
+  #### Trim Spaces：
+    Trim spaces around the data
+  #### Skip Blank Sheets：
+    Ignore sheet if there is no data in it
+  #### Add a column is table name：
+    For imported table, add a column which value is its table name
+  #### Include Sub Directories
+    Recursive directories to find all excel files
+  #### Transform Chinese to First Letter
+    Transform chinese in table name and column name to the first letter of its pinyin
+  #### Run sql before starting
+    When starting import, run sql in the sql file choosed before
+  #### Run sql after completing
+    When complete import, run sql in the sql file choosed after
 
 ## How the tool works?
   This show some logic when the tool work
