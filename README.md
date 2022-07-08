@@ -24,16 +24,19 @@
 
 ## Where to get it
 The source code is here.
+
 The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
 
 ## Usage
 **Start Program**
 If you hive python environment, you can use command to start:
+
 `python D:\Projects\ExcelToDatabase\main.py`
 
 If you get a packaged executable program:
 
 On Windows: ExcelToDatabase.exe
+
 On Linux: ./ExcelToDatabase
 
 **Choose and Input**
@@ -46,21 +49,30 @@ Choose the directory with excel files; Input target database information; Choose
 Windows/Linux, MySQL/Oracle/SQLServer/Hive, Excel(xls,xlsx,xlsm,csv)
 
 ## Menu
+### Language
+English and Chinese you can choose to display
+
+### Database
+MySQL/Oracle/SQLServer/Hive, you can choose one database according to your target database
+
+### Data Source
+Directory: choose Directory as your data source, in this case, excels under the directory will be imported
+Files: choose Files as your data source, in this case, you can select one or more excel files to import
 
 ## Options:
 In general, you only need to provide information in the section of "General". But if you want to do more, you may need "Advanced" section
 
 ### General：
 #### Excel：
-Directory: The excel files under this directory would be imported
+Choose directory or files as your data source
 
-#### MySQL/Oracle/SQL Server Connection: 
-options to connect to database
+#### MySQL/Oracle/SQL Server/Hive Connection: 
+Input connection information of your target database
 #### Mode:
 
-Overwrite: drop table first(if exists); create table; insert data.
+* Overwrite: drop table first(if exists); create table; insert data.
 
-Append: just insert data into table(table needs exist in the database)
+* Append: just insert data into table(table needs exist in the database), according to table name + column name to match, only import data in matched column to the matched table, unmatched column will be ignored 
 
 ### Advanced：
 #### CSV Encoding：
