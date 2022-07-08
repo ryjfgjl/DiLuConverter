@@ -106,7 +106,7 @@
 
 ## How the tool works?
   This show some logic when the tool works
-  ### How to define table name
+  ### ddd
     aaa 
   ### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
