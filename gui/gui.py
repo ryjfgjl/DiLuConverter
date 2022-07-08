@@ -91,11 +91,11 @@ class Gui:
                 [sg.Checkbox('Transform Chinese to First Letter', key='trf_cn', size=(33, 1), default=values['trf_cn']),],
 
                 [sg.Text('Run sql before starting:', size=(17, 1)),
-                 sg.Input('{}'.format(values['sql_b4']), key='sql_b4', size=(32, 1)),
-                 sg.FileBrowse(initial_folder='{}'.format(values['sql_b4']), button_text=' 选择 ')],
+                 sg.Input('{}'.format(values['sql_b4']), key='sql_b4', size=(28, 1)),
+                 sg.FileBrowse(initial_folder='{}'.format(values['sql_b4']), button_text=' Choose ')],
                 [sg.Text('Run sql after comleting:', size=(17, 1)),
-                 sg.Input('{}'.format(values['sql_after']), key='sql_after', size=(32, 1)),
-                 sg.FileBrowse(initial_folder='{}'.format(values['sql_after']), button_text=' 选择 ')],
+                 sg.Input('{}'.format(values['sql_after']), key='sql_after', size=(28, 1)),
+                 sg.FileBrowse(initial_folder='{}'.format(values['sql_after']), button_text=' Choose ')],
             ]
 
             tab_layouts = [sg.Tab('General', layout_general), sg.Tab('Advanced', layout_advanced)]

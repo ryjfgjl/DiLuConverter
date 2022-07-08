@@ -88,10 +88,11 @@ try:
                     window.close()
                     window = show_window(values)
                 elif event in ['About', '关于']:
-                    msg = """ExcelToDatabase V{0}\n\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
+                    msg = """ExcelToDatabase V{0}
+                    \nDocument: https://blog.csdn.net/qq_37955852/article/details/122488507\nOpen Source: https://github.com/ryjfgjl/ExcelToDatabase\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
                     \n\nCopyright @ ryjfgjl             
                             """.format(Version)
-                    sg.Popup(msg, title='Help')
+                    window['output'].print(msg)
                 elif event == sg.WIN_CLOSED:
                     break
             except:
