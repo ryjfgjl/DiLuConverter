@@ -31,7 +31,7 @@
 **Start Program**
 * If you hive python environment, you can use command to start:
 
-     `python main.py`
+    `python main.py`
 
 * If you get a packaged executable program:
 
@@ -41,7 +41,7 @@
 
 **Choose and Input**
 
-  Choose the directory with excel files; Input target database information; Choose import mode
+    `Choose the directory with excel files; Input target database information; Choose import mode`
 
 **Click Start**
 
@@ -77,13 +77,13 @@
 * Append: just insert data into table(table needs exist in the database), according to table name + column name to match, only import data in matched column to the matched table, unmatched column will be ignored 
 
 ### Advanced：
-#### CSV Encoding：
+ #### CSV Encoding：
   Tools can auto-detect encoding of csv files(default), and you can choose or input other value
-#### Replace To NULL：
-  values populated will be replaced to null
-#### Add Table Prefix：
-  The value populated will be added to table name before
-#### Append all data to one exists table：
+ #### Replace To NULL：
+   values populated will be replaced to null
+ #### Add Table Prefix：
+   The value populated will be added to table name before
+ #### Append all data to one exists table：
   Under Append mode, import all data to the table populated
 #### The Column on row：
   Set which row as Column name
