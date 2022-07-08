@@ -23,51 +23,53 @@
   You can make a schedule using it on windows/linux.
 
 ## Where to get it
-The source code is here.
+  The source code is here.
 
-The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
+  The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
 
 ## Usage
 **Start Program**
-If you hive python environment, you can use command to start:
+* If you hive python environment, you can use command to start:
 
 `python D:\Projects\ExcelToDatabase\main.py`
 
-If you get a packaged executable program:
+* If you get a packaged executable program:
 
-On Windows: ExcelToDatabase.exe
+  On Windows: ExcelToDatabase.exe
 
-On Linux: ./ExcelToDatabase
+  On Linux: ./ExcelToDatabase
 
 **Choose and Input**
 
-Choose the directory with excel files; Input target database information; Choose import mode
+  Choose the directory with excel files; Input target database information; Choose import mode
 
 **Click Start**
 
 ## Supported Environments: 
-Windows/Linux, MySQL/Oracle/SQLServer/Hive, Excel(xls,xlsx,xlsm,csv)
+  * Windows/Linux
+  * MySQL/Oracle/SQLServer/Hive
+  * Excel(xls,xlsx,xlsm,csv)
 
 ## Menu
 ### Language
-English and Chinese you can choose to display
+  English and Chinese you can choose to display
 
 ### Database
-MySQL/Oracle/SQLServer/Hive, you can choose one database according to your target database
+  MySQL/Oracle/SQLServer/Hive, you can choose one database according to your target database
 
 ### Data Source
-Directory: choose Directory as your data source, in this case, excels under the directory will be imported
-Files: choose Files as your data source, in this case, you can select one or more excel files to import
+  * Directory: choose Directory as your data source, in this case, excels under the directory will be imported
+  * Files: choose Files as your data source, in this case, you can select one or more excel files to import
 
 ## Options:
-In general, you only need to provide information in the section of "General". But if you want to do more, you may need "Advanced" section
+  In general, you only need to provide information in the section of "General". But if you want to do more, you may need "Advanced" section
 
 ### General：
 #### Excel：
-Choose directory or files as your data source
+  Choose directory or files as your data source
 
 #### MySQL/Oracle/SQL Server/Hive Connection: 
-Input connection information of your target database
+  Input connection information of your target database
 #### Mode:
 
 * Overwrite: drop table first(if exists); create table; insert data.
@@ -76,52 +78,66 @@ Input connection information of your target database
 
 ### Advanced：
 #### CSV Encoding：
-Tools can auto-detect encoding of csv files(default), and you can choose or input other value.
+  Tools can auto-detect encoding of csv files(default), and you can choose or input other value.
 #### Replace To NULL：
-values populated will be replaced to null.
+  values populated will be replaced to null.
 #### Add Table Prefix：
-The value populated will be added to table name before.
+  The value populated will be added to table name before.
 #### Append all data to one exists table：
-Under Append mode, import all data to the table populated.
+  Under Append mode, import all data to the table populated.
 #### The Column on row：
-Set which row as Column name.
+  Set which row as Column name.
 #### Skip Blank Rows：
-Skip Blank Rows
+  Skip Blank Rows
 #### Trim Spaces：
-Trim spaces around the data.
+  Trim spaces around the data.
 #### Skip Blank Sheets：
-Ignore sheet if there is no data in it.
+  Ignore sheet if there is no data in it.
 #### Add a column is table name：
-For imported table, add a column which value is its table name
+  For imported table, add a column which value is its table name
 #### Include Sub Directories
-Recursive directories to find all excel files
+  Recursive directories to find all excel files
 #### Transform Chinese to First Letter
-Transform chinese in table name and column name to the first letter of its pinyin
+  Transform chinese in table name and column name to the first letter of its pinyin
 #### Run sql before starting
-When starting import, run sql in the sql file choosed before
+  When starting import, run sql in the sql file choosed before
 #### Run sql after completing
-When complete import, run sql in the sql file choosed after
+  When complete import, run sql in the sql file choosed after
 
 
-### Others：
-  #### How to define table name：
-  file name + '_' + sheet name(if one excel has multipule sheets)
-  #### How to define column name：
-  Default is the first row
-  #### How to define column type：
-  Varchar(255) is default. If max length of column more than 255, text will be set.
-  #### How to deal with mysql error 1366：
-  Auto Correct
-  #### How to deal with mysql error 1118：
-  All column will be create as text
-  
-# Author: ryjfgjl
-# Send email to 2577154121@qq.com for help.
+## How the tool works?
+  This show some logic when the tool works
+  ### How to define table name：
+    If only one sheet in excel >> excel name
+    If multipule sheets in excel >> excel name + '_' + sheet name
+    Symbol like ',' will be replaced to '_'
+    If table name is more than the limit of database >> cut off  
+  ### How to define column name：
+    Default is the first row, but if the first row is all blank, next row will be used
+    Symbol like ',' will be replaced to '_'
+    If column name is blank, 'unnamed' will be set as column name
+    If column name is repeated, number like '0' will be added as its suffix
+  ### How to define column type：
+    Varchar(255) is default. If max length of column more than 255, text/clob will be set.
+    
+## Correct Error
+  ### mysql error 1366：
+    The length of all column is too long or the row size is too large, mysql error 1366 occured >> text will be set as column type
+  ### mysql error 1118：
+    utf8mb4 is contained in the data, but the utf8 is the character set of database, mysql error 1118 occured >> import but utf8mb4 character is ignored
+ 
+## How To Schedule
+  The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
+  * Python environment:
+    Windows: python main.py D:/config.ini
+    Linux:  python main.py /home/ryjfgjl/config.ini
+  * Packaged Program:
+    Windows: ExcelToDatabase.exe D:/config.ini
+    Linux: ./ExcelToDatabase /home/ryjfgjl/config.ini
 
-## Schedule
-C:\Users\ryjfgjl>D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe D:\Projects\ExcelToDatabase4.4\config.ini
-You can run this command in DOS to start program.
-So you can add a scheduled task in windows, D:\Projects\ExcelToDatabase4.4\ExcelToDatabase.exe is our program and D:\Projects\ExcelToDatabase4.4\config.ini is your configuration file.
-Note: configuration file can be saved when you manual run ExcelToDatabase, and you can copy it to anywhere and rename it.
-eg: D:\config_everyday.ini
+# Getting Help
+  * Email: 2577154121@qq.com
+  * QQ Group: 788719152
+
+
 
