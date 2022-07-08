@@ -40,8 +40,7 @@
   On Linux: ./ExcelToDatabase
 
 **Choose and Input**
-
-    `Choose the directory with excel files; Input target database information; Choose import mode`
+  Choose the directory with excel files; Input target database information; Choose import mode`
 
 **Click Start**
 
