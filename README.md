@@ -106,12 +106,12 @@
 
 ## How the tool works?
   This show some logic when the tool work
-## How to define table name：
-If only one sheet in excel >> excel name
-If multipule sheets in excel >> excel name + '_' + sheet name
-Symbol like ',' will be replaced to '_'
-If table name is more than the limit of database >> cut off  
-### How to define column name：
+  ## How to define table name：
+    If only one sheet in excel >> excel name
+    If multipule sheets in excel >> excel name + '_' + sheet name
+    Symbol like ',' will be replaced to '_'
+    If table name is more than the limit of database >> cut off  
+  ### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
     Symbol like ',' will be replaced to '_'
     If column name is blank, 'unnamed' will be set as column name
@@ -127,11 +127,17 @@ If table name is more than the limit of database >> cut off
  
 ## How To Schedule
   The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
+  
   * Python environment:
+
     Windows: python main.py D:/config.ini
+    
     Linux:  python main.py /home/ryjfgjl/config.ini
+    
   * Packaged Program:
+ 
     Windows: ExcelToDatabase.exe D:/config.ini
+    
     Linux: ./ExcelToDatabase /home/ryjfgjl/config.ini
 
 # Getting Help
