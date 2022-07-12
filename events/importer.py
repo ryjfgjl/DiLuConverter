@@ -98,7 +98,7 @@ class Importer:
                                     tablename = tablename + '_{}'.format(num_suffix)
                                     num_suffix += 1
                                     self.print('Warnning: ', text_color='yellow', end='')
-                                    self.print('{0})'.format(excel))
+                                    self.print('{0}'.format(excel))
                                     with open(log_file, "a") as fw:
                                         fw.write("table name added suffix: {0}, tablename: {1}\n".format(excel, tablename))
                                 with open(log_file, "a") as fw:
