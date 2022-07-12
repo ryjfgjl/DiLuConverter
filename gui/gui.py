@@ -115,7 +115,7 @@ class Gui:
             layout_general = [
                 [sg.Menu(menu_def)],
 
-                [sg.Text('Excel 文件', size=(12, 1), text_color='red')],
+                [sg.Text('Excel', size=(12, 1), text_color='red')],
                 [
                  sg.Input('{}'.format(values['file_dir']), key='file_dir', size=(50, 1),
                           visible=self.ret_bool('source', values['source'])),
