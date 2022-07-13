@@ -89,7 +89,8 @@ try:
                     window = show_window(values)
                 elif event in ['About', '关于']:
                     msg = """ExcelToDatabase V{0}
-                    \nDocument: https://blog.csdn.net/qq_37955852/article/details/122488507\nOpen Source: https://github.com/ryjfgjl/ExcelToDatabase\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152            
+                    \nDocument: https://blog.csdn.net/qq_37955852/article/details/122488507\nSource Code: https://github.com/ryjfgjl/ExcelToDatabase\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
+                    \n\nCopyright (c) 2022 ryjfgjl            
                             """.format(Version)
                     window['output'].print(msg)
                 elif event == sg.WIN_CLOSED:

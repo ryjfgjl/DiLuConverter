@@ -6,6 +6,7 @@ block_cipher = None
 added_files = [
          ( 'config.ini', '.' ),
          ( 'ExcelToDatabase.ico', '.' ),
+         ( 'LICENSE', '.' ),
          ( 'common', 'common' ),
 		 ( 'events', 'events' ),
          ( 'gui', 'gui' )
