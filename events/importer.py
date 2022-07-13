@@ -151,7 +151,7 @@ class Importer:
 
             except Exception as reason:
                 self.print('Failed: ', text_color='red', end='')
-                self.print('{0})'.format(excel))
+                self.print('{0}'.format(excel))
                 with open(log_file, "a") as fw:
                     fw.write("Failed Excel: {0}, error: {1}\n".format(excel, str(reason)))
                 num += 1
