@@ -38,7 +38,10 @@ class ConnDB:
 
         if datalist:
             # insert data
-            data = [tuple(i) for i in datalist]
+            if self.dbtype == 'SQL Server':
+                data = [tuple(i) for i in datalist]
+            else:
+                data = datalist
             cur.executemany(sql, data)
         else:
             # other sql
