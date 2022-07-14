@@ -53,7 +53,8 @@ class ToSqlserver:
         dataset = dataset[exists_columns]
         columns = dataset.columns
         dataset = np.array(dataset)
-        datalist = dataset.tolist()
+        #datalist = dataset.tolist()
+        datalist = [tuple(i) for i in dataset.tolist()]
 
         cols = '","'.join(columns)
         l = len(columns)
