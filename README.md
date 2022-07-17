@@ -25,7 +25,7 @@
 ## Where to get it
   The source code is here.
 
-  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from [https://sourceforge.net/projects/exceltodatabase/].
+  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from https://sourceforge.net/projects/exceltodatabase/.
 
 ## Usage
 **Start Program**
@@ -36,6 +36,8 @@
 * If you get a packaged executable program:
 
   On Windows: ExcelToDatabase.exe
+  
+  On Linux: ./ExcelToDatabase
 
 
 **Choose and Input**
