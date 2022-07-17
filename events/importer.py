@@ -120,6 +120,7 @@ class Importer:
 
                         # create table
                         created_sql = None
+
                         if self.values['mode1']:
                             created_table, created_sql = self.ToDB.create_table(col_maxlen, tablename)
 

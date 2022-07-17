@@ -35,10 +35,10 @@ class ToOracle:
 
             sql = sql + "\"{0}\" {1} default null,".format(col, colType)
         if self.values['add_tname']:
-            sql = sql + "`table_name` varchar(255) default '{0}',".format(tablename)
+            sql = sql + '"table_name" varchar(255) default \'{0}\','.format(tablename)
         sql = sql[:-1] + ")"
-
         self.ConnDB.exec(self.conn_db, sql)
+
         return tablename, sql
 
     # insert into

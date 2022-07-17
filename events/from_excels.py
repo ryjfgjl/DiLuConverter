@@ -72,6 +72,9 @@ class FromExcels:
 
     def get_data(self, excel):
         na_values = self.values['na_values'].split(',')
+        na_filter = True
+        if len(na_values) == 0:
+            na_filter = False
         if not self.values['header']:
             header = 0
         else:
@@ -87,15 +90,15 @@ class FromExcels:
                 csv_encoding = self.values['csv_encoding']
 
             try:
-                dataset = pd.read_csv(csv, encoding=csv_encoding, dtype=str, na_values=na_values,
+                dataset = pd.read_csv(csv, encoding=csv_encoding, dtype=str, na_values=na_values, na_filter=na_filter,
                                       keep_default_na=False, header=header, engine='c')
             except UnicodeDecodeError:
                 try:
-                    dataset = pd.read_csv(csv, encoding='utf8', dtype=str, na_values=na_values,
+                    dataset = pd.read_csv(csv, encoding='utf8', dtype=str, na_values=na_values, na_filter=na_filter,
                                           keep_default_na=False, header=header, engine='c')
                 except UnicodeDecodeError:
                     try:
-                        dataset = pd.read_csv(csv, encoding='ascii', dtype=str, na_values=na_values,
+                        dataset = pd.read_csv(csv, encoding='ascii', dtype=str, na_values=na_values, na_filter=na_filter,
                                               keep_default_na=False, header=header, engine='c')
                     except UnicodeDecodeError:
                         with open(csv, 'rb') as f:
@@ -106,15 +109,15 @@ class FromExcels:
                         encode = chardet.detect(bytes)['encoding']
                         #if encode == 'ascii':
                         #    encode = 'ansi'  # ansi is a super charset of ascii
-                        dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values,
+                        dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values, na_filter=na_filter,
                                               keep_default_na=False, header=header, engine='c')
             datasets['sheet1'] = dataset
 
         # excel
         if re.fullmatch(r"^.*?\.xls[x|m]?$", excel, flags=re.IGNORECASE):
             excel = self.values['file_dir'] + "/" + excel
-            datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, header=header,
-                                     sheet_name=None)
+            datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, na_filter=na_filter,
+                                     header=header, sheet_name=None)
         return datasets
 
     # parse data in sheet

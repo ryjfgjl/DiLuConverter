@@ -1,12 +1,14 @@
 """
 Tool Name: ExcelToDatabase
-Version: V5.0
 Bref: A tool which can batch import multiple excel files into mysql/oracle/sql server/hive database automatically.
 Feature: Batch Automation, One-Click, High Speed, Intelligent, Advanced Options, Schedule
 Tested Environment: Windows/Linux, MySQL/Oracle/SQL Server/Hive, Excel(xls,xlsx,csv,xlsm)
 Author: ryjfgjl
 Help Email: 2577154121@qq.com
 QQ Group: 788719152
+
+Copyright (c) 2022 ryjfgjl
+This program is a free software and it is under the MIT License.
 """
 import PySimpleGUI as sg
 import traceback
