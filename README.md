@@ -1,13 +1,16 @@
 # ExcelToDatabase: batch import excel files into database
 ![image](https://user-images.githubusercontent.com/39375647/177957033-eff740df-22f4-4ce5-af93-dde3c95187c7.png)
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with all kinds of problem when manually import excel any more
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with any kinds of problem when manually import excel any more
 
 ## Features
-### Easily
+### Batch
+  The best feature is batch import one or more excel one time, but not one to one import like navicate
+
+### Easy
   Only need you provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
-### Quickly: 
+### Quick: 
   Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
 
 ### Intelligent: 
@@ -22,7 +25,7 @@
 ## Where to get it
   The source code is here.
 
-  The packaged executable program(.exe on windows or a file on linux) are available, you can send an email 2577154121@qq.com to get it.
+  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from [https://sourceforge.net/projects/exceltodatabase/].
 
 ## Usage
 **Start Program**
@@ -34,7 +37,6 @@
 
   On Windows: ExcelToDatabase.exe
 
-  On Linux: ./ExcelToDatabase
 
 **Choose and Input**
  
@@ -76,36 +78,36 @@
 * Append: just insert data into table(table needs exist in the database), according to table name + column name to match, only import data in matched column to the matched table, unmatched column will be ignored 
 
 ### Advanced：
-  #### CSV Encoding：
+  #### Encoding of CSV：
     Tools can auto-detect encoding of csv files(default), 
     and you can choose or input other value
-  #### Replace To NULL：
-    values populated will be replaced to null
+  #### Replace Values to Null：
+    values populated(comma separated) will be replaced to null
   #### Add Table Prefix：
     The value populated will be added to table name before
-  #### Append all data to one exists table：
+  #### Append All Data to One Exists Table：
     Under Append mode, import all data to the table populated
-  #### The Column on row：
+  #### The Header on Row：
     Set which row as Column name
-  #### Skip Blank Rows：
+  #### Skip Blank Lines：
     Skip Blank Rows
   #### Trim Spaces：
     Trim spaces around the data
   #### Skip Blank Sheets：
     Ignore sheet if there is no data in it
-  #### Add a column is table name：
+  #### Add a Column, Values is The Table Name：
     For imported table, add a column which value is its table name
-  #### Include Sub Directories
+  #### Recursion of Directories
     Recursive directories to find all excel files
-  #### Transform Chinese to First Letter
+  #### Transform Chinese in Table/Column Name to The First Letter
     Transform chinese in table name and column name to the first letter of its pinyin
-  #### Run sql before starting
+  #### Run Sql Before Starting
     When starting import, run sql in the sql file choosed before
-  #### Run sql after completing
+  #### Run Sql After Comleting
     When complete import, run sql in the sql file choosed after
 
 ## How the tool works?
-  This show some logic when the tool work
+  Some logic is described below when the tool work
   ## How to define table name：
     If only one sheet in excel >> excel name
     If multipule sheets in excel >> excel name + '_' + sheet name
