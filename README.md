@@ -152,7 +152,7 @@
 
 # Getting Help
   * Email: 2577154121@qq.com
-  * QQ Group: 788719152
+
 
 
 
