@@ -14,10 +14,11 @@ import pypinyin as pn
 
 class FromExcels:
 
-    def __init__(self, values):
-        self.values = values
+    def __init__(self):
+        self.values = {}
 
     def get_excels(self):
+
         excels_dict = defaultdict()
         if self.values['loop_subdir'] and self.values['source'] == 'D':
             excels = []
@@ -68,6 +69,7 @@ class FromExcels:
                         tablename = re.sub(r"[^\w]+", "_", tablename, flags=re.IGNORECASE)
 
                     excels_dict[excel] = tablename
+
         return excels_dict
 
     def get_data(self, excel):
@@ -78,7 +80,13 @@ class FromExcels:
         if not self.values['header']:
             header = 0
         else:
-            header = int(self.values['header'])
+            header = int(self.values['header'])-1
+        if not self.values['data_row']:
+            data_row = []
+        else:
+            data_row = []
+            for i in range(header+1, int(self.values['data_row'])-1):
+                data_row.append(i)
         # csv
         if re.fullmatch(r"^.*?\.csv$", excel, flags=re.IGNORECASE):
             datasets = defaultdict()
@@ -91,15 +99,15 @@ class FromExcels:
 
             try:
                 dataset = pd.read_csv(csv, encoding=csv_encoding, dtype=str, na_values=na_values, na_filter=na_filter,
-                                      keep_default_na=False, header=header, engine='c')
+                                      keep_default_na=False, header=header, engine='c', skiprows=lambda x:x in data_row)
             except UnicodeDecodeError:
                 try:
                     dataset = pd.read_csv(csv, encoding='utf8', dtype=str, na_values=na_values, na_filter=na_filter,
-                                          keep_default_na=False, header=header, engine='c')
+                                          keep_default_na=False, header=header, engine='c', skiprows=lambda x:x in data_row)
                 except UnicodeDecodeError:
                     try:
                         dataset = pd.read_csv(csv, encoding='ascii', dtype=str, na_values=na_values, na_filter=na_filter,
-                                              keep_default_na=False, header=header, engine='c')
+                                              keep_default_na=False, header=header, engine='c', skiprows=lambda x:x in data_row)
                     except UnicodeDecodeError:
                         with open(csv, 'rb') as f:
                             bytes = f.read()
@@ -110,14 +118,14 @@ class FromExcels:
                         #if encode == 'ascii':
                         #    encode = 'ansi'  # ansi is a super charset of ascii
                         dataset = pd.read_csv(csv, encoding=encode, dtype=str, na_values=na_values, na_filter=na_filter,
-                                              keep_default_na=False, header=header, engine='c')
+                                              keep_default_na=False, header=header, engine='c', skiprows=lambda x:x in data_row)
             datasets['sheet1'] = dataset
 
         # excel
         if re.fullmatch(r"^.*?\.xls[x|m]?$", excel, flags=re.IGNORECASE):
             excel = self.values['file_dir'] + "/" + excel
             datasets = pd.read_excel(excel, dtype=str, na_values=na_values, keep_default_na=False, na_filter=na_filter,
-                                     header=header, sheet_name=None)
+                                     header=header, sheet_name=None, skiprows=lambda x:x in data_row)
         return datasets
 
     # parse data in sheet

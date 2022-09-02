@@ -1,12 +1,27 @@
-from pyhive import hive
-import pandas as pd
-connect = hive.connect(host='192.168.0.101', port=10001, username='grid', password='grid', database='test',auth="CUSTOM")
-cur = connect.cursor()
-from sqlalchemy import create_engine
-data = [(None, '1', 'c', None), (None, 'vvvvvvvvvvv', '2021/9/12', None), (None, 'f', None, None), (None, None, '#NAME?', None), (None, None, '#VALUE!', None), (None, None, 'NA', None)]
-sql = 'insert into `csv_zw_utf8`(`2`,`a`,`dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd`,`zzzzzzzz10zzzzzzzz20zzzzzzzz30zzzzzzzz40zzzzzzzz50zzzzzzzz60zz`) values(%s,%s,%s,%s)'
-cur.executemany(sql, data)
-df = pd.DataFrame(data)
-engine = create_engine("hive://{0}:{1}@{2}:{3}/{4}".format('grid','grid','192.168.0.101',10001,
-                                                                   'test'),connect_args={'auth': 'CUSTOM'},)
-df.to_sql('csv_zw_utf8', engine, if_exists='append', index=False, method='multi')
+import PySimpleGUI as sg
+import time
+
+def my_function():
+    time.sleep(30)
+
+def my_function_with_parms(duration):
+    time.sleep(duration)
+    return 'My Return Value'
+
+layout = [  [sg.Text('Call a lengthy function')],
+            [sg.Button('Start'), sg.Button('Start 2'), sg.Button('Exit')]  ]
+
+window = sg.Window('Long Operation Example', layout)
+
+while True:
+    event, values = window.read()
+    print(event, values)
+    if event == sg.WIN_CLOSED or event == 'Exit':
+        break
+    if event == 'Start':
+        window.perform_long_operation(my_function, '-FUNCTION COMPLETED-')
+    elif event == 'Start 2':
+        window.perform_long_operation(lambda: my_function_with_parms(10), '-FUNCTION COMPLETED-')
+    elif event == '-FUNCTION COMPLETED-':
+        sg.popup('Your function completed!')
+window.close()

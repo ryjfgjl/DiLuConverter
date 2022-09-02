@@ -10,6 +10,8 @@ added_files = [
          ( 'common', 'common' ),
 		 ( 'events', 'events' ),
          ( 'gui', 'gui' )
+         ( 'saved_configuration', 'saved_configuration' )
+         ( 'setting', 'setting' )
          ]
 
 a = Analysis(

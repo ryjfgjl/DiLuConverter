@@ -4,26 +4,24 @@
 ##############################################################
 
 import numpy as np
-from common.handleconfig import HandleConfig
-from common.conndb import ConnDB
 
 
 class ToOracle:
 
-    def __init__(self, values):
+    def __init__(self, values, ConnDB, dbconn, cur):
         self.values = values
-        self.ConnDB = ConnDB(values)
-        self.HandleConfig = HandleConfig()
-        self.conn_db = self.ConnDB.conndb()
+        self.ConnDB = ConnDB
+        self.dbconn = dbconn
+        self.cur = cur
 
     # create table
     def create_table(self, col_maxlen, tablename):
         sql = "select 1 from all_tables where owner = '{}' and table_name = '{}'".format(self.values['user'].upper(),
                                                                                          tablename)
-        cnt = self.ConnDB.exec(self.conn_db, sql)
+        cnt = self.ConnDB.exec(self.cur, sql)
         if len(cnt) > 0:
             sql = 'drop table "{}"'.format(tablename)
-            self.ConnDB.exec(self.conn_db, sql)
+            self.ConnDB.exec(self.cur, sql)
         sql = "create table \"{0}\"(".format(tablename)
         for col, maxLen in col_maxlen.items():
             colType = "varchar(255)"
@@ -37,7 +35,7 @@ class ToOracle:
         if self.values['add_tname']:
             sql = sql + '"table_name" varchar(255) default \'{0}\','.format(tablename)
         sql = sql[:-1] + ")"
-        self.ConnDB.exec(self.conn_db, sql)
+        self.ConnDB.exec(self.cur, sql)
 
         return tablename, sql
 
@@ -47,12 +45,31 @@ class ToOracle:
             return
         sql = "select column_name from ALL_TAB_COLUMNS " \
               "where OWNER = '{0}' and table_name = '{1}'".format(self.values['user'].upper(), tablename)
-        columns = self.ConnDB.exec(self.conn_db, sql)
+        columns = self.ConnDB.exec(self.cur, sql)
         exists_columns = []
         for column in columns:
             if column[0] in dataset.columns:
                 exists_columns.append(column[0])
         dataset = dataset[exists_columns]
+
+        if self.values['mode3']:
+            sql = f"select cu.column_name from user_cons_columns cu, user_constraints au " \
+                  f"where cu.constraint_name = au.constraint_name " \
+                  "and au.constraint_type = 'P' and au.table_name = '{table_name}'"
+            keys = self.ConnDB.exec(self.cur, sql)
+            if not keys:
+                raise NoPrimaryKeysError('There is no primary key on the table')
+
+            sql = ''
+            for index, row in dataset.iterrows():
+                where = ' where 1=1'
+                for key in keys:
+                    key = key[0]
+                    where += f' and "{key}" = "{row[key]}"'
+                sql += f'delete from "{tablename}" {where};'
+            self.ConnDB.exec(self.cur, sql)
+
+
         columns = dataset.columns
         dataset = np.array(dataset)
         datalist = dataset.tolist()
@@ -67,4 +84,8 @@ class ToOracle:
         sql = 'insert into "%s"(%s) values(' % (tablename, '"' + cols + '"')
         sql = sql + '%s)' % v
 
-        self.ConnDB.exec(self.conn_db, sql, datalist=datalist)
+        self.ConnDB.exec(self.cur, sql, datalist=datalist)
+
+class NoPrimaryKeysError(Exception):
+    # when skip empty table, raise this exception
+    pass

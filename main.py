@@ -10,124 +10,30 @@ QQ Group: 788719152
 Copyright (c) 2022 ryjfgjl
 This program is a free software and it is under the MIT License.
 """
-import PySimpleGUI as sg
-import traceback
 import sys
 
-from common.handleconfig import HandleConfig
-from gui.gui import Gui
-import _tkinter
+VERSION = '5.1'
 
-Gui = Gui()
+if len(sys.argv) <= 1:
+    # run with window
+    # cmd:python main.py
+    # windows:ExcelToDatabase.exe
+    # linux:./ExcelToDatabase
+    from events.window import Window
 
-Version = '5.0'
+    Window = Window()
+    Window.VERSION = VERSION
+    Window.main()
+else:
+    # run on background without window
+    # need add a config file as a parameter, tool reads all configuration from a config.ini
+    # and run on background without gui
+    # cmd:python main.py config.ini
+    # windows: ExcelToDatabase.exe config.ini
+    # linux: ./ExcelToDatabase config.ini
+    configini = sys.argv[1]
+    from events.background import Background
 
-try:
-    if len(sys.argv) <= 1:
-        # normal start, run with a gui
-        # cmd:python main.py
-        # windows:ExcelToDatabase.exe
-        # linux:./ExcelToDatabase
-
-        HandleConfig = HandleConfig()
-
-        def exception_format():
-            # format exception output
-            return "".join(traceback.format_exception(
-                sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2], limit=-1
-            ))
-
-        default_values = HandleConfig.get_defaults()
-
-        def show_window(values):
-            window = sg.Window('ExcelToDatabase {0}'.format(Version), Gui.generate_layout(values),
-                           location=(700, 50), icon='ExcelToDatabase.ico')
-            window.Finalize()
-            return window
-        window = show_window(default_values)
-
-
-        while True:
-            # keep running with a gui event if any error occurs
-            # until click x to close
-            try:
-                event, values = window.read()
-
-                if values is not None:
-                    values['language'] = default_values['language']
-                    values['dbtype'] = default_values['dbtype']
-                    values['schedule'] = False
-                    values['source'] = default_values['source']
-                    if values['mode1']:
-                        values['mode'] = 'O'
-                    else:
-                        values['mode'] = 'A'
-
-                if event == "start":
-                    # when click start button
-                    # program begins to import excels
-                    window['start'].update(disabled=True)
-                    from events.importer import Importer
-                    Importer = Importer(values)
-                    Importer.main(window)
-                    window['start'].update(disabled=False)
-                elif event in ['MySQL', 'Oracle', 'SQL Server', 'Hive']:
-                    # change database type
-                    values['dbtype'] = event
-                    window['dbtype'].update(event)
-                elif event in ['English', '中文']:
-                    # change language
-                    values['language'] = event
-                    window.close()
-                    window = show_window(values)
-                elif event in ['Directory', 'Files', '目录', '文件']:
-                    # change data source
-                    if event in ['Directory', '目录']:
-                        source = 'D'
-                    else:
-                        source = 'F'
-                    values['source'] = source
-                    window.close()
-                    window = show_window(values)
-                elif event in ['About', '关于']:
-                    msg = """ExcelToDatabase V{0}
-                    \nDocument: https://blog.csdn.net/qq_37955852/article/details/122488507\nSource Code: https://github.com/ryjfgjl/ExcelToDatabase\nHelp Email: 2577154121@qq.com\nQQ Group: 788719152
-                    \n\nCopyright (c) 2022 ryjfgjl            
-                            """.format(Version)
-                    window['output'].print(msg)
-                elif event == sg.WIN_CLOSED:
-                    break
-            except Exception  as reason:
-                # throw exception
-                window['start'].update(disabled=False)
-                #sg.PopupError(exception_format())
-                sg.PopupError(reason)
-            finally:
-                if event != sg.WIN_CLOSED:
-                    HandleConfig.save_defaults(values)
-                default_values = HandleConfig.get_defaults()
-
-    else:
-        # command line without gui
-        # need add a config file as a parameter, tool reads all configuration from a config.ini
-        # and run on background without gui
-        # cmd:python main.py config.ini
-        # windows: ExcelToDatabase.exe config.ini
-        # linux: ./ExcelToDatabase config.ini
-        configini = sys.argv[1]
-        HandleConfig = HandleConfig(configini)
-        values = HandleConfig.get_defaults()
-        values['schedule'] = True
-        values['mode1'] = False
-        values['mode2'] = False
-        if values['mode'] == 'O':
-            values['mode1'] = True
-        else:
-            values['mode2'] = True
-        from events.importer import Importer
-        Importer = Importer(values)
-        Importer.main()
-except _tkinter.TclError as reason:
-    pass
-except Exception  as reason:
-    print(reason)
+    Background = Background()
+    Background.configini = configini
+    Background.main()

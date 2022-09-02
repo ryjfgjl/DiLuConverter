@@ -11,31 +11,30 @@ from pyhive import hive
 
 class ConnDB:
 
-    def __init__(self, values):
-        self.values = values
-        self.dbtype = self.values["dbtype"]
+    def __init__(self):
+        self.values = {}
 
-    def conndb(self, charset='utf8'):
+    def conndb(self):
         # distribute a connection to database
+        dbtype = self.values['dbtype']
         host = self.values['host']
         port = int(self.values['port'])
         user = self.values['user']
         passwd = self.values['passwd']
         db = self.values['dbname']
-        if self.dbtype == 'MySQL':
-            conn = pymysql.connect(host=host, user=user, passwd=passwd, port=port, charset=charset, database=db)
-        elif self.dbtype == 'Oracle':
-            conn = cx_Oracle.connect(user, passwd, host+':'+str(port)+'/'+db)
-        elif self.dbtype == 'SQL Server':
-            conn = pymssql.connect(host=host, user=user, password=passwd, port=port, charset=charset, database=db)
-        elif self.dbtype == 'Hive':
-            conn = hive.connect(host=host, username=user, password=passwd, port=port, database=db, auth="CUSTOM")
-        return conn
+        charset = 'utf8'
+        if dbtype == 'MySQL':
+            dbconn = pymysql.connect(host=host, user=user, passwd=passwd, port=port, charset=charset, database=db)
+        elif dbtype == 'Oracle':
+            dbconn = cx_Oracle.connect(user, passwd, host + ':' + str(port) + '/' + db)
+        elif dbtype == 'SQL Server':
+            dbconn = pymssql.connect(host=host, user=user, password=passwd, port=port, charset=charset, database=db)
+        elif dbtype == 'Hive':
+            dbconn = hive.connect(host=host, username=user, password=passwd, port=port, database=db, auth="CUSTOM")
+        return dbconn
 
-    def exec(self, conn, sql, datalist=None):
+    def exec(self, cur, sql, datalist=None):
         # execute sql
-        cur = conn.cursor()
-
         if datalist:
             # insert data
             cur.executemany(sql, datalist)
@@ -48,6 +47,4 @@ class ConnDB:
             results = cur.fetchall()
         except:
             results = None
-        cur.close()
-        conn.commit()
         return results

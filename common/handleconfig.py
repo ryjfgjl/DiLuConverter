@@ -8,34 +8,37 @@ import configparser
 
 class HandleConfig:
 
-    def __init__(self, configini=None):
+    def __init__(self):
         # when running in command line without gui, a config.ini is needed
         # when running with gui, config.ini is under the same directory with ExcelToDatabase program
-        if configini != None:
-            self.configini = configini
-        else:
-            realpath = os.path.split(os.path.realpath(sys.argv[0]))[0]
-            self.configini = realpath + r"/config.ini"
+        self.configini ="config.ini"
+        self.conf = configparser.ConfigParser()
+        self.conf.read(self.configini, encoding='utf8')
+        current_config = self.conf.get('config', 'current_config')
+        if current_config:
+            self.configini = f"saved_configuration/{current_config}.ini"
 
     def handle_config(self, option=None, section=None, key=None, value=None):
-        conf = configparser.ConfigParser()
-        conf.read(self.configini, encoding='utf8')
+
+        self.conf.read(self.configini, encoding='utf8')
         if option == 'g':
-            value = conf.get(section, key)
+            value = self.conf.get(section, key)
             return value
         elif option == 's':
-            conf.set(section, key, value)
+            self.conf.set(section, key, value)
         elif option == "a":
-            conf.add_section(section)
+            self.conf.add_section(section)
         elif option == "rs":
-            conf.remove_section(section)
+            self.conf.remove_section(section)
         elif option == "ro":
-            conf.remove_option(section, key)
+            self.conf.remove_option(section, key)
 
         with open(self.configini, 'w', encoding='utf8') as fw:
-            conf.write(fw)
+            self.conf.write(fw)
 
     def get_defaults(self):
+        # config
+        current_config = self.handle_config("g", "config", "current_config")
         # general
         language = self.handle_config("g", "general", "language")
         source = self.handle_config("g", "general", "source")
@@ -57,6 +60,7 @@ class HandleConfig:
 
         tname = self.handle_config("g", "advanced", 'tname')
         header = self.handle_config("g", "advanced", 'header')
+        data_row = self.handle_config("g", "advanced", 'data_row')
         del_blank_lines = eval(self.handle_config("g", "advanced", 'del_blank_lines'))
 
         trim = eval(self.handle_config("g", "advanced", 'trim'))
@@ -69,6 +73,8 @@ class HandleConfig:
         sql_after = self.handle_config("g", "advanced", 'sql_after')
 
         default_values = {
+            'current_config': current_config,
+
             'language': language,
             'source': source,
             'mode': mode,
@@ -89,6 +95,7 @@ class HandleConfig:
             'prefix': prefix,
             'tname': tname,
             'header': header,
+            'data_row': data_row,
 
             'del_blank_lines': del_blank_lines,
             'trim': trim,
@@ -105,13 +112,17 @@ class HandleConfig:
         return default_values
 
     def save_defaults(self, values):
+        # current_config
+        self.handle_config("s", "config", "current_config", values['current_config'])
         # general
         self.handle_config("s", "general", "language", values['language'])
         self.handle_config("s", "general", "source", values['source'])
         if values['mode1']:
             mode = 'O'
-        else:
+        elif values['mode2']:
             mode = 'A'
+        else:
+            mode = 'M'
         self.handle_config("s", "general", "mode", mode)
         # dbinfo
         self.handle_config("s", "dbinfo", "dbtype", values['dbtype'])
@@ -130,6 +141,7 @@ class HandleConfig:
         self.handle_config("s", "advanced", "prefix", values['prefix'])
         self.handle_config("s", "advanced", "tname", values['tname'])
         self.handle_config("s", "advanced", "header", values['header'])
+        self.handle_config("s", "advanced", "data_row", values['data_row'])
 
         self.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.handle_config("s", "advanced", "trim", str(values['trim']))
