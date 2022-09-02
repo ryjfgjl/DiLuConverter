@@ -2,7 +2,7 @@
 ![image](https://user-images.githubusercontent.com/39375647/177957033-eff740df-22f4-4ce5-af93-dde3c95187c7.png)
 
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to deal with any kinds of problem when manually import excel any more
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive).It frees your hands when you have many excels need to import into database, or you do not want to  deal with any kinds of problem when manually import excel any more
 
 ## Features
 ### Batch
@@ -83,6 +83,8 @@
 
 * Append: just insert data into table(table needs exist in the database), according to table name + column name to match, only import data in matched column to the matched table, unmatched column will be ignored 
 
+* Merge: based on the primary keys on the table, delete then insert.
+
 ### Advanced：
   #### Encoding of CSV：
     Tools can auto-detect encoding of csv files(default), 
@@ -111,6 +113,10 @@
     When starting import, run sql in the sql file choosed before
   #### Run Sql After Comleting
     When complete import, run sql in the sql file choosed after
+  #### Save Current Configuration
+    Save Current Configuration
+  #### Load Saved Configuration
+    Load Saved Configuration
 
 ## How the tool works?
   Some logic is described below when the tool work
