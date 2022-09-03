@@ -82,8 +82,12 @@ class Gui:
                  sg.Input(values['tname'], key='tname', size=(25, 1), ), ],
                 [sg.Text('The Header on Row:', size=(15, 1)),
                  sg.Input(values['header'], key='header', size=(5, 1)), sg.Text('', size=(3, 1)), ],
-                [sg.Text('The Data Start from Row:', size=(15, 1)),
+                [sg.Text('The Data Start from Row:', size=(20, 1)),
                  sg.Input(values['data_row'], key='data_row', size=(5, 1)), sg.Text('', size=(3, 1)), ],
+                [
+                    sg.Text('Add a Column, Value is The Excel Name:', size=(32, 1)),
+                    sg.Input(values['add_tname'], key='add_tname', size=(15, 1)), sg.Text('', size=(3, 1)),
+                ],
 
                 [sg.Checkbox('Skip Blank Lines', key='del_blank_lines', size=(15, 1),
                              default=values['del_blank_lines']),
@@ -92,9 +96,6 @@ class Gui:
                              default=values['skip_blank_sheet']),
                  ],
 
-                [sg.Checkbox('Add a Column, Values is The Table Name', key='add_tname', size=(35, 1),
-                             default=values['add_tname']),
-                 ],
                 [sg.Checkbox('Recursion of Directories', key='loop_subdir', size=(25, 1),
                              default=values['loop_subdir']), ],
                 [sg.Checkbox('Transform Chinese in Table/Column Name to The First Letter', key='trf_cn', size=(45, 1),
@@ -106,12 +107,12 @@ class Gui:
                 [sg.Text('Run Sql After Comleting:', size=(17, 1)),
                  sg.Input('{}'.format(values['sql_after']), key='sql_after', size=(28, 1)),
                  sg.FileBrowse(initial_folder='{}'.format(values['sql_after']), button_text=' Choose ')],
-                [sg.Text('Save Current Configuration:', size=(15, 1)),
-                 sg.Input(values['current_config'], key='current_config', size=(32, 1)),
+                [sg.Text('Save Current Configuration:', size=(20, 1)),
+                 sg.Input(values['current_config'], key='current_config', size=(27, 1)),
                  sg.Button(' Save ', key='save_config')],
-                [sg.Text('Load Saved Configuration:', size=(15, 1)),
+                [sg.Text('Load Saved Configuration:', size=(20, 1)),
                  sg.Combo([i[:-4] for i in os.listdir('saved_configuration')],
-                          key='saved_config', size=(30, 1)),
+                          key='saved_config', size=(25, 1)),
                  sg.Button(' Load ', key='load_config')],
             ]
 
@@ -190,7 +191,7 @@ class Gui:
                 [sg.Text('数据开始行数:', size=(15, 1)),
                  sg.Input(values['data_row'], key='data_row', size=(5, 1)), sg.Text('', size=(3, 1)), ],
                 [
-                    sg.Text('添加一列值为表名:', size=(15, 1)),
+                    sg.Text('添加一列值为excel文件名的列:', size=(25, 1)),
                     sg.Input(values['add_tname'], key='add_tname', size=(15, 1)), sg.Text('', size=(3, 1)),
                 ],
 
