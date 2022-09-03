@@ -55,9 +55,9 @@ class ToMySQL:
             for column in columns:
                 if column[0] in dataset.columns:
                     exists_columns.append(column[0])
-            if self.values['add_tname']:
-                exists_columns.remove(self.values['add_tname'])
             if not exists_columns:
+                raise NoMatchedColumnError('no matched columns')
+            if self.values['add_tname'] and len(exists_columns) == 1 and  exists_columns[0] == self.values['add_tname']:
                 raise NoMatchedColumnError('no matched columns')
             dataset = dataset[exists_columns]
 
