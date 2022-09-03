@@ -47,6 +47,10 @@ class ToSqlserver:
         for column in columns:
             if column[0] in dataset.columns:
                 exists_columns.append(column[0])
+        if self.values['add_tname']:
+            exists_columns.remove(self.values['add_tname'])
+        if not exists_columns:
+            raise NoMatchedColumnError('no matched columns')
         dataset = dataset[exists_columns]
 
         if self.values['mode3']:
@@ -87,5 +91,8 @@ class ToSqlserver:
         self.ConnDB.exec(self.cur, sql, datalist=datalist)
 
 class NoPrimaryKeysError(Exception):
+    # when skip empty table, raise this exception
+    pass
+class NoMatchedColumnError(Exception):
     # when skip empty table, raise this exception
     pass
