@@ -9,9 +9,9 @@ added_files = [
          ( 'LICENSE', '.' ),
          ( 'common', 'common' ),
 		 ( 'events', 'events' ),
-         ( 'gui', 'gui' )
-         ( 'saved_configuration', 'saved_configuration' )
-         ( 'setting', 'setting' )
+         ( 'gui', 'gui' ),
+         ( 'saved_configuration', 'saved_configuration' ),
+         ( 'setting', 'setting' ),
          ]
 
 a = Analysis(

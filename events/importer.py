@@ -136,7 +136,7 @@ class Importer:
                             if len(dataset.columns) == 0 or (dataset.empty and self.values['skip_blank_sheet']):
                                 raise EmptyError("Empty Table")
 
-                            col_maxlen, dataset = self.FromExcels.parse_data(dataset)
+                            col_maxlen, dataset = self.FromExcels.parse_data(dataset, excel)
 
                             # create table
                             created_sql = None

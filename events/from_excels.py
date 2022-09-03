@@ -129,14 +129,15 @@ class FromExcels:
         return datasets
 
     # parse data in sheet
-    def parse_data(self, dataset):
+    def parse_data(self, dataset, excel):
         dataset = dataset.fillna(value="")
         # trim space
         if self.values['trim']:
             f = lambda x: str(x).strip()
             dataset = dataset.applymap(f)
-        f = lambda x: len(x)
+
         # get length of data
+        f = lambda x: len(x)
         df1 = dataset.applymap(f)
         f = lambda x: max(x)
         # max length
@@ -158,7 +159,8 @@ class FromExcels:
             if 'unnamed: ' not in col:
                 recol = 0
                 break
-        if recol and self.values['del_blank_lines'] and self.values['header'] != '0':
+
+        if recol and self.values['del_blank_lines'] and not self.values['header']:
             columns = dataset[0:1]
             columns = np.array(columns)
             columns = columns.tolist()[0]
@@ -209,13 +211,17 @@ class FromExcels:
 
             if c == 0:
                 break
-
         dataset.columns = columns
-        columns = np.array(columns)
-        columns = columns.tolist()
+        if self.values['add_tname']:
+            if self.values['add_tname'] in dataset.columns:
+                raise RepeatedError('added column is repeated with the column in excel')
+            else:
+                dataset[self.values['add_tname']] = excel
+
+        f = lambda x: len(x)
+        df1 = dataset.applymap(f)
         f = lambda x: max(x)
         # max length
-        df1.columns = columns
         df2 = df1.apply(f, axis=0)
         col_maxlen = df2.to_dict()
         # replace '' to null
@@ -224,4 +230,6 @@ class FromExcels:
 
         return col_maxlen, dataset
 
-
+class RepeatedError(Exception):
+    # when skip empty table, raise this exception
+    pass

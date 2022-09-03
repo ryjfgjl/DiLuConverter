@@ -15,7 +15,7 @@ class ToSqlserver:
         self.cur = cur
 
     # create table
-    def create_table(self, col_maxlen, tablename):
+    def create_table(self, col_maxlen, tablename, excel):
         sql = "select 1 from sysobjects where xtype = 'U' and name = '{}'".format(tablename)
         cnt = self.ConnDB.exec(self.cur, sql)
         if len(cnt) > 0:
@@ -31,8 +31,7 @@ class ToSqlserver:
                     colType = "varchar({})".format(maxLen * 6)
 
             sql = sql + "\"{0}\" {1} default null,".format(col, colType)
-        if self.values['add_tname']:
-            sql = sql + "table_name varchar(255) default '{0}',".format(tablename)
+
         sql = sql[:-1] + ")"
 
         self.ConnDB.exec(self.cur, sql)

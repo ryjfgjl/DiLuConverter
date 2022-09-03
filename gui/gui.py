@@ -189,13 +189,17 @@ class Gui:
                  ],
                 [sg.Text('数据开始行数:', size=(15, 1)),
                  sg.Input(values['data_row'], key='data_row', size=(5, 1)), sg.Text('', size=(3, 1)), ],
+                [
+                    sg.Text('添加一列值为表名:', size=(15, 1)),
+                    sg.Input(values['add_tname'], key='add_tname', size=(15, 1)), sg.Text('', size=(3, 1)),
+                ],
 
                 [sg.Checkbox('删除空行', key='del_blank_lines', size=(10, 1), default=values['del_blank_lines']),
                  sg.Checkbox('去除字符前后空格', key='trim', size=(15, 1), default=values['trim']),
                  sg.Checkbox('跳过空表', key='skip_blank_sheet', size=(6, 1), default=values['skip_blank_sheet']),
                  ],
 
-                [sg.Checkbox('添加一列值为表名', key='add_tname', size=(15, 1), default=values['add_tname']),
+                [
                  sg.Checkbox('遍历子目录', key='loop_subdir', size=(9, 1), default=values['loop_subdir']),
                  ],
                 [sg.Checkbox('转换表名和列名中文为拼音首字母', key='trf_cn', size=(33, 1), default=values['trf_cn']), ],

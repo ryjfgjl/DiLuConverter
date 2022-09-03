@@ -61,11 +61,11 @@ class HandleConfig:
         tname = self.handle_config("g", "advanced", 'tname')
         header = self.handle_config("g", "advanced", 'header')
         data_row = self.handle_config("g", "advanced", 'data_row')
-        del_blank_lines = eval(self.handle_config("g", "advanced", 'del_blank_lines'))
+        add_tname = self.handle_config("g", "advanced", 'add_tname')
 
+        del_blank_lines = eval(self.handle_config("g", "advanced", 'del_blank_lines'))
         trim = eval(self.handle_config("g", "advanced", 'trim'))
         skip_blank_sheet = eval(self.handle_config("g", "advanced", 'skip_blank_sheet'))
-        add_tname = eval(self.handle_config("g", "advanced", 'add_tname'))
         loop_subdir = eval(self.handle_config("g", "advanced", 'loop_subdir'))
         trf_cn = eval(self.handle_config("g", "advanced", 'trf_cn'))
 
@@ -96,12 +96,12 @@ class HandleConfig:
             'tname': tname,
             'header': header,
             'data_row': data_row,
+            'add_tname': add_tname,
 
             'del_blank_lines': del_blank_lines,
             'trim': trim,
             'skip_blank_sheet': skip_blank_sheet,
 
-            'add_tname': add_tname,
             'loop_subdir': loop_subdir,
             'trf_cn': trf_cn,
 
@@ -142,12 +142,12 @@ class HandleConfig:
         self.handle_config("s", "advanced", "tname", values['tname'])
         self.handle_config("s", "advanced", "header", values['header'])
         self.handle_config("s", "advanced", "data_row", values['data_row'])
+        self.handle_config("s", "advanced", "add_tname", values['add_tname'])
 
         self.handle_config("s", "advanced", "del_blank_lines", str(values['del_blank_lines']))
         self.handle_config("s", "advanced", "trim", str(values['trim']))
         self.handle_config("s", "advanced", "skip_blank_sheet", str(values['skip_blank_sheet']))
 
-        self.handle_config("s", "advanced", "add_tname", str(values['add_tname']))
         self.handle_config("s", "advanced", "loop_subdir", str(values['loop_subdir']))
         self.handle_config("s", "advanced", "trf_cn", str(values['trf_cn']))
 
