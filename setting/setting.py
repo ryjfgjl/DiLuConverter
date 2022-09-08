@@ -1,3 +1,4 @@
+import webbrowser
 
 class Setting:
 
@@ -6,7 +7,6 @@ class Setting:
         self.values = {}
         self.window = None
         self.show_window = None
-        self.VERSION = None
 
     def main(self):
         if self.event in ['English', '中文']:
@@ -29,18 +29,12 @@ class Setting:
             self.values['source'] = source
             self.window.close()
             self.window = self.show_window(self.values)
-        elif self.event in ['About', '关于']:
-            if self.event == 'About':
-                msg = """ExcelToDatabase V{0}
-                            \nDocument: https://github.com/ryjfgjl/ExcelToDatabase/blob/master/README.md\nHelp Email: 2577154121@qq.com
-                            \n\nCopyright (c) 2022 ryjfgjl            
-                                    """.format(self.VERSION)
+        elif self.event in ['Document', '在线文档']:
+            if self.event == 'Document':
+                webbrowser.open('https://github.com/ryjfgjl/ExcelToDatabase/blob/master/README.md')
             else:
-                msg = """ExcelToDatabase V{0}
-                                                    \n在线文档: https://blog.csdn.net/qq_37955852/article/details/122488507\nQQ交流群: 788719152
-                                                    \n\nCopyright (c) 2022 ryjfgjl            
-                                                            """.format(self.VERSION)
-            self.window['output'].print(msg)
+                webbrowser.open('https://blog.csdn.net/qq_37955852/article/details/122488507')
+
         elif self.event == 'save_config':
             if self.values['current_config']:
                 with open(f"saved_configuration/{self.values['current_config']}.ini", 'w', encoding='utf8') as fw:

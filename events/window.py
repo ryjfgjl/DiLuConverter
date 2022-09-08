@@ -82,7 +82,6 @@ class Window:
                     self.Setting.values = values
                     self.Setting.window = window
                     self.Setting.show_window = self.show_window
-                    self.Setting.VERSION = self.VERSION
                     window = self.Setting.main()
 
             except Exception as reason:

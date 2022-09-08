@@ -18,7 +18,7 @@ class Gui:
                 ['&Language', ['&中文', '&English']],
                 ['&Database', ['&MySQL', '&Oracle', '&SQL Server', '&Hive']],
                 ['&Data Source', ['&Directory', '&Files']],
-                ['&Help', ['&About']],
+                ['&Help', ['&Document']],
             ]
             # general
             layout_general = [
@@ -127,7 +127,7 @@ class Gui:
                 ['&语言', ['&中文', '&English']],
                 ['&数据库', ['&MySQL', '&Oracle', '&SQL Server', '&Hive']],
                 ['&数据源', ['&目录', '&文件']],
-                ['&帮助', ['&关于']],
+                ['&帮助', ['&在线文档']],
             ]
             # general
             layout_general = [
