@@ -26,6 +26,9 @@
 ### Schedule: 
   You can make a schedule using it on windows/linux.
 
+### Free: 
+  It is the free software under the MIT licese.
+
 ## Where to get it
   The open source code is on the [github](https://github.com/ryjfgjl/ExcelToDatabase).
 
