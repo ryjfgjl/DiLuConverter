@@ -15,7 +15,7 @@ class ToSqlserver:
         self.cur = cur
 
     # create table
-    def create_table(self, col_maxlen, tablename, excel):
+    def create_table(self, col_maxlen, tablename):
         sql = "select 1 from sysobjects where xtype = 'U' and name = '{}'".format(tablename)
         cnt = self.ConnDB.exec(self.cur, sql)
         if len(cnt) > 0:
