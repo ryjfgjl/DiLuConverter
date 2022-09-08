@@ -1,4 +1,4 @@
-# ExcelToDatabase: batch import excel files into database
+# ExcelToDatabase: batch import excel into database automatically
 ![image](https://user-images.githubusercontent.com/39375647/177957033-eff740df-22f4-4ce5-af93-dde3c95187c7.png)
 
 ## What is it?
