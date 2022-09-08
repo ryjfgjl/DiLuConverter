@@ -14,11 +14,11 @@
 ### Easy
   You only need to provide the location of excels and the connect information of database, the tool can work until all the excels are imported
 
-### Quick: 
-  Batch importting make it faster than manual tool like navicate over the count of your excels times. If you have 10 excels, it is faster 10x
+### Fast: 
+  The fastest, no others
 
 ### Intelligent: 
-  When you manually import excel into database using tool like navicate, whether if you feel sad when error occurs? Baddly, other error occurs when you just fix one. DO NOT WORRY! The tool can deal with them!
+  When you manually import excel into database, whether if you feel sad when error occurs? DO NOT WORRY! The tool can deal with them!
 
 ### Advanced: 
   Rich options could be custom choose to make more fuction come true.
@@ -29,7 +29,7 @@
 ## Where to get it
   The source code is here.
 
-  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from https://sourceforge.net/projects/exceltodatabase/.
+  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from [sourceforge]https://sourceforge.net/projects/exceltodatabase/.
 
 <a href="https://sourceforge.net/projects/exceltodatabase/files/latest/download"><img alt="Download ExcelToDatabase" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 
