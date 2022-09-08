@@ -27,24 +27,19 @@
   You can make a schedule using it on windows/linux.
 
 ## Where to get it
-  The source code is here.
+  The open source code is on the [github](https://github.com/ryjfgjl/ExcelToDatabase).
 
-  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, you can download it from [sourceforge]https://sourceforge.net/projects/exceltodatabase/.
+  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, 
+  you can download it from [sourceforge](https://sourceforge.net/projects/exceltodatabase/).
 
 <a href="https://sourceforge.net/projects/exceltodatabase/files/latest/download"><img alt="Download ExcelToDatabase" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 
 
 ## Usage
 **Start Program**
-* If you hive python environment, you can use command to start:
-
-    `python main.py`
-
-* If you get a packaged executable program:
-
-  On Windows: ExcelToDatabase.exe
+On Windows: ExcelToDatabase.exe
   
-  On Linux: ./ExcelToDatabase
+On Linux: ./ExcelToDatabase
 
 
 **Choose and Input**
@@ -100,14 +95,16 @@
     Under Append mode, import all data to the table populated
   #### The Header on Row：
     Set which row as Column name
+  #### The Data Start From Row：
+    The data start from the row
   #### Skip Blank Lines：
     Skip Blank Rows
   #### Trim Spaces：
     Trim spaces around the data
   #### Skip Blank Sheets：
     Ignore sheet if there is no data in it
-  #### Add a Column, Values is The Table Name：
-    For imported table, add a column which value is its table name
+  #### Add a Column, Values is The Excel Name：
+    For imported table, add a column which value is its excel name
   #### Recursion of Directories
     Recursive directories to find all excel files
   #### Transform Chinese in Table/Column Name to The First Letter
@@ -146,14 +143,7 @@
  
 ## How To Schedule
   The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
-  
-  * Python environment:
-
-    Windows: python main.py D:/config.ini
     
-    Linux:  python main.py /home/ryjfgjl/config.ini
-    
-  * Packaged Program:
  
     Windows: ExcelToDatabase.exe D:/config.ini
     
