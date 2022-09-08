@@ -6,7 +6,7 @@
 
 ## Features
 ### Automation
-  Based on the excel, the tool can create table and import data into the database automatically, or just append/merge the data based on the automatical mapping between the excel and database.
+  Based on the excel, the tool can create table and import data into the database automatically, or just append/merge the data based on the automatical mapping between the excel and databases.
   
 ### Batch
   Usually you only can import excel one by one using the other tool. But now, you can import all excels you want one time.
