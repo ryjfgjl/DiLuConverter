@@ -28,7 +28,6 @@
 
 
 ## Where to get it
-  The open source code is on the [github](https://github.com/ryjfgjl/ExcelToDatabase).
 
   The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, 
   
