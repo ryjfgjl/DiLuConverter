@@ -86,31 +86,40 @@ ExcelToDatabase.exe
 * Merge: based on the primary keys on the table, delete then insert.
 
 ### Advanced：
+  #### Recursion of Directories
+      Recursive directories to find all excel files
+  #### Only Import Excel Last Modified
+    Only Import Excel Last Modified since last imported.
   #### Encoding of CSV：
     Tools can auto-detect encoding of csv files(default), 
     and you can choose or input other value
   #### Replace Values to Null：
     values populated(comma separated) will be replaced to null
-  #### Add Table Prefix：
-    The value populated will be added to table name before
-  #### Append All Data to One Exists Table：
-    Under Append mode, import all data to the table populated
   #### The Header on Row：
     Set which row as Column name
   #### The Data Start From Row：
     The data start from the row
+
   #### Skip Blank Lines：
     Skip Blank Rows
   #### Trim Spaces：
     Trim spaces around the data
   #### Skip Blank Sheets：
     Ignore sheet if there is no data in it
-  #### Add a Column, Values is The Excel Name：
-    For imported table, add a column which value is its excel name
-  #### Recursion of Directories
-    Recursive directories to find all excel files
+
+  #### Append All Data to One Exists Table：
+    Under Append mode, import all data to the table populated
+  #### Truncate Target Table Before Append
+    Truncate Target Table Before Append
   #### Transform Chinese in Table/Column Name to The First Letter
     Transform chinese in table name and column name to the first letter of its pinyin
+  #### Add Table Prefix：
+    The value populated will be added to table name before
+  #### Add a Key Column, Value is The Row Number：
+    Add a Key Column, Value is The Row Number
+  #### Add a Column, Values is The Excel Name：
+    For imported table, add a column which value is its excel name
+  
   #### Run Sql Before Starting
     When starting import, run sql in the sql file choosed before
   #### Run Sql After Comleting
