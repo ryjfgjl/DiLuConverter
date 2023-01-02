@@ -1,8 +1,9 @@
 # ExcelToDatabase: batch import excel into database automatically
-![image](https://user-images.githubusercontent.com/39375647/177957033-eff740df-22f4-4ce5-af93-dde3c95187c7.png)
+![图片1](https://user-images.githubusercontent.com/39375647/210199959-95c0b199-17e9-49b0-b865-159709a636af.png)
+
 
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/hive). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one.
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one.
 
 ## Features
 ### Automation
@@ -25,11 +26,14 @@
 
 ### Schedule: 
   You can make a schedule using it on windows/linux.
+  
+### Realtime
+Sync data in excel into database in realtime.
 
 
 ## Where to get it
 
-  The packaged executable program(ExcelToDatabase.exe on windows or ExcelToDatabase on linux) is available, 
+  The packaged executable program(ExcelToDatabase.exe on windows) is available, 
   
   you can download it from [sourceforge](https://sourceforge.net/projects/exceltodatabase/).
 
@@ -38,21 +42,18 @@
 
 ## Usage
 **Start Program**
-On Windows: ExcelToDatabase.exe
-  
-On Linux: ./ExcelToDatabase
-
+ExcelToDatabase.exe
 
 **Choose and Input**
  
-    Choose the directory with excel files; 
+    Choose the directory or excel files; 
     Input target database information; 
     Choose import mode`
 
 **Click Start**
 
 ## Supported Environments: 
-  * Windows/Linux
+  * Windows
   * MySQL/Oracle/SQLServer/Hive
   * Excel(xls,xlsx,xlsm,csv)
 
@@ -61,7 +62,7 @@ On Linux: ./ExcelToDatabase
   English and Chinese you can choose to display
 
 ### Database
-  MySQL/Oracle/SQLServer/Hive, you can choose one database according to your target database
+  MySQL/Oracle/SQLServe, you can choose one database according to your target database
 
 ### Data Source
   * Directory: choose Directory as your data source, in this case, excels under the directory will be imported
@@ -74,7 +75,7 @@ On Linux: ./ExcelToDatabase
 #### Excel：
   Choose directory or files as your data source
 
-#### MySQL/Oracle/SQL Server/Hive Connection: 
+#### MySQL/Oracle/SQL Server Connection: 
   Input connection information of your target database
 #### Mode:
 
@@ -146,9 +147,7 @@ On Linux: ./ExcelToDatabase
   The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
     
  
-    Windows: ExcelToDatabase.exe D:/config.ini
-    
-    Linux: ./ExcelToDatabase /home/ryjfgjl/config.ini
+    ExcelToDatabase.exe D:/config.ini
 
 # Getting Help
   * Email: 2577154121@qq.com
