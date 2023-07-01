@@ -1,9 +1,10 @@
 # ExcelToDatabase: batch import excel into database automatically
-![图片1](https://user-images.githubusercontent.com/39375647/210199959-95c0b199-17e9-49b0-b865-159709a636af.png)
+<img width="733" alt="屏幕截图 2023-07-01 193630" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/d42efa70-c3e5-4300-9135-3eb3cbc1f9ac">
+
 
 
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one.
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/postgresql/access). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one.
 
 ## Features
 ### Automation
@@ -29,7 +30,8 @@
   
 ### Realtime
 Sync data in excel into database in realtime.
-
+### Security
+DO NOT connect to internet. Work on offline to protect data
 
 ## Where to get it
 
@@ -48,118 +50,128 @@ ExcelToDatabase.exe
  
     Choose the directory or excel files; 
     Input target database information; 
-    Choose import mode`
 
 **Click Start**
 
 ## Supported Environments: 
   * Windows
-  * MySQL/Oracle/SQLServer/Hive
+  * MySQL/Oracle/SQLServer/PostgreSQL/Access
   * Excel(xls,xlsx,xlsm,csv)
 
 ## Menu
-### Language
-  English and Chinese you can choose to display
+### Configuration
+Open/Save/Import Configuration
 
 ### Database
-  MySQL/Oracle/SQLServe, you can choose one database according to your target database
+  MySQL/Oracle/SQLServer/PostgreSQL/Access, you can choose one database according to your target database
 
 ### Data Source
-  * Directory: choose Directory as your data source, in this case, excels under the directory will be imported
   * Files: choose Files as your data source, in this case, you can select one or more excel files to import
-
+  * Directory: choose Directory as your data source, in this case, excels under the directory will be imported
+### Scheduler
+  New/Edit/Import a schedule task.
+  Programmer is crontab
+  
 ## Options:
-  In general, you only need to provide information in the section of "General". But if you want to do more, you may need "Advanced" section
 
-### General：
 #### Excel：
   Choose directory or files as your data source
 
-#### MySQL/Oracle/SQL Server Connection: 
+#### MySQL/Oracle/SQL Server/PostgreSQL/Access Connection: 
   Input connection information of your target database
-#### Mode:
 
-* Overwrite: drop table first(if exists); create table; insert data.
-
-* Append: just insert data into table(table needs exist in the database), according to table name + column name to match, only import data in matched column to the matched table, unmatched column will be ignored 
-
-* Merge: based on the primary keys on the table, delete then insert.
-
-### Advanced：
+### Excel Options：
   #### Recursion of Directories
-      Recursive directories to find all excel files
+      Recursive sub directories to find all excel files
   #### Only Import Excel Last Modified
-    Only Import Excel Last Modified since last imported.
+    Only Import Excel Last Modified since last imported
+  #### Speeding Read Large Excel
+    only supported windows installed office and file format is xlsx/xls
+    suggest only open for large excel file)
   #### Encoding of CSV：
     Tools can auto-detect encoding of csv files(default), 
     and you can choose or input other value
-  #### Replace Values to Null：
-    values populated(comma separated) will be replaced to null
-  #### The Header on Row：
-    Set which row as Column name
+  #### Excel Password
+    input excel password
+  #### Sheet Index or Names
+    sheet index as:1,sheet names as:Sheet1,Sheet2
+  #### Ignore Sheets Start With
+    if @,sheet name starts witj @ will be ignored
+  #### The Header on Row
+    eg: 1,default is 1,multiple header as: 1-3
   #### The Data Start From Row：
-    The data start from the row
-
+    eg: 2,default is header row+1
+  #### Skip Footer Rows
+    eg:1
+  #### Trim Field Values
+    trim()
   #### Skip Blank Lines：
     Skip Blank Rows
-  #### Trim Spaces：
-    Trim spaces around the data
-  #### Skip Blank Sheets：
-    Ignore sheet if there is no data in it
-
-  #### Append All Data to One Exists Table：
-    Under Append mode, import all data to the table populated
-  #### Truncate Target Table Before Append
-    Truncate Target Table Before Append
-  #### Transform Chinese in Table/Column Name to The First Letter
+  #### Replace Space Character to Null
+  #### Replace Values to Null：
+    values populated(comma separated) will be replaced to null
+  #### Remove Duplicate by Columns
+  #### Fill Blank Cell using Last Cell
+###   MySQL/Oracle/SQLServer/PostgreSQL/Access Options
+  #### Drop Table if Exists
+    sql:drop table if exists
+  #### Truncate Table
+    sql:delete from
+  #### Create Table if not Exists
+    sql:create table if not exists
+  #### Append All Data to One Table：
+    import all data to the table populated
+  #### Case to Append All Data to the Same Table
+    Same Sheet Name、Same Excel Name、Similar Excel Name
+  #### Use Sheet as Table Name
+    defaule use excel file name as table name if not checked
+  #### Replace symbol to _ in Indentifier
+  
+  #### Transform Chinese in Indentifier to The First Letter
     Transform chinese in table name and column name to the first letter of its pinyin
-  #### Add Table Prefix：
-    The value populated will be added to table name before
+  #### Extract Table Name Using Regexp
+  
+  #### Add Table Prefix/Suffix：
+    The value populated will be added to table name before/after
   #### Add a Key Column, Value is The Row Number：
     Add a Key Column, Value is The Row Number
-  #### Add a Column, Values is The Excel Name：
-    For imported table, add a column which value is its excel name
-  
+  #### Excel Name(support regexp) Save to
+  #### Allow Increase Column Length When not Enough
+    sql:alter table modify column
+  #### When excel has redundant column
+    Nothing/Ignore redundant column/Add new column in table(sql:alter table add column)
+  #### When excel data duplicate with table
+    Nothing:sql:insert into
+    Ignore:sql:insert ignore into
+    Update: sql:delete then insert
+  #### Replace Table Data by Columns
+    delete table data by value of the columns
+  #### Max Connections
+    parallel insert
+### Other Options
+  #### Truncate Logs Before Start
+  #### Popout Results when Completed
+  #### ODBC Driver
   #### Run Sql Before Starting
     When starting import, run sql in the sql file choosed before
   #### Run Sql After Comleting
     When complete import, run sql in the sql file choosed after
-  #### Save Current Configuration
-    Save Current Configuration
-  #### Load Saved Configuration
-    Load Saved Configuration
 
 ## How the tool works?
   Some logic is described below when the tool work
   ## How to define table name：
     If only one sheet in excel >> excel name
     If multipule sheets in excel >> excel name + '_' + sheet name
-    Symbol like ',' will be replaced to '_'
     If table name is more than the limit of database >> cut off  
   ### How to define column name：
     Default is the first row, but if the first row is all blank, next row will be used
-    Symbol like ',' will be replaced to '_'
-    If column name is blank, 'unnamed' will be set as column name
+    If column name is blank, abcd will be set as column name
     If column name is repeated, number like '0' will be added as its suffix
   ### How to define column type：
     Varchar(255) is default. If max length of column more than 255, text/clob will be set.
-    
-## Correct Error
-  ### mysql error 1118：
-    utf8mb4 is contained in the data, but the utf8 is the character set of database, 
-    mysql error 1118 occured >> import but utf8mb4 character is ignored
-  ### mysql error 1366：
-    The length of all column is too long or the row size is too large, 
-    mysql error 1366 occured >> text will be set as column type
- 
-## How To Schedule
-  The tool can directly run in command line without gui, so you can schedule it on the Windows or Linux. A configuration file(config.ini) is needed to add.
-    
- 
-    ExcelToDatabase.exe D:/config.ini
 
 # Getting Help
-  * Email: 2577154121@qq.com
+  * Email: ryjfgjl@qq.com
 
 
 
