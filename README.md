@@ -1,10 +1,12 @@
 # ExcelToDatabase: batch import excel into database automatically
-<img width="733" alt="屏幕截图 2023-07-01 193630" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/d42efa70-c3e5-4300-9135-3eb3cbc1f9ac">
+![image](https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/81c5c7ff-0a96-4467-a037-df44ae9859eb)
+![image](https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/8e524554-d714-473f-992a-93f39e6087e6)
+
 
 
 
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/postgresql/access). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one.
+**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/postgresql/access/hive/sqlite/dm). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one. *Scheduler* make you can import excel to database at any time.
 
 ## Features
 ### Automation
@@ -55,7 +57,7 @@ ExcelToDatabase.exe
 
 ## Supported Environments: 
   * Windows
-  * MySQL/Oracle/SQLServer/PostgreSQL/Access
+  * MySQL/Oracle/SQLServer/PostgreSQL/Access/Hive/SQLite/DM
   * Excel(xls,xlsx,xlsm,csv)
 
 ## Menu
@@ -63,7 +65,7 @@ ExcelToDatabase.exe
 Open/Save/Import Configuration
 
 ### Database
-  MySQL/Oracle/SQLServer/PostgreSQL/Access, you can choose one database according to your target database
+  you can choose one database according to your target database
 
 ### Data Source
   * Files: choose Files as your data source, in this case, you can select one or more excel files to import
@@ -77,7 +79,7 @@ Open/Save/Import Configuration
 #### Excel：
   Choose directory or files as your data source
 
-#### MySQL/Oracle/SQL Server/PostgreSQL/Access Connection: 
+#### Database Connection: 
   Input connection information of your target database
 
 ### Excel Options：
@@ -112,7 +114,7 @@ Open/Save/Import Configuration
     values populated(comma separated) will be replaced to null
   #### Remove Duplicate by Columns
   #### Fill Blank Cell using Last Cell
-###   MySQL/Oracle/SQLServer/PostgreSQL/Access Options
+### Database Options
   #### Drop Table if Exists
     sql:drop table if exists
   #### Truncate Table
