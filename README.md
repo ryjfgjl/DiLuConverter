@@ -1,6 +1,5 @@
 # ExcelToDatabase: batch import excel into database automatically
-![image](https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/81c5c7ff-0a96-4467-a037-df44ae9859eb)
-![image](https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/8e524554-d714-473f-992a-93f39e6087e6)
+<img width="960" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/65225342-90d3-4fd8-8afc-a86b1c2712de">
 
 
 
