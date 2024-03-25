@@ -32,6 +32,12 @@
 ### Security
   The software is green and requires no installation, and can work under any network conditions.
 
+
+## Supported Environment: 
+  * Windows
+  * MySQL/Oracle/SQLServer/PostgreSQL/Access/Hive/SQLite/DM
+  * Excel(xls,xlsx,xlsm,,xlsb,csv,txt)
+
 ## Where to get it
 
   The packaged executable program(ExcelToDatabase.exe on windows) is available, 
@@ -39,37 +45,22 @@
   you can download it from [sourceforge](https://sourceforge.net/projects/exceltodatabase/).
 
 <a href="https://sourceforge.net/projects/exceltodatabase/files/latest/download"><img alt="Download ExcelToDatabase" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
-
-
+    
 ## Usage
-**Start Program**
-ExcelToDatabase.exe
 
-**Choose and Input**
- 
-    Choose the directory or excel files; 
-    Input target database information; 
+1. Click ExcelToDatabase.exe to start the program
+2. Create a new database connection
+3. Create a new configuration after the database connection is successful.
+4. Select the Excel to be imported, the target table and the import mode (required)
+5. Adjust advanced options as needed (optional)
+6. Click Start
 
-**Click Start**
-
-## Supported Environments: 
-  * Windows
-  * MySQL/Oracle/SQLServer/PostgreSQL/Access/Hive/SQLite/DM
-  * Excel(xls,xlsx,xlsm,csv)
-
-## Menu
-### Configuration
-Open/Save/Import Configuration
-
-### Database
-  you can choose one database according to your target database
-
-### Data Source
-  * Files: choose Files as your data source, in this case, you can select one or more excel files to import
-  * Directory: choose Directory as your data source, in this case, excels under the directory will be imported
-### Scheduler
-  New/Edit/Import a schedule task.
-  Programmer is crontab
+## API
+The tool provides API capabilities that can be called by other applications for background import without a graphical interface.
+For example: ExcelToDatabase.exe Test connection 1 Test configuration 1
+Command: ExcelToDatabase.exe
+Parameter 1: Test connection 1--connection name
+Parameter 2: Test configuration 1--configuration name
   
 ## Options:
 
