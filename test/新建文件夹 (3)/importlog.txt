@@ -1,5 +1,0 @@
-table name added suffix: csv - 中文-utf8.xlsx, tablename: csv_中文_utf8_1
-table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.wwwwwwwwww, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_wwwww
-table name cut off: excel - cutofffffffffffffffffffffffffffffffffffffffff66ff.xlsx.dddddddddd, tablename: excel_cutofffffffffffffffffffffffffffffffffffffffff66ff_ddddd
-Failed Sheet: excel97.xls.blank, error: Empty Table
-Failed Sheet: excel97.xls.blank data, error: Empty Table
