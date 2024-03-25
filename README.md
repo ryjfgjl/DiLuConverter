@@ -106,7 +106,8 @@ Parameter 2: Test configuration 1--configuration name
     This option will lock the excel file and occupy more space. Computer resources, 
     it is recommended to only enable it when the file is large
   #### Recurse Subdirectories
-    Traverse all excel files in the selected directory and its subdirectories. This is only valid when the data source selects a folder.
+    Traverse all excel files in the selected directory and its subdirectories. 
+    This is only valid when the data source selects a folder.
   #### Skip files that have not been updated since the last import
     Record the modification time of each successfully imported excel. The next time you import, 
     only the excel with updated modification time or the newly added excel will be imported.
@@ -132,9 +133,11 @@ Parameter 2: Test configuration 1--configuration name
     The number of lines to skip at the end of the file. If left blank, the default value is 0.
     Note: This option and the number of rows to be imported are mutually exclusive.
   #### Encoding
-    The default is automatic identification, which means the tool automatically detects. If the encoding of all CSV/TXT files can be determined,
+    The default is automatic identification, which means the tool automatically detects. 
+    If the encoding of all CSV/TXT files can be determined,
     Can be specified (optional and input) for efficiency. AI recognition has a certain probability of failure.
-    If it fails and reports encoding format related issues, please save it as a utf8 encoding format file or save it as xlsx and re-import it.
+    If it fails and reports encoding format related issues, 
+    please save it as a utf8 encoding format file or save it as xlsx and re-import it.
   #### Delimiter
     Specify the column delimiter of the csv file, the default is comma,
   #### Lineterminator
@@ -176,8 +179,8 @@ Parameter 2: Test configuration 1--configuration name
     When a primary key or unique index exists in a database table and data duplication occurs:
     Ignore excel data based on unique key of database table: Append mode applies
     Update excel table records based on unique key of database table: update mode applies
-    Replace database table records based on specified column: Manually specify fields, no need to set unique keys in the database table, 
-    and separate multiple columns with commas.
+    Replace database table records based on specified column: Manually specify fields, 
+    no need to set unique keys in the database table, and separate multiple columns with commas.
   ### Database Options
   #### Table Naming Rule
     Auto: when there is only one sheet, use the Excel file name as the table name; 
