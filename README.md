@@ -1,38 +1,36 @@
-# ExcelToDatabase: batch import excel into database automatically
+# ExcelToDatabase: Automatically import excel into database
 <img width="960" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/65225342-90d3-4fd8-8afc-a86b1c2712de">
 
 
 
 
 ## What is it?
-**ExcelToDatabase** is an automatical tool which can batch import multiple excel files into database(mysql/oracle/sqlserver/postgresql/access/hive/sqlite/dm). *Automation* is its main feature  beacuse the tool can import data into database automatically and no need you to provide a mapping. *Batch* is the another feature beacuse of automation, so you can import 10 or 10000 excels one time but not one by one. *Scheduler* make you can import excel to database at any time.
+**ExcelToDatabase** is an automated tool that can batch import excel (xls/xlsx/xlsm/xlsb/csv/txt) into the database (mysql/oracle/sql server/postgresql/access/hive/sqlite/dm). *Automation* is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. *Batch* is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. *Scheduled* import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
 
 ## Features
-### Automation
-  Based on the excel, the tool can create table and import data into the database automatically, or just append/merge the data based on the automatical mapping between the excel and databases.
+### Automatic
+  The tool can automatically generate table names, column names, column types and lengths based on excel, and finally create tables and import data, or automatically match and append or update data based on the generated table information and database tables.
   
 ### Batch
-  Usually you only can import excel one by one using the other tool. But now, you can import all excels you want one time.
+  Usually you can only use other tools to manually import excel into the database one by one, but now, you can import thousands of tables at once.
 
-### Easy
-  You only need to provide the location of excels and the connect information of database, the tool can work until all the excels are imported
+### Simple
+  Just provide the excel file location and target database connection information, and the tool will start working until all excel is imported.
 
 ### Fast: 
-  The fastest, no others
+  It takes 1 minute and 46 seconds to import all 100 excel sheets with 10,000 rows x 20 columns x 1MB each. It only takes 3 minutes and 24 seconds to import a large excel with 1 million rows x 50 columns x 300MB. It only takes 3 minutes and 24 seconds to import a giant excel with 10 million rows x 30 columns x 4GB. csv only takes 5 minutes and 35 seconds, and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31 minutes and 25 seconds (ordinary notebook test)
 
-### Intelligent: 
-  When you manually import excel into database, whether if you feel sad when error occurs? DO NOT WORRY! The tool can deal with them!
+### Smart: 
+  Do you often encounter errors when importing manually? do not worry! Tools can easily avoid or automatically correct them.
 
-### Advanced: 
-  Rich options could be custom choose to make more fuction come true.
+### Timing: 
+  You can use the built-in scheduled task function or combine it with other scheduled task programs to achieve scheduled import.
 
-### Schedule: 
-  You can make a schedule using it on windows/linux.
+### Real-time: 
+  Using scheduled tasks, when excel data is updated, it can be updated synchronously to the database in real-time.
   
-### Realtime
-Sync data in excel into database in realtime.
 ### Security
-DO NOT connect to internet. Work on offline to protect data
+  The software is green and requires no installation, and can work under any network conditions.
 
 ## Where to get it
 
