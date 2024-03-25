@@ -17,16 +17,16 @@
 ### Simple
   Just provide the excel file location and target database connection information, and the tool will start working until all excel is imported.
 
-### Fast: 
+### Fast
   It takes 1 minute and 46 seconds to import all 100 excel sheets with 10,000 rows x 20 columns x 1MB each. It only takes 3 minutes and 24 seconds to import a large excel with 1 million rows x 50 columns x 300MB. It only takes 3 minutes and 24 seconds to import a giant excel with 10 million rows x 30 columns x 4GB. csv only takes 5 minutes and 35 seconds, and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31 minutes and 25 seconds (ordinary notebook test)
 
-### Smart: 
+### Smart
   Do you often encounter errors when importing manually? do not worry! Tools can easily avoid or automatically correct them.
 
-### Timing: 
+### Timing
   You can use the built-in scheduled task function or combine it with other scheduled task programs to achieve scheduled import.
 
-### Real-time: 
+### Real-time
   Using scheduled tasks, when excel data is updated, it can be updated synchronously to the database in real-time.
   
 ### Security
@@ -57,9 +57,13 @@
 
 ## API
 The tool provides API capabilities that can be called by other applications for background import without a graphical interface.
+
 For example: ExcelToDatabase.exe Test connection 1 Test configuration 1
+
 Command: ExcelToDatabase.exe
+
 Parameter 1: Test connection 1--connection name
+
 Parameter 2: Test configuration 1--configuration name
   
 ## Left Options Introduction:
