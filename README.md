@@ -91,37 +91,52 @@ Parameter 2: Test configuration 1--configuration name
   
 ## Right Options Introduction:
 ### Excel options:
-  #### Recursion of Directories
-      Recursive sub directories to find all excel files
-  #### Only Import Excel Last Modified
-    Only Import Excel Last Modified since last imported
-  #### Speeding Read Large Excel
-    only supported windows installed office and file format is xlsx/xls
-    suggest only open for large excel file)
-  #### Encoding of CSV：
-    Tools can auto-detect encoding of csv files(default), 
-    and you can choose or input other value
-  #### Excel Password
-    input excel password
-  #### Sheet Index or Names
-    sheet index as:1,sheet names as:Sheet1,Sheet2
-  #### Ignore Sheets Start With
-    if @,sheet name starts witj @ will be ignored
-  #### The Header on Row
-    eg: 1,default is 1,multiple header as: 1-3
-  #### The Data Start From Row：
-    eg: 2,default is header row+1
+  #### Read Engine
+    Default engine: supports all options
+    Fast engine: faster, but some functions are limited, including: Excel needs to be installed on the computer. It is only effective when the file format is xls/xlsx. It does not support specifying the label of the imported column. This option will lock the excel file and occupy more space. Computer resources, it is recommended to only enable it when the file is large
+  #### Recurse Subdirectories
+    Traverse all excel files in the selected directory and its subdirectories. This is only valid when the data source selects a folder.
+  #### Skip files that have not been updated since the last import
+    Record the modification time of each successfully imported excel. The next time you import, only the excel with updated modification time or the newly added excel will be imported.
+(Invalid after the data source folder is changed)
+  #### Select the Sheet's
+    Name: For example: Sheet1,Sheet2
+    Index: 1,2
+    Multiple sheets are separated by commas. If not filled in, all will be imported by default.
+  #### Select the Header's
+    Name: name,age,birthday
+    Index: 1,2,3
+    Label: A:C
+    If left blank, all columns will be imported by default. CSV/TXT does not support labels.
+  #### Field Name Row
+    Specify which row to use as the column name. The first row starts from 1. If left blank, it defaults to 1.
+    Supports multi-level headers, example: 1-3
+    You can fill in 0, which means the data starts from the first row, and the column names are A, B, and C. . . name,
+  #### First Data Row
+    The number of data starting rows. If not filled in, the default is the number of rows in the header + 1
+  #### Import Rows
+    Specify the number of rows to import, default is all rows
   #### Skip Footer Rows
-    eg:1
-  #### Trim Field Values
-    trim()
-  #### Skip Blank Lines：
-    Skip Blank Rows
-  #### Replace Space Character to Null
-  #### Replace Values to Null：
-    values populated(comma separated) will be replaced to null
-  #### Remove Duplicate by Columns
-  #### Fill Blank Cell using Last Cell
+    The number of lines to skip at the end of the file. If left blank, the default value is 0.
+Note: This option and the number of rows to be imported are mutually exclusive.
+  #### Encoding
+    The default is automatic identification, which means the tool automatically detects. If the encoding of all CSV/TXT files can be determined,
+Can be specified (optional and input) for efficiency. AI recognition has a certain probability of failure.
+If it fails and reports encoding format related issues, please save it as a utf8 encoding format file or save it as xlsx and re-import it.
+  #### Delimiter
+    Specify the column delimiter of the csv file, the default is comma,
+  #### Lineterminator
+    Specify the line separator of the csv file, the default is \n
+  #### Chunck Size
+    Import large csv/txt files in batches to avoid insufficient memory, such as 100000
+  #### Password of Excel
+    Enter the password to encrypt excel
+  #### Field Mapping
+    Specify field matching rules:
+By Name: Match database table fields based on excel header names
+By Index: Match database table fields according to excel header order
+Custom: Match database tables and fields based on custom files. The template is located in "Field Matching Custom Template.xlsx" in the files directory under the tool directory.
+
 ### Database Options
   #### Drop Table if Exists
     sql:drop table if exists
