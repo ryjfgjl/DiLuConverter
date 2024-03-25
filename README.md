@@ -62,15 +62,31 @@ Command: ExcelToDatabase.exe
 Parameter 1: Test connection 1--connection name
 Parameter 2: Test configuration 1--configuration name
   
-## Options:
+## Left Options Introduction:
 
-#### Excel：
-  Choose directory or files as your data source
+### Excel：
+  Select the excel directory or file that needs to be imported.
 
-#### Database Connection: 
-  Input connection information of your target database
+  Select files: Select one or more excel files, the selected files will be imported
+  
+  Select directory: Select a folder, and all excel files under this folder will be imported.
 
-### Excel Options：
+### Target table: 
+  Auto Generate: The tool automatically generates the table name through the excel file name and sheet name.
+
+  Input or Select: select or enter a table name
+
+### Mode：
+  Append: Add records to the target table
+  
+  Update: Delete the same records in the target table and re-import the data from Excel
+  
+  Overwrite: Delete all records in the target table and re-import the data from Excel
+  
+  Rebuild: Delete the target table and re-import the data from Excel
+  
+## Right Options Introduction:
+### Excel options:
   #### Recursion of Directories
       Recursive sub directories to find all excel files
   #### Only Import Excel Last Modified
