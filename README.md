@@ -68,7 +68,9 @@ Parameter 2: Test configuration 1--configuration name
 
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
+
   Email1: ryjfgjl@qq.com
+  
   WeChat: ryjfgjl
 
 ## Left Options Introduction:
@@ -98,12 +100,17 @@ Parameter 2: Test configuration 1--configuration name
 ### Excel options:
   #### Read Engine
     Default engine: supports all options
-    Fast engine: faster, but some functions are limited, including: Excel needs to be installed on the computer. It is only effective when the file format is xls/xlsx. It 
-    does not support specifying the label of the imported column. This option will lock the excel file and occupy more space. Computer resources, it is recommended to only      enable it when the file is large
+    Fast engine: faster, but some functions are limited, including: Excel needs to be installed on the computer. 
+    It is only effective when the file format is xls/xlsx. It 
+    does not support specifying the label of the imported column. 
+    This option will lock the excel file and occupy more space. Computer resources, 
+    it is recommended to only enable it when the file is large
   #### Recurse Subdirectories
     Traverse all excel files in the selected directory and its subdirectories. This is only valid when the data source selects a folder.
   #### Skip files that have not been updated since the last import
-    Record the modification time of each successfully imported excel. The next time you import, only the excel with updated modification time or the newly added excel will      be imported.(Invalid after the data source folder is changed)
+    Record the modification time of each successfully imported excel. The next time you import, 
+    only the excel with updated modification time or the newly added excel will be imported.
+    (Invalid after the data source folder is changed)
   #### Select the Sheet's
     Name: For example: Sheet1,Sheet2
     Index: 1,2
@@ -140,7 +147,8 @@ Parameter 2: Test configuration 1--configuration name
     Specify field matching rules:
     By Name: Match database table fields based on excel header names
     By Index: Match database table fields according to excel header order
-    Custom: Match database tables and fields based on custom files. The template is located in "Field Matching Custom Template.xlsx" in the files directory under the tool       directory.
+    Custom: Match database tables and fields based on custom files. 
+    The template is located in "Field Matching Custom Template.xlsx" in the files directory under the tool directory.
 
 ### Data Clean Options
   #### Replace the values of these cells with null
@@ -156,7 +164,8 @@ Parameter 2: Test configuration 1--configuration name
     Multiple columns are separated by commas, for example: col1, col2. Fill in * to remove duplicates in the entire row. 
     If not filled in, no duplicates will be deleted by default.
   #### Fill the blank cells of these columns with the values from the previous row
-    Use the data from the previous row to complete the blank cells of the filled columns. Multiple columns are separated by commas, for example: col1,col2
+    Use the data from the previous row to complete the blank cells of the filled columns. Multiple columns are separated by commas,
+    for example: col1,col2
   #### Fill blank cells with field default value
     Fill blank cells with field default value
   #### Fill blank cells of numeric type fields with 0
@@ -171,12 +180,14 @@ Parameter 2: Test configuration 1--configuration name
     and separate multiple columns with commas.
   ### Database Options
   #### Table Naming Rule
-    Auto: when there is only one sheet, use the Excel file name as the table name; when there are multiple sheets, use the Excel file name + Sheet name as the table name
+    Auto: when there is only one sheet, use the Excel file name as the table name; 
+    when there are multiple sheets, use the Excel file name + Sheet name as the table name
     Use Excel file name + Sheet name: Use Excel file name + Sheet name as table name
     Only Use Excel Name: Use only Excel file name as table name
     Only Use Sheet Name: Use only Sheet name as table name
   #### Regularly Extract Table Name
-    Use regular expressions to extract the table name from the excel file name. If not filled in, the default is the original excel file name.
+    Use regular expressions to extract the table name from the excel file name. 
+    If not filled in, the default is the original excel file name.
   #### Replace the symbols in the table name with _
     Replace all symbols in the table name (colons, quotes, etc.) with underscores_,
     If there are special symbols in the excel name, check this option to avoid import failure.
@@ -199,11 +210,13 @@ Parameter 2: Test configuration 1--configuration name
     Upper: Use uppercase characters
     Lower: Use lowercase characters
   #### Add an auto-increment field when creating a table
-    Add a column to the database table when creating the table. This column will store the automatically growing number and serve as the primary key of the table.
+    Add a column to the database table when creating the table. 
+    This column will store the automatically growing number and serve as the primary key of the table.
   #### Save import time to field
     Save the import time to the filled in column
   #### Save the excel file name (supports regular extraction) to the field
-    Save the excel file name to the filled-in column. You can apply a regular expression to the excel file name to extract it and then use it as a column value.
+    Save the excel file name to the filled-in column. 
+    You can apply a regular expression to the excel file name to extract it and then use it as a column value.
   #### Field Data Type
     All Use Character Types: use varchar/nvarchar as data types
     Automatically Recognize Date and Numeric Types: only valid for xls/xlsx/xlsm/xlsb
