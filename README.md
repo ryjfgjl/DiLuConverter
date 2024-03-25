@@ -58,7 +58,7 @@
 ## API
 The tool provides API capabilities that can be called by other applications for background import without a graphical interface.
 
-For example: ExcelToDatabase.exe Test connection 1 Test configuration 1
+For example: ExcelToDatabase.exe "Test connection 1" "Test configuration 1"
 
 Command: ExcelToDatabase.exe
 
