@@ -65,7 +65,12 @@ Command: ExcelToDatabase.exe
 Parameter 1: Test connection 1--connection name
 
 Parameter 2: Test configuration 1--configuration name
-  
+
+## Getting Help
+  Email: ryjfgjl.zhang@gmail.com
+  Email1: ryjfgjl@qq.com
+  WeChat: ryjfgjl
+
 ## Left Options Introduction:
 
 ### Excel：
@@ -93,12 +98,12 @@ Parameter 2: Test configuration 1--configuration name
 ### Excel options:
   #### Read Engine
     Default engine: supports all options
-    Fast engine: faster, but some functions are limited, including: Excel needs to be installed on the computer. It is only effective when the file format is xls/xlsx. It does not support specifying the label of the imported column. This option will lock the excel file and occupy more space. Computer resources, it is recommended to only enable it when the file is large
+    Fast engine: faster, but some functions are limited, including: Excel needs to be installed on the computer. It is only effective when the file format is xls/xlsx. It 
+    does not support specifying the label of the imported column. This option will lock the excel file and occupy more space. Computer resources, it is recommended to only      enable it when the file is large
   #### Recurse Subdirectories
     Traverse all excel files in the selected directory and its subdirectories. This is only valid when the data source selects a folder.
   #### Skip files that have not been updated since the last import
-    Record the modification time of each successfully imported excel. The next time you import, only the excel with updated modification time or the newly added excel will be imported.
-(Invalid after the data source folder is changed)
+    Record the modification time of each successfully imported excel. The next time you import, only the excel with updated modification time or the newly added excel will      be imported.(Invalid after the data source folder is changed)
   #### Select the Sheet's
     Name: For example: Sheet1,Sheet2
     Index: 1,2
@@ -118,11 +123,11 @@ Parameter 2: Test configuration 1--configuration name
     Specify the number of rows to import, default is all rows
   #### Skip Footer Rows
     The number of lines to skip at the end of the file. If left blank, the default value is 0.
-Note: This option and the number of rows to be imported are mutually exclusive.
+    Note: This option and the number of rows to be imported are mutually exclusive.
   #### Encoding
     The default is automatic identification, which means the tool automatically detects. If the encoding of all CSV/TXT files can be determined,
-Can be specified (optional and input) for efficiency. AI recognition has a certain probability of failure.
-If it fails and reports encoding format related issues, please save it as a utf8 encoding format file or save it as xlsx and re-import it.
+    Can be specified (optional and input) for efficiency. AI recognition has a certain probability of failure.
+    If it fails and reports encoding format related issues, please save it as a utf8 encoding format file or save it as xlsx and re-import it.
   #### Delimiter
     Specify the column delimiter of the csv file, the default is comma,
   #### Lineterminator
@@ -133,73 +138,99 @@ If it fails and reports encoding format related issues, please save it as a utf8
     Enter the password to encrypt excel
   #### Field Mapping
     Specify field matching rules:
-By Name: Match database table fields based on excel header names
-By Index: Match database table fields according to excel header order
-Custom: Match database tables and fields based on custom files. The template is located in "Field Matching Custom Template.xlsx" in the files directory under the tool directory.
+    By Name: Match database table fields based on excel header names
+    By Index: Match database table fields according to excel header order
+    Custom: Match database tables and fields based on custom files. The template is located in "Field Matching Custom Template.xlsx" in the files directory under the tool       directory.
 
-### Database Options
-  #### Drop Table if Exists
-    sql:drop table if exists
-  #### Truncate Table
-    sql:delete from
-  #### Create Table if not Exists
-    sql:create table if not exists
-  #### Append All Data to One Table：
-    import all data to the table populated
-  #### Case to Append All Data to the Same Table
-    Same Sheet Name、Same Excel Name、Similar Excel Name
-  #### Use Sheet as Table Name
-    defaule use excel file name as table name if not checked
-  #### Replace symbol to _ in Indentifier
-  
-  #### Transform Chinese in Indentifier to The First Letter
-    Transform chinese in table name and column name to the first letter of its pinyin
-  #### Extract Table Name Using Regexp
-  
-  #### Add Table Prefix/Suffix：
-    The value populated will be added to table name before/after
-  #### Add a Key Column, Value is The Row Number：
-    Add a Key Column, Value is The Row Number
-  #### Excel Name(support regexp) Save to
-  #### Allow Increase Column Length When not Enough
-    sql:alter table modify column
-  #### When excel has redundant column
-    Nothing/Ignore redundant column/Add new column in table(sql:alter table add column)
-  #### When excel data duplicate with table
-    Nothing:sql:insert into
-    Ignore:sql:insert ignore into
-    Update: sql:delete then insert
-  #### Replace Table Data by Columns
-    delete table data by value of the columns
-  #### Max Connections
-    parallel insert
+### Data Clean Options
+  #### Replace the values of these cells with null
+    For common excel error cells or a specific value, enter them separated by commas.
+    These cell values will be replaced with null. For example: #NA,null,0, if not filled in, it will not be replaced by default.
+  #### Replace these characters with the empty string
+    Multiple values are separated by commas, for example: ---, ,(, if not filled in, it will not be replaced by default
+  #### Trim Cell Values
+    Remove the leading and trailing spaces from the cell value, that is, execute the trim function
+  #### Skip Blank Lines
+    Delete rows with all blank cells
+  #### Deduplicate data by these columns
+    Multiple columns are separated by commas, for example: col1, col2. Fill in * to remove duplicates in the entire row. 
+    If not filled in, no duplicates will be deleted by default.
+  #### Fill the blank cells of these columns with the values from the previous row
+    Use the data from the previous row to complete the blank cells of the filled columns. Multiple columns are separated by commas, for example: col1,col2
+  #### Fill blank cells with field default value
+    Fill blank cells with field default value
+  #### Fill blank cells of numeric type fields with 0
+    Fill blank cells of numeric type fields with 0
+  #### Use empty string as null
+    Use empty string as null
+  #### When excel data and table records are duplicated
+    When a primary key or unique index exists in a database table and data duplication occurs:
+    Ignore excel data based on unique key of database table: Append mode applies
+    Update excel table records based on unique key of database table: update mode applies
+    Replace database table records based on specified column: Manually specify fields, no need to set unique keys in the database table, 
+    and separate multiple columns with commas.
+  ### Database Options
+  #### Table Naming Rule
+    Auto: when there is only one sheet, use the Excel file name as the table name; when there are multiple sheets, use the Excel file name + Sheet name as the table name
+    Use Excel file name + Sheet name: Use Excel file name + Sheet name as table name
+    Only Use Excel Name: Use only Excel file name as table name
+    Only Use Sheet Name: Use only Sheet name as table name
+  #### Regularly Extract Table Name
+    Use regular expressions to extract the table name from the excel file name. If not filled in, the default is the original excel file name.
+  #### Replace the symbols in the table name with _
+    Replace all symbols in the table name (colons, quotes, etc.) with underscores_,
+    If there are special symbols in the excel name, check this option to avoid import failure.
+  #### Add prefix to table name
+    Add prefix to table name
+  #### Add suffix to table name
+    Add suffix to table name
+  #### Table Name Case
+    Origin: stay as is
+    Upper: Use uppercase characters
+    Lower: Use lowercase characters
+  #### When the generated table names are repeated, regard as
+    Different Table
+    Same Table
+  #### Replace the symbols in the field name with _
+    Replace the symbols (colon quotes, etc.) in the field name with underscore_,
+    If there are special symbols in the field, check this option to avoid import failure.
+  #### Field Name Case
+    Origin: stay as is
+    Upper: Use uppercase characters
+    Lower: Use lowercase characters
+  #### Add an auto-increment field when creating a table
+    Add a column to the database table when creating the table. This column will store the automatically growing number and serve as the primary key of the table.
+  #### Save import time to field
+    Save the import time to the filled in column
+  #### Save the excel file name (supports regular extraction) to the field
+    Save the excel file name to the filled-in column. You can apply a regular expression to the excel file name to extract it and then use it as a column value.
+  #### Field Data Type
+    All Use Character Types: use varchar/nvarchar as data types
+    Automatically Recognize Date and Numeric Types: only valid for xls/xlsx/xlsm/xlsb
+  #### When there are extra columns in excel
+    Nothing: do nothing
+    Ignore Extra Column: only import matching column data
+    Add a New Field in the Table: Add a new column to the database table and perform the alter table add column operation.
+  #### Automatically extend the field length when it is not long enoug
+    Automatically extend the field length when it is not long enoug
+  #### Insert Way
+    Fast: fast
+    Load: fast, suitable for large files and the database is mysql/hive, where hive needs to fill in the server login information in other options
+    Bcp: fast, suitable for large files and sql server, the computer needs to have the bcp tool installed (CMD command line input: bcp)
+    Sqlldr: fast, suitable for large files and Oracle, requires the computer to have installed the sqlldr tool adapted to the database (CMD command line input: sqlldr)
+    Parallel: Fast, 5 connections are enabled for parallel writing by default, suitable for large files
+    General: Slower, good for small to medium files, and able to print and skip written lines with errors
+  #### Commit Way
+    Once Commit: One-time submission after data writing is completed. Failure can be rolled back.
+    Batch Commit: Submit every 1000 rows
+    Auto Commit: auto-submit
+
 ### Other Options
   #### Truncate Logs Before Start
-  #### Popout Results when Completed
-  #### ODBC Driver
   #### Run Sql Before Starting
     When starting import, run sql in the sql file choosed before
   #### Run Sql After Comleting
     When complete import, run sql in the sql file choosed after
-
-## How the tool works?
-  Some logic is described below when the tool work
-  ## How to define table name：
-    If only one sheet in excel >> excel name
-    If multipule sheets in excel >> excel name + '_' + sheet name
-    If table name is more than the limit of database >> cut off  
-  ### How to define column name：
-    Default is the first row, but if the first row is all blank, next row will be used
-    If column name is blank, abcd will be set as column name
-    If column name is repeated, number like '0' will be added as its suffix
-  ### How to define column type：
-    Varchar(255) is default. If max length of column more than 255, text/clob will be set.
-
-# Getting Help
-  * Email: ryjfgjl@qq.com
-
-
-
-
+  #### Run Query After Comleting Export to
 
 
