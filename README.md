@@ -16,7 +16,7 @@
   Just provide the excel file location and target database connection information, and the tool will start working until all excel is imported.
 
 ### Fast
-  It takes 4s to import all 10 excel sheets with 10,000 rows x 20 columns x 1MB each. 
+  It takes 3s to import all 10 excel sheets with 10,000 rows x 20 columns x 1MB each. 
   It only takes 3m24s to import a large excel with 1 million rows x 50 columns x 300MB.
   It only takes 5m35s to import a giant csv with 10 million rows x 30 columns x 4GB. 
   and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31m25s 
