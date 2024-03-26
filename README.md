@@ -1,9 +1,9 @@
-# ExcelToDatabase: Automatically import excel into database
+# ExcelToDatabase: Automatically convert excel to database
 <img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
 ## What is it?
-**ExcelToDatabase** is an automated tool that can batch import excel (xls/xlsx/xlsm/xlsb/csv/txt) into the database (mysql/oracle/sql server/postgresql/access/hive/sqlite/dm). ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
+**ExcelToDatabase** is an automated tool that can convert excel (xls/xlsx/xlsm/xlsb/csv/txt) to the database (mysql/oracle/sql server/postgresql/access/hive/sqlite/dm). ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
 
 ## Features
 ### Automatic
