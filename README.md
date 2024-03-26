@@ -1,6 +1,5 @@
 # ExcelToDatabase: Automatically import excel into database
-
-<img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/5360663b-c711-4aa2-aa9b-11aa72ebeb8b">
+<img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
 ## What is it?
