@@ -1,7 +1,6 @@
 # ExcelToDatabase: Automatically import excel into database
-<img width="960" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/65225342-90d3-4fd8-8afc-a86b1c2712de">
 
-
+<img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/5360663b-c711-4aa2-aa9b-11aa72ebeb8b">
 
 
 ## What is it?
@@ -18,7 +17,11 @@
   Just provide the excel file location and target database connection information, and the tool will start working until all excel is imported.
 
 ### Fast
-  It takes 1 minute and 46 seconds to import all 100 excel sheets with 10,000 rows x 20 columns x 1MB each. It only takes 3 minutes and 24 seconds to import a large excel with 1 million rows x 50 columns x 300MB. It only takes 3 minutes and 24 seconds to import a giant excel with 10 million rows x 30 columns x 4GB. csv only takes 5 minutes and 35 seconds, and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31 minutes and 25 seconds (ordinary notebook test)
+  It takes 4s to import all 10 excel sheets with 10,000 rows x 20 columns x 1MB each. 
+  It only takes 3m24s to import a large excel with 1 million rows x 50 columns x 300MB.
+  It only takes 5m35s to import a giant csv with 10 million rows x 30 columns x 4GB. 
+  and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31m25s 
+  (normal notebook test)
 
 ### Smart
   Do you often encounter errors when importing manually? do not worry! Tools can easily avoid or automatically correct them.
