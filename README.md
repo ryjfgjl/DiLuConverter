@@ -42,11 +42,7 @@
 
 ## Where to get it
 
-  The packaged executable program(ExcelToDatabase.exe on windows) is available, 
-  
-  you can download it from [sourceforge](https://sourceforge.net/projects/exceltodatabase/).
-
-<a href="https://sourceforge.net/projects/exceltodatabase/files/latest/download"><img alt="Download ExcelToDatabase" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
+  [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/files/latest/download)
     
 ## Usage
 
