@@ -66,7 +66,8 @@ Parameter 2: Test configuration 1--configuration name
 
 ## Tutorial
 1: Data source selection and database connection
-2: [(https://medium.com/@ryjfgjl.zhang/import-excel-into-database-automatically-exceltodatabase-cf3650f7e054)](https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241)
+
+2: https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241
 
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
