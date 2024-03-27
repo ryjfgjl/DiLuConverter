@@ -67,7 +67,8 @@ Parameter 2: Test configuration 1--configuration name
 ## Tutorial
 1: Data source selection and database connection
 
-2: https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241
+2: [One-click Importing Excel Data into a Database](https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241)
+
 
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
