@@ -3,7 +3,7 @@
 
 
 ## What is it?
-**ExcelToDatabase** is a productivity tool that can automatically import excel into a database. Supports excel files in xls/xlsx/xlsm/xlsb/csv/txt format, imported into databases including mysql/oracle/sql server/postgresql/access/hive/sqlite/dm8. ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
+**ExcelToDatabase** is a productivity tool that can automatically import excel into a database. Supports excel files in xls/xlsx/xlsm/xlsb/csv/txt format, imported into databases including mysql/oracle/sql server/postgresql/access/hive/sqlite/dm. ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
 
 ## Features
 ### Automatic
