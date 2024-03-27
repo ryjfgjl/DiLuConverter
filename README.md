@@ -1,4 +1,4 @@
-# import excel into database automatically-ExcelToDatabase
+# Import excel into database automatically-ExcelToDatabase
 <img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
