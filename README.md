@@ -69,6 +69,7 @@ Parameter 2: Test configuration 1--configuration name
 
 2: [One-click Importing Excel Data into a Database](https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241)
 
+3: [Importing Multiple Excel Files into a Database in Batch](https://medium.com/@ryjfgjl.zhang/importing-multiple-excel-files-into-a-database-in-batch-878ffef9b8e6)
 
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
