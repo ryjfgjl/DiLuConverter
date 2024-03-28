@@ -38,7 +38,7 @@
 ## Supported Environment: 
   * Windows
   * MySQL/Oracle/SQLServer/PostgreSQL/Access/Hive/SQLite/DM
-  * Excel(xls,xlsx,xlsm,,xlsb,csv,txt)
+  * Excel(xls,xlsx,xlsm,xlsb,csv,txt)
 
 ## Where to get it
 
