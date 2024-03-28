@@ -73,6 +73,8 @@ Parameter 2: Test configuration 1--configuration name
 
 4: [Merging Data from Multiple Excel Files](https://medium.com/@ryjfgjl.zhang/merging-data-from-multiple-excel-files-a0a3579108fc)
 
+5: [Scheduled Import of Excel into Database](https://medium.com/@ryjfgjl.zhang/scheduled-import-of-excel-into-database-ef899e64720d)
+
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
 
