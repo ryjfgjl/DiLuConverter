@@ -71,6 +71,8 @@ Parameter 2: Test configuration 1--configuration name
 
 3: [Importing Multiple Excel Files into a Database in Batch](https://medium.com/@ryjfgjl.zhang/importing-multiple-excel-files-into-a-database-in-batch-878ffef9b8e6)
 
+4: [Merging Data from Multiple Excel Files](https://medium.com/@ryjfgjl.zhang/merging-data-from-multiple-excel-files-a0a3579108fc)
+
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
 
