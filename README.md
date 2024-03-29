@@ -75,6 +75,8 @@ Parameter 2: Test configuration 1--configuration name
 
 5: [Scheduled Import of Excel into Database](https://medium.com/@ryjfgjl.zhang/scheduled-import-of-excel-into-database-ef899e64720d)
 
+6: [Real-time Synchronization and Refresh of Excel Data to Database](https://medium.com/@ryjfgjl.zhang/real-time-synchronization-and-refresh-of-excel-data-to-database-8f6796fc550b)
+
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
 
