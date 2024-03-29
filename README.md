@@ -67,15 +67,15 @@ Parameter 2: Test configuration 1--configuration name
 ## Tutorial
 1: [New Database Connection Guide](https://github.com/ryjfgjl/ExcelToDatabase/wiki/Database-Connection-Guide)
 
-2: [One-click Importing Excel Data into a Database](https://medium.com/@ryjfgjl.zhang/one-click-importing-excel-data-into-a-database-61728fdf5241)
+2: [One-click Importing Excel Data into a Database](https://dev.to/ryjfgjl/one-click-importing-excel-data-into-a-database-2j02)
 
-3: [Importing Multiple Excel Files into a Database in Batch](https://medium.com/@ryjfgjl.zhang/importing-multiple-excel-files-into-a-database-in-batch-878ffef9b8e6)
+3: [Importing Multiple Excel Files into a Database in Batch](https://dev.to/ryjfgjl/batch-import-of-multiple-excel-files-into-the-database-45ac)
 
-4: [Merging Data from Multiple Excel Files](https://medium.com/@ryjfgjl.zhang/merging-data-from-multiple-excel-files-a0a3579108fc)
+4: [Merging Data from Multiple Excel Files](https://dev.to/ryjfgjl/merging-data-from-multiple-excel-files-4g2h)
 
-5: [Scheduled Import of Excel into Database](https://medium.com/@ryjfgjl.zhang/scheduled-import-of-excel-into-database-ef899e64720d)
+5: [Scheduled Import of Excel into Database](https://dev.to/ryjfgjl/scheduled-import-of-excel-into-database-4pcd)
 
-6: [Real-time Synchronization and Refresh of Excel Data to Database](https://medium.com/@ryjfgjl.zhang/real-time-synchronization-and-refresh-of-excel-data-to-database-8f6796fc550b)
+6: [Real-time Synchronization and Refresh of Excel Data to Database](https://dev.to/ryjfgjl/synchronize-and-refresh-excel-data-to-the-database-in-real-time-2fe2)
 
 ## Getting Help
   Email: ryjfgjl.zhang@gmail.com
