@@ -1,4 +1,7 @@
-# Import excel into database automatically-ExcelToDatabase
+# Automated tool for bulk importing Excel into the database
+This is the official English documentation for ExcelToDatabase.
+
+中文官方网站及在线文档请前往：[ExcelToDatabase中文网站](https://zhuanlan.zhihu.com/p/562690353)
 <img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
