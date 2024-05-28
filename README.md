@@ -1,13 +1,13 @@
 # Automated tool for bulk importing Excel into the database
-This is the official English documentation for ExcelToDatabase.
+This is the official English documentation for DiLu Converter.
 
-中文官方网站及在线文档请前往：[ExcelToDatabase中文网站](https://zhuanlan.zhihu.com/p/562690353)
+中文官方网站及在线文档请前往：[DiLu Converter中文网站](https://zhuanlan.zhihu.com/p/562690353)
 
 <img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
 ## What is it?
-**ExcelToDatabase** is a productivity tool that can automatically import excel into a database. Supports excel files in xls/xlsx/xlsm/xlsb/csv/txt format, imported into databases including mysql/oracle/sql server/postgresql/access/hive/sqlite/dm. ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
+**DiLu Converter** is a productivity tool that can automatically import excel into a database. Supports excel files in xls/xlsx/xlsm/xlsb/csv/txt format, imported into databases including mysql/oracle/sql server/postgresql/access/hive/sqlite/dm. ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
 
 ## Features
 ### Automatic
@@ -50,7 +50,7 @@ This is the official English documentation for ExcelToDatabase.
     
 ## Usage
 
-1. Click ExcelToDatabase.exe to start the program
+1. Click DiLuConverter.exe to start the program
 2. Create a new database connection
 3. Create a new configuration after the database connection is successful.
 4. Select the Excel to be imported, the target table and the import mode (required)
@@ -60,9 +60,9 @@ This is the official English documentation for ExcelToDatabase.
 ## API
 The tool provides API capabilities that can be called by other applications for background import without a graphical interface.
 
-For example: ExcelToDatabase.exe "Test connection 1" "Test configuration 1"
+For example: DiLuConverter.exe "Test connection 1" "Test configuration 1"
 
-Command: ExcelToDatabase.exe
+Command: DiLuConverter.exe
 
 Parameter 1: Test connection 1--connection name
 
