@@ -45,7 +45,7 @@ This is the official English documentation for DiLu Converter. [前往中文网�
 
 ## Where to get it
 
-  [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/files/latest/download)
+  [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/)
     
 ## Usage
 
