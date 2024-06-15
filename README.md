@@ -1,9 +1,8 @@
 # Automated tool for bulk importing Excel into the database
-This is the official English documentation for DiLu Converter.
+This is the Official English documentation for DiLu Converter|[前往中文网站](https://zhuanlan.zhihu.com/p/562690353)
 
-中文官方网站及在线文档请前往：[DiLu Converter中文网站](https://zhuanlan.zhihu.com/p/562690353)
+<img width="959" alt="image" src="https://github.com/ryjfgjl/DiLuConverter/assets/39375647/da109c3c-170d-4498-b893-bb691cc96479">
 
-<img width="959" alt="首页" src="https://github.com/ryjfgjl/ExcelToDatabase/assets/39375647/b7f15080-d4ed-42c4-b9e7-047bcf0c4ed9">
 
 
 ## What is it?
