@@ -46,6 +46,15 @@ This is the official English documentation for DiLu Converter. [前往中文网�
 ## Where to get it
 
   [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/)
+
+## Getting Help
+  WhatsApp number: +86 182 2448 2521
+  
+  Email: ryjfgjl.zhang@gmail.com
+
+  Email1: ryjfgjl@qq.com
+  
+  WeChat: ryjfgjl
     
 ## Usage
 
@@ -80,12 +89,6 @@ Parameter 2: Test configuration 1--configuration name
 
 6: [Real-time Synchronization and Refresh of Excel Data to Database](https://dev.to/ryjfgjl/synchronize-and-refresh-excel-data-to-the-database-in-real-time-2fe2)
 
-## Getting Help
-  Email: ryjfgjl.zhang@gmail.com
-
-  Email1: ryjfgjl@qq.com
-  
-  WeChat: ryjfgjl
 
 ## Left Options Introduction:
 
