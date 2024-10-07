@@ -1,5 +1,5 @@
 # Automated tool for bulk importing Excel into the database
-This is the official English documentation for DiLu Converter. [前往中文网站](https://zhuanlan.zhihu.com/p/562690353)
+This is the official English documentation for DiLu Converter.
 
 <img width="959" alt="image" src="https://github.com/ryjfgjl/DiLuConverter/assets/39375647/da109c3c-170d-4498-b893-bb691cc96479">
 
@@ -48,13 +48,12 @@ This is the official English documentation for DiLu Converter. [前往中文网�
   [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/)
 
 ## Getting Help
-  WhatsApp number: +86 182 2448 2521
-  
+
   Email: ryjfgjl.zhang@gmail.com
 
   Email1: ryjfgjl@qq.com
   
-  WeChat: ryjfgjl
+  WhatsApp number: +86 182 2448 2521
     
 ## Usage
 
