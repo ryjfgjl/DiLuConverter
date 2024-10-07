@@ -1,7 +1,8 @@
 # Automated tool for bulk importing Excel into the database
 This is the official English documentation for DiLu Converter.
 
-<img width="959" alt="image" src="https://github.com/ryjfgjl/DiLuConverter/assets/39375647/da109c3c-170d-4498-b893-bb691cc96479">
+![image](https://github.com/user-attachments/assets/15948312-1513-44a1-a11a-c7c532d747e8)
+
 
 
 
