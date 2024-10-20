@@ -1,48 +1,36 @@
-# Automated tool for bulk importing Excel into the database
-This is the official English documentation for DiLu Converter.
+#                                                                           DiLu Converter
+This is the official documentation for DiLu Converter.
 
 ![image](https://github.com/user-attachments/assets/15948312-1513-44a1-a11a-c7c532d747e8)
 
 
-
-
 ## What is it?
-**DiLu Converter** is a productivity tool that can automatically import excel into a database. Supports excel files in xls/xlsx/xlsm/xlsb/csv/txt format, imported into databases including mysql/oracle/sql server/postgresql/access/hive/sqlite/dm. ***Automation*** is its main feature, because it can automatically generate table information based on excel to establish contact with the database, and finally import the data into the database table. ***Batch*** is another feature of it, because it can be automated, so you can import thousands of tables at one time instead of importing them one by one. ***Scheduled*** import and export, real-time refresh, to achieve seamless connection between Excel data and database table data.
+**DiLu Converter** is the fastest, most powerful and most professional Excel import and export tool. It supports multiple popular databases such as MySQL, Oracle, SQL Server, PostgreSQL, IBM DB2, Access, Hive, SQLite and Excel files in xls, xlsx, xlsm, xlsb, csv, txt and xml formats. It allows you to import and export in one step, in batch, in scheduled and in realtime
 
 ## Features
-### Automatic
-  The tool can automatically generate table names, column names, column types and lengths based on excel, and finally create tables and import data, or automatically match and append or update data based on the generated table information and database tables.
+### Safe
+  The software has passed sourceforge and google virus detection and it works offline on a single machine to ensure data security.
   
-### Batch
-  Usually you can only use other tools to manually import excel into the database one by one, but now, you can import thousands of tables at once.
-
-### Simple
-  Just provide the excel file location and target database connection information, and the tool will start working until all excel is imported.
-
 ### Fast
-  It takes 3s to import all 10 excel sheets with 10,000 rows x 20 columns x 1MB each. 
-  It only takes 3m24s to import a large excel with 1 million rows x 50 columns x 300MB.
-  It only takes 5m35s to import a giant csv with 10 million rows x 30 columns x 4GB. 
-  and importing a giant excel with 10 sheets totaling 10 million rows x 50 columns x 2GB only takes 31m25s 
-  (normal notebook test)
+  The fastest import and export software.
 
-### Smart
-  Do you often encounter errors when importing manually? do not worry! Tools can easily avoid or automatically correct them.
+### Powerful
+  Supports importing Excel files of any shape into many popular databases
 
-### Timing
-  You can use the built-in scheduled task function or combine it with other scheduled task programs to achieve scheduled import.
+### Credible
+  Verified by thousands of users, with numerous positive reviews. Applied to the production environment of large-scale enterprises, as stable as an old horse
 
-### Real-time
-  Using scheduled tasks, when excel data is updated, it can be updated synchronously to the database in real-time.
-  
-### Security
-  The software is green and requires no installation, and can work under any network conditions.
+### Automatic
+  It allows you to import and export in one step, in batch , in scheduled and in realtime.
+
+### Easy to use
+  Both beginners and experts can benefit greatly from this.
 
 
 ## Supported Environment: 
-  * Windows
-  * MySQL/Oracle/SQLServer/PostgreSQL/Access/Hive/SQLite/DM
-  * Excel(xls,xlsx,xlsm,xlsb,csv,txt)
+  * Windows/MacOS/Linux
+  * MySQL/Oracle/SQLServer/PostgreSQL/IBM DB2/Access/Hive/SQLite/DM/DuckDB
+  * Excel(xls,xlsx,xlsm,xlsb,csv,txt,xml)
 
 ## Where to get it
 
