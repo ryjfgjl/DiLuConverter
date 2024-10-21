@@ -5,7 +5,7 @@ This is the official documentation for DiLu Converter.
 
 
 ## What is it?
-**DiLu Converter** is the fastest, most powerful and most professional Excel import and export tool. It supports multiple popular databases such as MySQL, Oracle, SQL Server, PostgreSQL, IBM DB2, Access, Hive, SQLite and Excel files in xls, xlsx, xlsm, xlsb, csv, txt and xml formats. It allows you to import and export in one step, in batch, in scheduled and in realtime
+**DiLu Converter** is a fast, powerful and professional Excel import and export tool. It supports multiple popular databases such as MySQL, Oracle, SQL Server, PostgreSQL, IBM DB2, Access, Hive, SQLite and Excel files in xls, xlsx, xlsm, xlsb, csv, txt and xml formats. It allows you to import and export in one step, in batch, in scheduled and in realtime
 
 ## Features
 ### Safe
