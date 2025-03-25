@@ -38,11 +38,10 @@ This is the official documentation for DiLu Converter.
 
 ## Getting Help
 
-  Email: ryjfgjl.zhang@gmail.com
+  Email1: 2577154121@qq.com
 
-  Email1: ryjfgjl@qq.com
-  
-  WhatsApp number: +86 182 2448 2521
+  Email2: ryjfgjl.zhang@gmail.com
+
     
 ## Usage
 
