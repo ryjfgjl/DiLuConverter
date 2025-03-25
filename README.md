@@ -1,7 +1,8 @@
 #                                                                           DiLu Converter
 This is the official documentation for DiLu Converter.
 
-![image](https://github.com/user-attachments/assets/15948312-1513-44a1-a11a-c7c532d747e8)
+![dilu-converter](https://github.com/user-attachments/assets/17c14a26-7c18-4897-a2d8-3f95b9a034c3)
+
 
 
 ## What is it?
