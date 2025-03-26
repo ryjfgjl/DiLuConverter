@@ -1,12 +1,14 @@
 #                                                                           DiLu Converter
-This is the official documentation for DiLu Converter.
+This is the official documentation for [DiLu Converter](https://www.diluauto.com/en/).
 
 ![dilu-converter](https://github.com/user-attachments/assets/17c14a26-7c18-4897-a2d8-3f95b9a034c3)
 
 
 
 ## What is it?
-**DiLu Converter** is a fast, powerful and professional Excel import and export tool. It supports multiple popular databases such as MySQL, Oracle, SQL Server, PostgreSQL, IBM DB2, Access, Hive, SQLite and Excel files in xls, xlsx, xlsm, xlsb, csv, txt and xml formats. It allows you to import and export in one step, in batch, in scheduled and in realtime
+**DiLu Converter** is a powerful Excel import and export tool that supports more than 10 databases such as MySQL, Oracle, SQL Server, PostgreSQL and so on.
+The supported file formats include xls, xlsx, xlsm, xlsb, csv, txt, xml, json, and dbf. Its native user interface brings users a comfortable experience of simplified Excel import and export, making Excel import and export easier than ever before.
+Whether you want one-click, batch, and personalized import and export, or want to use scheduled tasks to achieve unattended full automation, DiLu Converter can bring you unprecedented productivity improvement.
 
 ## Features
 ### Safe
@@ -35,7 +37,7 @@ This is the official documentation for DiLu Converter.
 
 ## Where to get it
 
-  [Download for Windows 10/11 (64 bit)](https://sourceforge.net/projects/exceltodatabase/)
+  [DiLu Converter Official Website)](https://www.diluauto.com/en/)
 
 ## Getting Help
 
@@ -56,13 +58,15 @@ This is the official documentation for DiLu Converter.
 ## API
 The tool provides API capabilities that can be called by other applications for background import without a graphical interface.
 
-For example: DiLuConverter.exe "Test connection 1" "Test configuration 1"
+For example: DiLuConverter.exe import/export/sync/job "Test connection 1" "Test configuration 1"
 
 Command: DiLuConverter.exe
 
-Parameter 1: Test connection 1--connection name
+Parameter 1: import/export/sync/job--execute type
 
-Parameter 2: Test configuration 1--configuration name
+Parameter 2: Test connection 1--connection name
+
+Parameter 3: Test configuration 1--configuration name
 
 ## Tutorial
 1: [New Database Connection Guide](https://github.com/ryjfgjl/ExcelToDatabase/wiki/Database-Connection-Guide)
