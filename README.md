@@ -37,7 +37,7 @@ Whether you want one-click, batch, and personalized import and export, or want t
 
 ## Where to get it
 
-  [DiLu Converter Official Website)](https://www.diluauto.com/en/)
+  [DiLu Converter Official Website](https://www.diluauto.com/en/)
 
 ## Getting Help
 
