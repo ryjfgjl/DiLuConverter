@@ -1,5 +1,5 @@
 #                                                                           DiLu Converter
-This is the official documentation for [DiLu Converter](https://www.diluauto.com/en/).
+This is the documentation for [DiLu Converter](https://www.diluauto.com/en/).
 
 ![dilu-converter](https://github.com/user-attachments/assets/17c14a26-7c18-4897-a2d8-3f95b9a034c3)
 
