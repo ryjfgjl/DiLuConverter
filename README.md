@@ -1,7 +1,8 @@
 #                                                                           DiLu Converter
 This is the documentation for [DiLu Converter](https://www.diluauto.com/en/).
 
-![dilu-converter](https://github.com/user-attachments/assets/17c14a26-7c18-4897-a2d8-3f95b9a034c3)
+<img width="959" alt="微信图片_20250325221230" src="https://github.com/user-attachments/assets/04579f67-f0e2-4ed7-bb62-24c947ec7271" />
+
 
 
 
